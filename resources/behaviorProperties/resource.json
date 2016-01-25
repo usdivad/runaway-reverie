@@ -1,3 +1,10 @@
 {
-  "behaviors": {}
+  "behaviors": {
+    "CharacterBehavior": {
+      "scriptId": "8",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    }
+  }
 }

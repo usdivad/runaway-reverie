@@ -6,8 +6,42 @@
     "children": []
   },
   {
-    "id": "1",
-    "name": "3D Model",
-    "type": "model"
+    "id": "2",
+    "name": "Room Scene",
+    "type": "scene"
+  },
+  {
+    "id": "3",
+    "name": "Models",
+    "type": null,
+    "children": [
+      {
+        "id": "1",
+        "name": "PlayerModel",
+        "type": "model"
+      },
+      {
+        "id": "5",
+        "name": "WallModel",
+        "type": "cubicModel"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Sprites",
+    "type": null,
+    "children": [
+      {
+        "id": "7",
+        "name": "2DWallSprite",
+        "type": "sprite"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Game",
+    "type": "script"
   }
 ]

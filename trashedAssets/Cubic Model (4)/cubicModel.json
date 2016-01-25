@@ -1,0 +1,16 @@
+{
+  "pixelsPerUnit": 16,
+  "nodes": [],
+  "textureWidth": 256,
+  "textureHeight": 256,
+  "maps": [
+    "map"
+  ],
+  "mapSlots": {
+    "map": "map",
+    "light": null,
+    "specular": null,
+    "alpha": null,
+    "normal": null
+  }
+}
