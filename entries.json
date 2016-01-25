@@ -1,0 +1,13 @@
+[
+  {
+    "id": "0",
+    "name": "Music",
+    "type": null,
+    "children": []
+  },
+  {
+    "id": "1",
+    "name": "3D Model",
+    "type": "model"
+  }
+]
