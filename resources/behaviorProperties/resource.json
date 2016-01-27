@@ -1,7 +1,7 @@
 {
   "behaviors": {
     "CharacterBehavior": {
-      "scriptId": "8",
+      "scriptId": "9",
       "line": 0,
       "parentBehavior": null,
       "properties": []

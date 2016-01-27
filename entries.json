@@ -40,6 +40,11 @@
     ]
   },
   {
+    "id": "9",
+    "name": "CharacterBehavior",
+    "type": "script"
+  },
+  {
     "id": "8",
     "name": "Game",
     "type": "script"
