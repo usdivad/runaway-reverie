@@ -25,7 +25,7 @@
           "type": "CannonBody",
           "config": {
             "mass": 10,
-            "fixedRotation": false,
+            "fixedRotation": true,
             "offset": {
               "x": 0,
               "y": 0,
@@ -53,7 +53,7 @@
       ],
       "position": {
         "x": 0,
-        "y": 0,
+        "y": 100,
         "z": 0
       },
       "orientation": {
@@ -93,18 +93,39 @@
             "farClippingPlane": 1000
           },
           "id": "0"
+        },
+        {
+          "type": "CannonBody",
+          "config": {
+            "mass": 0,
+            "fixedRotation": false,
+            "offset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "shape": "box",
+            "halfSize": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.5
+            },
+            "radius": 1,
+            "height": 1
+          },
+          "id": "1"
         }
       ],
       "position": {
-        "x": 0.04396026208996773,
-        "y": 5.590502738952637,
-        "z": 20.03035545349121
+        "x": 0,
+        "y": 50,
+        "z": 25.054
       },
       "orientation": {
-        "x": 0,
+        "x": -0.7071067811865475,
         "y": 0,
         "z": 0,
-        "w": 1
+        "w": 0.7071067811865476
       },
       "scale": {
         "x": 1,
@@ -223,6 +244,27 @@
                 "shaderAssetId": null
               },
               "id": "2"
+            },
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": true,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 0.5,
+                  "y": 0.5,
+                  "z": 0.5
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "3"
             }
           ],
           "position": {

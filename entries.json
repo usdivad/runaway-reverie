@@ -11,6 +11,12 @@
     "type": "scene"
   },
   {
+    "id": "10",
+    "name": "Behaviors",
+    "type": null,
+    "children": []
+  },
+  {
     "id": "3",
     "name": "Models",
     "type": null,

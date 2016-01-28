@@ -19,22 +19,24 @@ class CharacterBehavior extends Sup.Behavior {
   // }
   
   awake() {
-    
+    // Sup.log("ho");
   }
 
   start() {
     // angle and position
     let angle = this.actor.getLocalEulerAngles().y;
-    this.position = this.actor.getLocalPosition();
+    // this.position = this.actor.getLocalPosition();
+    this.position = new Sup.Math.Vector3(0, 100, 0);
     this.angles.y = angle;
     
     // cannon body
     this.actor.cannonBody.body.position.set(this.position.x, this.height/2, this.position.z);
     this.actor.cannonBody.body.velocity.x = Math.sin(angle) * this.velocity;
     this.actor.cannonBody.body.velocity.z = Math.cos(angle) * this.velocity;
+    this.actor.cannonBody.body.material = playerMaterial;
     
     // model renderer
-    this.modelRenderer = this.actor.getChild("Model").modelRenderer;
+    this.modelRenderer = this.actor.modelRenderer;
     this.modelRenderer.setAnimation("Walk"); // or idle?
     
   }
@@ -88,6 +90,9 @@ class CharacterBehavior extends Sup.Behavior {
     }
     
     this.modelRenderer.setAnimation(animation);
+    
+    Sup.log("vel: " + body.velocity);
+    Sup.log("pos: " + this.position);
   }
 }
 
