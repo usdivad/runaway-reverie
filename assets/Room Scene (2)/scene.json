@@ -11,7 +11,7 @@
           "config": {
             "modelAssetId": "1",
             "animationId": "3",
-            "castShadow": false,
+            "castShadow": true,
             "receiveShadow": false,
             "color": "ffffff",
             "overrideOpacity": false,
@@ -53,14 +53,14 @@
       ],
       "position": {
         "x": 0,
-        "y": 100,
+        "y": 0,
         "z": 0
       },
       "orientation": {
         "x": 0,
-        "y": 1,
+        "y": 0,
         "z": 0,
-        "w": 6.123233995736766e-17
+        "w": 1
       },
       "scale": {
         "x": 1,
@@ -118,14 +118,14 @@
       ],
       "position": {
         "x": 0,
-        "y": 50,
+        "y": 0,
         "z": 25.054
       },
       "orientation": {
-        "x": -0.7071067811865475,
+        "x": 0,
         "y": 0,
         "z": 0,
-        "w": 0.7071067811865476
+        "w": 1
       },
       "scale": {
         "x": 1,
@@ -219,7 +219,33 @@
         {
           "id": "6",
           "name": "Floor",
-          "children": [],
+          "children": [
+            {
+              "id": "7",
+              "name": "Floor2",
+              "children": [],
+              "components": [],
+              "position": {
+                "x": 0.48100000066310167,
+                "y": 2.129269983114227,
+                "z": -49.99999999999991
+              },
+              "orientation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "visible": true,
+              "layer": 0,
+              "prefab": null
+            }
+          ],
           "components": [
             {
               "type": "CubicModelRenderer",
@@ -236,7 +262,7 @@
                 "horizontalFlip": false,
                 "verticalFlip": false,
                 "castShadow": false,
-                "receiveShadow": false,
+                "receiveShadow": true,
                 "color": "dcc4ff",
                 "overrideOpacity": false,
                 "opacity": null,
@@ -253,13 +279,13 @@
                 "offset": {
                   "x": 0,
                   "y": 0,
-                  "z": 0
+                  "z": 0.5
                 },
                 "shape": "box",
                 "halfSize": {
-                  "x": 0.5,
-                  "y": 0.5,
-                  "z": 0.5
+                  "x": 200,
+                  "y": 200,
+                  "z": 1
                 },
                 "radius": 1,
                 "height": 1
@@ -269,7 +295,7 @@
           ],
           "position": {
             "x": -100,
-            "y": 0,
+            "y": -10,
             "z": -100
           },
           "orientation": {

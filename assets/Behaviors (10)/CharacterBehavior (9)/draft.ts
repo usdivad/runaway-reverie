@@ -30,7 +30,7 @@ class CharacterBehavior extends Sup.Behavior {
     this.angles.y = angle;
     
     // orientation
-    // this.actor.setOrientation(new Sup.Math.Quaternion(0, 180, 0));
+    this.actor.setOrientation(new Sup.Math.Quaternion(0, 180, 0));
     
     // cannon body
     this.actor.cannonBody.body.position.set(this.position.x, this.height/2, this.position.z);

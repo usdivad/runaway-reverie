@@ -6,15 +6,16 @@
     "children": []
   },
   {
-    "id": "2",
-    "name": "Room Scene",
-    "type": "scene"
-  },
-  {
     "id": "10",
     "name": "Behaviors",
     "type": null,
-    "children": []
+    "children": [
+      {
+        "id": "9",
+        "name": "CharacterBehavior",
+        "type": "script"
+      }
+    ]
   },
   {
     "id": "3",
@@ -46,13 +47,13 @@
     ]
   },
   {
-    "id": "9",
-    "name": "CharacterBehavior",
-    "type": "script"
-  },
-  {
     "id": "8",
     "name": "Game",
     "type": "script"
+  },
+  {
+    "id": "2",
+    "name": "Room Scene",
+    "type": "scene"
   }
 ]
