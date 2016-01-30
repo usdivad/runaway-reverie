@@ -58,9 +58,9 @@
       },
       "orientation": {
         "x": 0,
-        "y": 0,
+        "y": 1,
         "z": 0,
-        "w": 1
+        "w": 6.123233995736766e-17
       },
       "scale": {
         "x": 1,
@@ -114,18 +114,26 @@
             "height": 1
           },
           "id": "1"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "CameramanBehavior",
+            "propertyValues": {}
+          },
+          "id": "2"
         }
       ],
       "position": {
         "x": 0,
-        "y": 0,
-        "z": 25.054
+        "y": 50,
+        "z": 50
       },
       "orientation": {
-        "x": 0,
+        "x": -0.3826834323650898,
         "y": 0,
         "z": 0,
-        "w": 1
+        "w": 0.9238795325112867
       },
       "scale": {
         "x": 1,

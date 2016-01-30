@@ -8,6 +8,8 @@ class CharacterBehavior extends Sup.Behavior {
   private position: Sup.Math.Vector3;
   private angles = new Sup.Math.Vector3(0, 0, 0)
   private direction = new Sup.Math.Vector3(0, 0, 1);
+  private canJump = true;
+  private canMove = true;
 
   // model
   private modelRenderer: Sup.ModelRenderer;
@@ -17,12 +19,8 @@ class CharacterBehavior extends Sup.Behavior {
   // constructor(theName:string) {
   //   this.name = theName;
   // }
-  
-  awake() {
-    // Sup.log("ho");
-  }
 
-  start() {
+  awake() {
     // angle and position
     let angle = this.actor.getLocalEulerAngles().y;
     // this.position = this.actor.getLocalPosition();
@@ -38,6 +36,12 @@ class CharacterBehavior extends Sup.Behavior {
     this.actor.cannonBody.body.velocity.z = Math.cos(angle) * this.velocity;
     this.actor.cannonBody.body.material = playerMaterial;
     
+    this.actor.cannonBody.body.addEventListener("collide", (event) => {
+      // if (event.contact.ni.y > 0.9) {
+        this.canJump = true;
+      // }
+    });
+    
     // model renderer
     this.modelRenderer = this.actor.modelRenderer;
     this.modelRenderer.setAnimation("Walk"); // or idle?
@@ -48,6 +52,7 @@ class CharacterBehavior extends Sup.Behavior {
 
   update() {
     let body = this.actor.cannonBody.body;
+    // let cameraman = Sup.getActor("Cameraman");
     
     // set position and angles
     this.position.set(body.position.x, body.position.y - this.height/2, body.position.z);
@@ -89,8 +94,12 @@ class CharacterBehavior extends Sup.Behavior {
     }
     
     // jump!
-    if (Sup.Input.wasKeyJustPressed("SPACE")) {
+    if (!this.canJump) {
+      animation = "Jump";
+    }
+    else if (this.canJump && Sup.Input.wasKeyJustPressed("SPACE")) {
       // this.actor.move(0, this.velocity, 0);
+      this.canJump = false;
       body.velocity.y = this.jumpVelocity;
       animation = "Jump";
     }

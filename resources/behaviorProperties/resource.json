@@ -5,6 +5,12 @@
       "line": 0,
       "parentBehavior": null,
       "properties": []
+    },
+    "CameramanBehavior": {
+      "scriptId": "12",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }
