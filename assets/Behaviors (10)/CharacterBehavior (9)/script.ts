@@ -3,10 +3,10 @@ class CharacterBehavior extends Sup.Behavior {
   private height:number = 15; // from PlayerModel
   
   // movement and location
-  private velocity = 10;
+  private velocity = 20;
   private jumpVelocity = 40;
   private position: Sup.Math.Vector3;
-  private angles = new Sup.Math.Vector3(Math.PI/2, 0, 0)
+  private angles = new Sup.Math.Vector3(0, 0, 0)
   private direction = new Sup.Math.Vector3(0, 0, 1);
 
   // model
@@ -30,7 +30,7 @@ class CharacterBehavior extends Sup.Behavior {
     this.angles.y = angle;
     
     // orientation
-    // this.actor.setOrientation(new Sup.Math.Quaternion(0, 180, 0));
+    this.actor.setOrientation(new Sup.Math.Quaternion(0, 180, 0));
     
     // cannon body
     this.actor.cannonBody.body.position.set(this.position.x, this.height/2, this.position.z);
@@ -54,7 +54,7 @@ class CharacterBehavior extends Sup.Behavior {
     this.actor.setLocalEulerAngles(this.angles);
     
     // direction
-    this.direction = new Sup.Math.Vector3(0, 0, 0);
+    this.direction = new Sup.Math.Vector3(0, 0, 0); // temporary
     if (Sup.Input.isKeyDown("A")) { // left
       // this.actor.move(-1 * this.velocity, 0, 0); // old "move" code
       this.direction.x = -1;
@@ -85,7 +85,7 @@ class CharacterBehavior extends Sup.Behavior {
     if ( (body.velocity.x !== 0) || (body.velocity.z !== 0)) {
       animation = "Run"; // adjust for walk later
       let angle = Math.atan2(-body.velocity.z, body.velocity.x) + Math.PI/2;
-      this.angles.set(Math.PI/2, angle, 0);
+      this.angles.set(0, angle, 0);
     }
     
     // jump!
