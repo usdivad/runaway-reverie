@@ -11,6 +11,12 @@
       "line": 0,
       "parentBehavior": null,
       "properties": []
+    },
+    "MusicConductorBehavior": {
+      "scriptId": "33",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }
