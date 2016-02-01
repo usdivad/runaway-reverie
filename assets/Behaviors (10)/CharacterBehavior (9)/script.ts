@@ -36,6 +36,7 @@ class CharacterBehavior extends Sup.Behavior {
     this.actor.cannonBody.body.velocity.z = Math.cos(angle) * this.velocity;
     this.actor.cannonBody.body.material = playerMaterial;
     
+    // allow jump on collide
     this.actor.cannonBody.body.addEventListener("collide", (event) => {
       // if (event.contact.ni.y > 0.9) {
         this.canJump = true;
