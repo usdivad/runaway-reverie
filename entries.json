@@ -151,13 +151,8 @@
     "type": null,
     "children": [
       {
-        "id": "36",
-        "name": "timbre.js",
-        "type": "script"
-      },
-      {
-        "id": "38",
-        "name": "Kino.js",
+        "id": "35",
+        "name": "LibraryHelpers",
         "type": "script"
       }
     ]

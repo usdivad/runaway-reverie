@@ -17,18 +17,6 @@
       "line": 0,
       "parentBehavior": null,
       "properties": []
-    },
-    "ScriptBehavior": {
-      "scriptId": "36",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": []
-    },
-    "Kino.jsBehavior": {
-      "scriptId": "38",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": []
     }
   }
 }

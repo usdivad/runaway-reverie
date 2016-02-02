@@ -1,4 +1,4 @@
-// link to ext libs
+// links to ext libs
 declare const window;
 let linkType = "external"; // "external" for dev/testing, "local" for production
 
