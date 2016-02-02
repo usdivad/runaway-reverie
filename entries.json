@@ -1,148 +1,165 @@
 [
   {
-    "children": [], 
-    "id": "0", 
-    "name": "Music", 
-    "type": null
-  }, 
+    "id": "0",
+    "name": "Music",
+    "type": null,
+    "children": []
+  },
   {
+    "id": "10",
+    "name": "Behaviors",
+    "type": null,
     "children": [
       {
-        "id": "9", 
-        "name": "CharacterBehavior", 
+        "id": "9",
+        "name": "CharacterBehavior",
         "type": "script"
-      }, 
+      },
       {
-        "id": "12", 
-        "name": "CameramanBehavior", 
+        "id": "12",
+        "name": "CameramanBehavior",
         "type": "script"
-      }, 
+      },
       {
-        "id": "33", 
-        "name": "MusicConductorBehavior", 
+        "id": "33",
+        "name": "MusicConductorBehavior",
         "type": "script"
       }
-    ], 
-    "id": "10", 
-    "name": "Behaviors", 
-    "type": null
-  }, 
+    ]
+  },
   {
+    "id": "3",
+    "name": "Models",
+    "type": null,
     "children": [
       {
-        "id": "1", 
-        "name": "PlayerModel", 
+        "id": "1",
+        "name": "PlayerModel",
         "type": "model"
-      }, 
+      },
       {
-        "id": "5", 
-        "name": "WallModel", 
+        "id": "5",
+        "name": "WallModel",
         "type": "cubicModel"
       }
-    ], 
-    "id": "3", 
-    "name": "Models", 
-    "type": null
-  }, 
+    ]
+  },
   {
+    "id": "6",
+    "name": "Sprites",
+    "type": null,
     "children": [
       {
-        "id": "7", 
-        "name": "2DWallSprite", 
+        "id": "7",
+        "name": "2DWallSprite",
         "type": "sprite"
       }
-    ], 
-    "id": "6", 
-    "name": "Sprites", 
-    "type": null
-  }, 
+    ]
+  },
   {
-    "id": "8", 
-    "name": "Game", 
+    "id": "8",
+    "name": "Game",
     "type": "script"
-  }, 
+  },
   {
-    "id": "2", 
-    "name": "Room Scene", 
+    "id": "2",
+    "name": "Room Scene",
     "type": "scene"
-  }, 
+  },
   {
+    "id": "14",
+    "name": "Audio",
+    "type": null,
     "children": [
       {
+        "id": "15",
+        "name": "Guitar Intro",
+        "type": null,
         "children": [
           {
-            "id": "20", 
-            "name": "A1.mp3", 
+            "id": "20",
+            "name": "A1.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "21", 
-            "name": "A2.mp3", 
+            "id": "21",
+            "name": "A2.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "22", 
-            "name": "A3.mp3", 
+            "id": "22",
+            "name": "A3.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "23", 
-            "name": "AToB1.mp3", 
+            "id": "23",
+            "name": "AToB1.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "24", 
-            "name": "AToB2.mp3", 
+            "id": "24",
+            "name": "AToB2.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "25", 
-            "name": "BToA1.mp3", 
+            "id": "25",
+            "name": "BToA1.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "26", 
-            "name": "BToA2.mp3", 
+            "id": "26",
+            "name": "BToA2.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "27", 
-            "name": "DHigh1.mp3", 
+            "id": "27",
+            "name": "DHigh1.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "28", 
-            "name": "DHigh2.mp3", 
+            "id": "28",
+            "name": "DHigh2.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "29", 
-            "name": "DHigh3.mp3", 
+            "id": "29",
+            "name": "DHigh3.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "30", 
-            "name": "DLow1.mp3", 
+            "id": "30",
+            "name": "DLow1.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "31", 
-            "name": "DLow2.mp3", 
+            "id": "31",
+            "name": "DLow2.mp3",
             "type": "sound"
-          }, 
+          },
           {
-            "id": "32", 
-            "name": "DLow3.mp3", 
+            "id": "32",
+            "name": "DLow3.mp3",
             "type": "sound"
           }
-        ], 
-        "id": "15", 
-        "name": "Guitar Intro", 
-        "type": null
+        ]
       }
-    ], 
-    "id": "14", 
-    "name": "Audio", 
-    "type": null
+    ]
+  },
+  {
+    "id": "34",
+    "name": "Scripts",
+    "type": null,
+    "children": [
+      {
+        "id": "36",
+        "name": "timbre.js",
+        "type": "script"
+      },
+      {
+        "id": "38",
+        "name": "Kino.js",
+        "type": "script"
+      }
+    ]
   }
 ]
