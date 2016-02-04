@@ -81,21 +81,22 @@ class MusicConductorBehavior extends Sup.Behavior {
       this.period = 80;
     }
     // Sup.log(playerIsMoving);
-    
-    // deal with thresholds for consecutive notes/rests
-    // the notes threshold takes precedence as it appears first
-    if (this.consecutiveNotes >= this.maxConsecutiveNotes) {
-      playNote = false;
-      this.consecutiveNotes = 0;
-    }
-    else if (this.consecutiveRests >= this.maxConsecutiveRests) {
-      playNote = true;
-      this.consecutiveRests = 0;
-    }
-    
-    // play the note if conditions are met
-    // todo: add player movement detection <--> the time limit
+
+    // calculate note playing at certain interval    
     if (this.time % this.period == 0) {
+      
+      // deal with thresholds for consecutive notes/rests
+      // the notes threshold takes precedence as it appears first
+      if (this.consecutiveNotes >= this.maxConsecutiveNotes) {
+        playNote = false;
+        this.consecutiveNotes = 0;
+      }
+      else if (this.consecutiveRests >= this.maxConsecutiveRests) {
+        playNote = true;
+        this.consecutiveRests = 0;
+      }
+      
+      // play the note if conditions are met
       if (playNote) {
         let next = this.notes[this.prevNote]["next"];
         let noteChoices = next["notes"];
@@ -114,8 +115,8 @@ class MusicConductorBehavior extends Sup.Behavior {
         Sup.log(this.time + ", " + sample + ", " + this.consecutiveNotes);
       }
       else {
-        this.consecutiveNotes = 0;
         this.consecutiveRests++;
+        this.consecutiveNotes = 0;
       }
     }
   }
