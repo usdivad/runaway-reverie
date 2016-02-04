@@ -64,12 +64,13 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     // Sup.log(moving);
     
+    // deal with thresholds for consecutive notes/rests
+    // the notes threshold takes precedence as it appears first
     if (this.consecutiveNotes >= this.maxConsecutiveNotes) {
       playNote = false;
       this.consecutiveNotes = 0;
     }
-    
-    if (this.consecutiveRests >= this.maxConsecutiveRests) {
+    else if (this.consecutiveRests >= this.maxConsecutiveRests) {
       playNote = true;
       this.consecutiveRests = 0;
     }
