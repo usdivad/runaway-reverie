@@ -45,7 +45,10 @@ class MusicConductorBehavior extends Sup.Behavior {
   private maxConsecutiveNotes = 2;
   private consecutiveRests = 0;
   private maxConsecutiveRests = 3;
+
+  // timing
   private time = 0;
+  private period = 80;
   
   awake() {
     let startingNote = "DLow";
@@ -54,15 +57,30 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     Sup.Audio.playSound("Audio/Guitar Intro/" + startingSample + ".mp3");
     Sup.log(startingSample);
+    this.consecutiveNotes++;
   }
 
   update() {
     this.time += 1;
     let playNote = wchoose([true, false], [0.4, 0.6]);
-    let moving = Sup.getActor("Player")["__behaviors"]["CharacterBehavior"][0].isMoving;
-    let period = 80;
+    let playerIsMoving = Sup.getActor("Player")["__behaviors"]["CharacterBehavior"][0].isMoving;
     
-    // Sup.log(moving);
+    // adjust params based on whether player is in motion
+    if (playerIsMoving) {
+      this.maxConsecutiveNotes = 3;
+      this.maxConsecutiveRests = 2;
+      this.period = 60;
+      playNote = !playNote; // basically reverse the probs
+      
+      // TODO: do some stuff with reversed/crunchy sounds
+      
+    }
+    else {
+      this.maxConsecutiveNotes = 2;
+      this.maxConsecutiveRests = 3;
+      this.period = 80;
+    }
+    // Sup.log(playerIsMoving);
     
     // deal with thresholds for consecutive notes/rests
     // the notes threshold takes precedence as it appears first
@@ -77,7 +95,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     // play the note if conditions are met
     // todo: add player movement detection <--> the time limit
-    if (this.time % period == 0) {
+    if (this.time % this.period == 0) {
       if (playNote) {
         let next = this.notes[this.prevNote]["next"];
         let noteChoices = next["notes"];
