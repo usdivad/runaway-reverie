@@ -4,21 +4,22 @@ let linkType = "external"; // "external" for dev/testing, "local" for production
 
 let scriptLinks = {
   "timbre.js": {
-    "external": "https://cdn.rawgit.com/usdivad/kino/master/web/lib/timbre.js",
-    "local": "libraries/kino/lib/timbre.js" // -> Superpowers/Contents/Resources/system/game/libraries/kino/lib/timbre.js
+    "external": "https://cdn.rawgit.com/usdivad/Kino.js/master/lib/timbre.js",
+    "local": "assets/External Libraries (36)/Kino.js/lib/timbre.js" // -> Superpowers/Contents/Resources/system/game/assets/External Libraries (36)/Kino.js/lib/timbre.js
   },
   "Kino.js": {
-    "external": "https://cdn.rawgit.com/usdivad/kino/master/web/src/Kino.js",
-    "local": "libraries/kino/src/Kino.js"
+    "external": "https://cdn.rawgit.com/usdivad/Kino.js/master/src/Kino.js",
+    "local": "assets/External Libraries (36)/Kino.js/src/Kino.js"
   },
   "audio.js": {
-    "external": "https://cdn.rawgit.com/usdivad/kino/master/web/src/audio.js",
-    "local": "libraries/kino/src/audio.js"
+    "external": "https://cdn.rawgit.com/usdivad/Kino.js/master/src/audio.js",
+    "local": "assets/External Libraries (36)/Kino.js/src/audio.js"
   }
 }
 
 addExternalScript("timbre.js", scriptLinks, linkType, window);
 addExternalScript("Kino.js", scriptLinks, linkType, window);
+// addExternalScript("audio.js", scriptLinks, linkType, window);
 
 
 // cannon
@@ -35,5 +36,5 @@ world.addContactMaterial(new CANNON.ContactMaterial(playerMaterial, world.defaul
 }));
 
 // scene
-Sup.loadScene("Room Scene");
+// Sup.loadScene("Room Scene");
 let playerActor = Sup.getActor("Player");
