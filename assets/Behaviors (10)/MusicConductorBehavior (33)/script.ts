@@ -82,7 +82,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     }
     // Sup.log(playerIsMoving);
 
-    // calculate note playing at certain interval    
+    // calculate note performance at the given interval    
     if (this.time % this.period == 0) {
       
       // deal with thresholds for consecutive notes/rests
