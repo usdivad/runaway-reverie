@@ -4,7 +4,12 @@
       "scriptId": "9",
       "line": 0,
       "parentBehavior": null,
-      "properties": []
+      "properties": [
+        {
+          "name": "isMoving",
+          "type": "boolean"
+        }
+      ]
     },
     "CameramanBehavior": {
       "scriptId": "12",

@@ -10,6 +10,7 @@ class CharacterBehavior extends Sup.Behavior {
   private direction = new Sup.Math.Vector3(0, 0, 1);
   private canJump = true;
   private canMove = true;
+  public isMoving = false;
 
   // model
   private modelRenderer: Sup.ModelRenderer;
@@ -80,10 +81,12 @@ class CharacterBehavior extends Sup.Behavior {
       this.direction.normalize();
       body.velocity.x = this.direction.x * this.velocity;
       body.velocity.z = this.direction.z * this.velocity;
+      this.isMoving = true;
     }
     else {
       body.velocity.x = 0;
       body.velocity.z = 0;
+      this.isMoving = false;
     }
     
     // animation & angles
@@ -97,6 +100,7 @@ class CharacterBehavior extends Sup.Behavior {
     // jump!
     if (!this.canJump) {
       animation = "Jump";
+      this.isMoving = true;
     }
     else if (this.canJump && Sup.Input.wasKeyJustPressed("SPACE")) {
       // this.actor.move(0, this.velocity, 0);
