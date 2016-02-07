@@ -21,6 +21,25 @@ addExternalScript("timbre.js", scriptLinks, linkType, window);
 addExternalScript("Kino.js", scriptLinks, linkType, window);
 // addExternalScript("audio.js", scriptLinks, linkType, window);
 
+// audio tests
+let path_audio = "Audio/";
+let path_instrumentalEntrance = path_audio + "Instrumental Entrance/";
+let msp = new Sup.Audio.MultiSoundPlayer(
+  path_instrumentalEntrance+"init riff.mp3",
+  path_instrumentalEntrance+"loop riff.mp3",
+  [
+    {
+      "audio": path_instrumentalEntrance+"tail riff.mp3",
+      "beat": 8
+    }
+  ],
+  1.0
+);
+Sup.log(msp);
+
+let conductor = new Sup.Audio.Conductor(60, 7, [6], {msp: msp});
+conductor.start();
+Sup.log(conductor);
 
 // cannon
 let world = Sup.Cannon.getWorld();
