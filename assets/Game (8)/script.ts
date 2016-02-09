@@ -22,24 +22,28 @@ addExternalScript("Kino.js", scriptLinks, linkType, window);
 // addExternalScript("audio.js", scriptLinks, linkType, window);
 
 // audio tests
+let inst = "drums - dub remix kit";
+inst = "riff";
 let path_audio = "Audio/";
 let path_instrumentalEntrance = path_audio + "Instrumental Entrance/";
 let msp = new Sup.Audio.MultiSoundPlayer(
-  path_instrumentalEntrance+"init riff.mp3",
-  path_instrumentalEntrance+"loop riff.mp3",
-  [
-    {
-      "audio": path_instrumentalEntrance+"tail riff.mp3",
-      "beat": 8
-    }
-  ],
+  path_instrumentalEntrance+"init " + inst + ".mp3",
+  path_instrumentalEntrance+"loop " + inst + ".mp3",
+  {
+    14: path_instrumentalEntrance+"tail " + inst + ".mp3", // todo: automagically collect transitionBeats from the tail beets
+  },
   1.0
 );
 Sup.log(msp);
 
-let conductor = new Sup.Audio.Conductor(60, 7, [6], {msp: msp});
-conductor.start();
+let conductor = new Sup.Audio.Conductor(180, 15, [14], {"msp": msp});
+conductor.start(); // start playing!
 Sup.log(conductor);
+
+Sup.setTimeout(6000, function() { // let conductor run through an init and a loop, and then set transition
+  conductor.setTransition(true);
+  Sup.log("conductor now transitioning");
+});
 
 // cannon
 let world = Sup.Cannon.getWorld();
