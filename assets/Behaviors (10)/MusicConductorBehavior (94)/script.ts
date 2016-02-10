@@ -2,6 +2,8 @@ class MusicConductorBehavior extends Sup.Behavior {
   
   conductor: Sup.Audio.Conductor;
   phrase: string;
+  params_instrumentalEntrance: any;
+  params_tabTest: any;
   
   awake() {
     // create MultiSoundPlayers for instrumental entrance
@@ -81,12 +83,23 @@ class MusicConductorBehavior extends Sup.Behavior {
     );
 
     // params to set as conductor's nextParams
-    let tabParams = {
+    this.params_tabTest = {
       bpm: 112,
       timesig: 34,
       players: {
         "guitar": msp_tabguitar,
         "rev": msp_tabrev
+      }
+    };
+    
+    this.params_instrumentalEntrance = {
+      bpm: 180,
+      timesig: 15,
+      players: {
+      "riff": msp_riff,
+      "drums": msp_drums,
+      "bass": msp_bass,
+      "keys": msp_keys
       }
     };
     
@@ -132,27 +145,48 @@ class MusicConductorBehavior extends Sup.Behavior {
     let playerPosition = playerActor.cannonBody.body.position;
     let playerIsMoving = playerActor["__behaviors"]["CharacterBehavior"][0].isMoving;
     
-    if (this.phrase == "instrumental entrance") {
-      if (playerIsMoving) {
-        this.conductor.activatePlayer("keys");
-        this.conductor.activatePlayer("bass");
-        // Sup.log("player moving; activate keys and bass for next cycle");
-      }
-      else {
-        this.conductor.deactivatePlayer("keys"); // TODO: come up with a fadeout solution for deactivation
-        // Sup.log("player not moving; deactivate keys for next cycle");
-      }
-    }
-    else if (this.phrase == "tab test") {
-      if (playerIsMoving) {
-        this.conductor.activatePlayer("rev");
-        // Sup.log("player moving; activating reversed guitar for next cycle");
-      }
-      else {
-        this.conductor.deactivatePlayer("rev");
-        // Sup.log("player not moving; deactivating reversed guitar for next cycle");
+    Sup.log(playerPosition.x);
+    
+    if (playerPosition.x < -100) {
+      if (this.phrase != "tab test") {
+        this.conductor.setNextParams(this.params_tabTest);
+        this.conductor.setToNext(true);
+        this.conductor.setTransition(true);
+        this.phrase = "tab test";
+        Sup.log("conductor will transition to tab test section for next cycle");
       }
     }
+    else {
+      if (this.phrase != "instrumental entrance") {
+        this.conductor.setNextParams(this.params_instrumentalEntrance);
+        this.conductor.setToNext(true);
+        this.conductor.setTransition(true);
+        this.phrase = "instrumental entrance";
+        Sup.log("conductor will transition to instrumental entrance section for next cycle");
+      }
+    }
+    
+    // if (this.phrase == "instrumental entrance") {
+    //   if (playerIsMoving) {
+    //     this.conductor.activatePlayer("keys");
+    //     this.conductor.activatePlayer("bass");
+    //     // Sup.log("player moving; activate keys and bass for next cycle");
+    //   }
+    //   else {
+    //     this.conductor.deactivatePlayer("keys"); // TODO: come up with a fadeout solution for deactivation
+    //     // Sup.log("player not moving; deactivate keys for next cycle");
+    //   }
+    // }
+    // else if (this.phrase == "tab test") {
+    //   if (playerIsMoving) {
+    //     this.conductor.activatePlayer("rev");
+    //     // Sup.log("player moving; activating reversed guitar for next cycle");
+    //   }
+    //   else {
+    //     // this.conductor.deactivatePlayer("rev");
+    //     // Sup.log("player not moving; deactivating reversed guitar for next cycle");
+    //   }
+    // }
   }
 }
 Sup.registerBehavior(MusicConductorBehavior);

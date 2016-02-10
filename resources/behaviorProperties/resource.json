@@ -31,6 +31,14 @@
         {
           "name": "phrase",
           "type": "string"
+        },
+        {
+          "name": "params_instrumentalEntrance",
+          "type": "any"
+        },
+        {
+          "name": "params_tabTest",
+          "type": "any"
         }
       ]
     }
