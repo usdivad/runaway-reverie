@@ -4,6 +4,7 @@
 
 // create MultiSoundPlayers for instrumental entrance
 // riff
+let vol = 0.5;
 let inst = "riff";
 let path_audio = "Audio/";
 let path_instrumentalEntrance = path_audio + "Instrumental Entrance/";
@@ -11,9 +12,9 @@ let msp_riff = new Sup.Audio.MultiSoundPlayer(
   path_instrumentalEntrance+"init " + inst + ".mp3",
   path_instrumentalEntrance+"loop " + inst + ".mp3",
   {
-    14: path_instrumentalEntrance+"tail " + inst + ".mp3" // TODO: allow "default" tail samples that work for any beat (to be passed in as strings/sounds instead of objects)
+    0: path_instrumentalEntrance+"tail " + inst + ".mp3" // TODO: allow "default" tail samples that work for any beat (to be passed in as strings/sounds instead of objects)
   },
-  1.0
+  vol
 );
 // Sup.log(msp_riff);
 
@@ -23,9 +24,9 @@ let msp_drums = new Sup.Audio.MultiSoundPlayer(
   path_instrumentalEntrance+"init " + inst + ".mp3", 
   path_instrumentalEntrance+"loop " + inst + ".mp3", // note that init and loop are two diff phrases!
   {
-    14: path_instrumentalEntrance+"tail " + inst + ".mp3"
+    0: path_instrumentalEntrance+"tail " + inst + ".mp3"
   },
-  1.0,
+  vol,
   {active: false}
 );
 // Sup.log(msp_drums);
@@ -35,18 +36,18 @@ let msp_tabguitar = new Sup.Audio.MultiSoundPlayer(
   path_audio + "Tabs/" + "init guitar.mp3",
   path_audio + "Tabs/" + "loop guitar.mp3",
   {
-    34: path_audio + "Tabs/" + "tail guitar.mp3"
+    0: path_audio + "Tabs/" + "tail guitar.mp3"
   },
-  1.0
+  vol
 );
 
 let msp_tabrev = new Sup.Audio.MultiSoundPlayer(
   path_audio + "Tabs/" + "init guitar rev.mp3",
   path_audio + "Tabs/" + "loop guitar rev.mp3",
   {
-    34: path_audio + "Tabs/" + "tail guitar rev.mp3"
+    0: path_audio + "Tabs/" + "tail guitar rev.mp3"
   },
-  1.0,
+  vol,
   {active: false}
 );
 
@@ -55,8 +56,8 @@ let tabParams = {
   bpm: 112,
   timesig: 34,
   players: {
-    guitar: msp_tabguitar,
-    rev: msp_tabrev
+    "guitar": msp_tabguitar,
+    "rev": msp_tabrev
   }
 };
 
@@ -68,7 +69,7 @@ Sup.log(conductor);
 // activate drums for second cycle, after just guitar init
 Sup.setTimeout(4000, function() {
   conductor.activatePlayer("drums");
-  Sup.log("drums activated");
+  Sup.log("drums activated for next cycle");
 });
 
 // let conductor run through another cycle (guitar: loop, drums: init),
@@ -77,7 +78,12 @@ Sup.setTimeout(6000, function() {
   conductor.setNextParams(tabParams);
   conductor.setToNext(true);
   conductor.setTransition(true);
-  Sup.log("conductor now transitioning");
+  Sup.log("conductor will transition next cycle");
+});
+
+Sup.setTimeout(18000, function() {
+  conductor.activatePlayer("rev");
+  Sup.log("activating reversed guitar for next cycle");
 });
 
 
