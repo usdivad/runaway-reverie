@@ -14,7 +14,7 @@ class CharacterBehavior extends Sup.Behavior {
 
   // model
   private modelRenderer: Sup.ModelRenderer;
-  private modelPosition = new Sup.Math.Vector3(0, 0, 0);
+  // private modelPosition = new Sup.Math.Vector3(0, 0, 0);
 
   // private name:string;
   // constructor(theName:string) {
@@ -25,7 +25,7 @@ class CharacterBehavior extends Sup.Behavior {
     // angle and position
     let angle = this.actor.getLocalEulerAngles().y;
     // this.position = this.actor.getLocalPosition();
-    this.position = new Sup.Math.Vector3(0, 0, 0);
+    this.position = new Sup.Math.Vector3(50, 0, 0);
     this.angles.y = angle;
     
     // orientation

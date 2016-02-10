@@ -483,7 +483,16 @@
       "id": "8",
       "name": "Music Conductor",
       "children": [],
-      "components": [],
+      "components": [
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "MusicConductorBehavior",
+            "propertyValues": {}
+          },
+          "id": "0"
+        }
+      ],
       "position": {
         "x": -50,
         "y": 20,

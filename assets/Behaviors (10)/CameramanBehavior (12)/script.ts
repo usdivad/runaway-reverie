@@ -1,6 +1,6 @@
 class CameramanBehavior extends Sup.Behavior {
   
-  private playerActor = Sup.getActor("Player");
+  // private playerActor = Sup.getActor("Player");
   private xOffset = 0;
   private yOffset = 50;
   private zOffset = 50;

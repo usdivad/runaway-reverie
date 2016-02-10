@@ -27,7 +27,12 @@
       "scriptId": "94",
       "line": 0,
       "parentBehavior": null,
-      "properties": []
+      "properties": [
+        {
+          "name": "phrase",
+          "type": "string"
+        }
+      ]
     }
   }
 }

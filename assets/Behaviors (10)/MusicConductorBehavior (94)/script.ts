@@ -1,6 +1,7 @@
 class MusicConductorBehavior extends Sup.Behavior {
   
   conductor: Sup.Audio.Conductor;
+  phrase: string;
   
   awake() {
     // create MultiSoundPlayers for instrumental entrance
@@ -28,7 +29,36 @@ class MusicConductorBehavior extends Sup.Behavior {
       vol,
       {active: false}
     );
-    // Sup.log(msp_drums);
+    
+    // bass
+    inst = "bass - cypress";
+    let msp_bass = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + "bass_freeze" + ".mp3",
+      vol,
+      {active: false}
+    );
+    
+    // cello
+    inst = "cello freeze";
+    let msp_cello = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false}
+    );
+    
+    // keys
+    inst = "5-EZkeys";
+    let msp_keys = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol * 2,
+      {active: false}
+    );
 
     // msps for tab section
     let msp_tabguitar = new Sup.Audio.MultiSoundPlayer(
@@ -62,22 +92,31 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     
     // create Conductor
-    this.conductor = new Sup.Audio.Conductor(180, 15, {"riff": msp_riff, "drums": msp_drums});
+    this.conductor = new Sup.Audio.Conductor(180, 15, {
+      "riff": msp_riff,
+      "drums": msp_drums,
+      "bass": msp_bass,
+      "keys": msp_keys
+    });
     this.conductor.start(); // start playing!
+    this.phrase = "instrumental entrance";
     Sup.log(this.conductor);
 
-    // activate drums for second cycle, after just guitar init
+    // activate drums for second cycle 4 seconds later
+    let conductor = this.conductor;
     Sup.setTimeout(4000, function() {
-      this.conductor.activatePlayer("drums");
+      conductor.activatePlayer("drums");
       Sup.log("drums activated for next cycle");
     });
 
+    /*
     // let conductor run through another cycle (guitar: loop, drums: init),
     // and then set transition to "tab" section
     Sup.setTimeout(6000, function() {
       this.conductor.setNextParams(tabParams);
       this.conductor.setToNext(true);
       this.conductor.setTransition(true);
+      this.phrase = "tab test";
       Sup.log("conductor will transition next cycle");
     });
 
@@ -85,10 +124,35 @@ class MusicConductorBehavior extends Sup.Behavior {
       this.conductor.activatePlayer("rev");
       Sup.log("activating reversed guitar for next cycle");
     });
+    */
   }
 
   update() {
+    // let playerActor = Sup.getActor("Player");
+    let playerPosition = playerActor.cannonBody.body.position;
+    let playerIsMoving = playerActor["__behaviors"]["CharacterBehavior"][0].isMoving;
     
+    if (this.phrase == "instrumental entrance") {
+      if (playerIsMoving) {
+        this.conductor.activatePlayer("keys");
+        this.conductor.activatePlayer("bass");
+        // Sup.log("player moving; activate keys and bass for next cycle");
+      }
+      else {
+        this.conductor.deactivatePlayer("keys"); // TODO: come up with a fadeout solution for deactivation
+        // Sup.log("player not moving; deactivate keys for next cycle");
+      }
+    }
+    else if (this.phrase == "tab test") {
+      if (playerIsMoving) {
+        this.conductor.activatePlayer("rev");
+        // Sup.log("player moving; activating reversed guitar for next cycle");
+      }
+      else {
+        this.conductor.deactivatePlayer("rev");
+        // Sup.log("player not moving; deactivating reversed guitar for next cycle");
+      }
+    }
   }
 }
 Sup.registerBehavior(MusicConductorBehavior);
