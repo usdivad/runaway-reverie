@@ -1,8 +1,8 @@
 {
-  "pixelsPerUnit": 16,
+  "pixelsPerUnit": 100,
   "nodes": [
     {
-      "id": "2",
+      "id": "0",
       "name": "Node",
       "children": [],
       "position": {
@@ -30,16 +30,16 @@
             "z": 1
           },
           "stretch": {
-            "x": 1,
+            "x": 200,
             "y": 1,
-            "z": 1
+            "z": 200
           }
         },
         "textureLayoutCustom": false,
         "textureLayout": {
           "top": {
             "offset": {
-              "x": 67,
+              "x": 1,
               "y": 0
             },
             "mirror": {
@@ -50,7 +50,7 @@
           },
           "bottom": {
             "offset": {
-              "x": 68,
+              "x": 2,
               "y": 0
             },
             "mirror": {
@@ -61,7 +61,7 @@
           },
           "front": {
             "offset": {
-              "x": 67,
+              "x": 1,
               "y": 1
             },
             "mirror": {
@@ -72,7 +72,7 @@
           },
           "back": {
             "offset": {
-              "x": 69,
+              "x": 3,
               "y": 1
             },
             "mirror": {
@@ -83,7 +83,7 @@
           },
           "left": {
             "offset": {
-              "x": 66,
+              "x": 0,
               "y": 1
             },
             "mirror": {
@@ -94,7 +94,7 @@
           },
           "right": {
             "offset": {
-              "x": 68,
+              "x": 2,
               "y": 1
             },
             "mirror": {
@@ -107,8 +107,8 @@
       }
     }
   ],
-  "textureWidth": 256,
-  "textureHeight": 256,
+  "textureWidth": 128,
+  "textureHeight": 128,
   "maps": [
     "map"
   ],

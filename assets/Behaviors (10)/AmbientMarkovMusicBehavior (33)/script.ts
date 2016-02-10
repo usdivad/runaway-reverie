@@ -1,4 +1,4 @@
-class MusicConductorBehavior extends Sup.Behavior {
+class AmbientMarkovMusicBehavior extends Sup.Behavior {
   
   // Note possibilities, probabilities, and samples. Markov chain implementation
   private notes = {
@@ -52,7 +52,7 @@ class MusicConductorBehavior extends Sup.Behavior {
   
   awake() {
     let startingNote = "DLow";
-    let startingSample = MusicConductorBehavior.constructFullSampleName(startingNote, this.notes[startingNote]["numSamples"]);
+    let startingSample = AmbientMarkovMusicBehavior.constructFullSampleName(startingNote, this.notes[startingNote]["numSamples"]);
     this.prevNote = startingNote;
     
     Sup.Audio.playSound("Audio/Guitar Intro/" + startingSample + ".mp3");
@@ -102,7 +102,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         let noteChoices = next["notes"];
         let noteProbs = next["probs"];
         let note = wchoose(noteChoices, noteProbs);
-        let sample = MusicConductorBehavior.constructFullSampleName(note, this.notes[note]["numSamples"]);
+        let sample = AmbientMarkovMusicBehavior.constructFullSampleName(note, this.notes[note]["numSamples"]);
 
         // update prev values
         this.prevNote = note;
@@ -127,4 +127,4 @@ class MusicConductorBehavior extends Sup.Behavior {
     return sampleName + numSamples.toString();
   }
 }
-Sup.registerBehavior(MusicConductorBehavior);
+Sup.registerBehavior(AmbientMarkovMusicBehavior);

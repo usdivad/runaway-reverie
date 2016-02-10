@@ -151,58 +151,7 @@
         {
           "id": "4",
           "name": "Walls",
-          "children": [
-            {
-              "id": "5",
-              "name": "Wall",
-              "children": [],
-              "components": [
-                {
-                  "type": "CubicModelRenderer",
-                  "config": {
-                    "cubicModelAssetId": "5"
-                  },
-                  "id": "0"
-                },
-                {
-                  "type": "SpriteRenderer",
-                  "config": {
-                    "spriteAssetId": null,
-                    "animationId": null,
-                    "horizontalFlip": false,
-                    "verticalFlip": false,
-                    "castShadow": false,
-                    "receiveShadow": false,
-                    "color": "ffffff",
-                    "overrideOpacity": false,
-                    "opacity": null,
-                    "materialType": "basic",
-                    "shaderAssetId": null
-                  },
-                  "id": "1"
-                }
-              ],
-              "position": {
-                "x": -1.6856894493103027,
-                "y": 0,
-                "z": 3.9444351196289062
-              },
-              "orientation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
-              },
-              "scale": {
-                "x": 1,
-                "y": 1,
-                "z": 1
-              },
-              "visible": true,
-              "layer": 0,
-              "prefab": null
-            }
-          ],
+          "children": [],
           "components": [],
           "position": {
             "x": 1.0966922303623505e-7,
@@ -225,40 +174,35 @@
           "prefab": null
         },
         {
-          "id": "6",
+          "id": "12",
           "name": "Floor",
-          "children": [
-            {
-              "id": "7",
-              "name": "Floor2",
-              "children": [],
-              "components": [],
-              "position": {
-                "x": 0.48100000066310167,
-                "y": 2.129269983114227,
-                "z": -49.99999999999991
-              },
-              "orientation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
-              },
-              "scale": {
-                "x": 1,
-                "y": 1,
-                "z": 1
-              },
-              "visible": true,
-              "layer": 0,
-              "prefab": null
-            }
-          ],
+          "children": [],
           "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 200,
+                  "z": 1
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
             {
               "type": "CubicModelRenderer",
               "config": {
-                "cubicModelAssetId": "5"
+                "cubicModelAssetId": "95"
               },
               "id": "1"
             },
@@ -271,23 +215,49 @@
                 "verticalFlip": false,
                 "castShadow": false,
                 "receiveShadow": true,
-                "color": "dcc4ff",
-                "overrideOpacity": false,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
                 "opacity": null,
                 "materialType": "basic",
                 "shaderAssetId": null
               },
               "id": "2"
-            },
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 0,
+            "z": -100
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 200,
+            "y": 200,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "17",
+          "name": "WallSouth",
+          "children": [],
+          "components": [
             {
               "type": "CannonBody",
               "config": {
                 "mass": 0,
-                "fixedRotation": true,
+                "fixedRotation": false,
                 "offset": {
                   "x": 0,
                   "y": 0,
-                  "z": 0.5
+                  "z": 0
                 },
                 "shape": "box",
                 "halfSize": {
@@ -298,17 +268,183 @@
                 "radius": 1,
                 "height": 1
               },
-              "id": "3"
+              "id": "0"
+            },
+            {
+              "type": "CubicModelRenderer",
+              "config": {
+                "cubicModelAssetId": "95"
+              },
+              "id": "1"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.51,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
             }
           ],
           "position": {
             "x": -100,
-            "y": -10,
+            "y": 0,
+            "z": 100
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 200,
+            "y": 200,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "18",
+          "name": "WallNorth",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 200,
+                  "z": 1
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "CubicModelRenderer",
+              "config": {
+                "cubicModelAssetId": "95"
+              },
+              "id": "1"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.52,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 0,
             "z": -100
           },
           "orientation": {
-            "x": 0.7071067811865475,
+            "x": 0,
             "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 200,
+            "y": 200,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "19",
+          "name": "WallEast",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 200,
+                  "z": 1
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "CubicModelRenderer",
+              "config": {
+                "cubicModelAssetId": "95"
+              },
+              "id": "1"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.54,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": 100,
+            "y": 0,
+            "z": 50
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0.7071067811865475,
             "z": 0,
             "w": 0.7071067811865476
           },
@@ -347,16 +483,7 @@
       "id": "8",
       "name": "Music Conductor",
       "children": [],
-      "components": [
-        {
-          "type": "Behavior",
-          "config": {
-            "behaviorName": "MusicConductorBehavior",
-            "propertyValues": {}
-          },
-          "id": "0"
-        }
-      ],
+      "components": [],
       "position": {
         "x": -50,
         "y": 20,

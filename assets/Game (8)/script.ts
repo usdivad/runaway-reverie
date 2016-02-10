@@ -2,6 +2,7 @@
   AUDIO TESTS
 */
 
+/*
 // create MultiSoundPlayers for instrumental entrance
 // riff
 let vol = 0.5;
@@ -12,7 +13,7 @@ let msp_riff = new Sup.Audio.MultiSoundPlayer(
   path_instrumentalEntrance+"init " + inst + ".mp3",
   path_instrumentalEntrance+"loop " + inst + ".mp3",
   {
-    0: path_instrumentalEntrance+"tail " + inst + ".mp3" // TODO: allow "default" tail samples that work for any beat (to be passed in as strings/sounds instead of objects)
+    0: path_instrumentalEntrance+"tail " + inst + ".mp3" // <- passing in tail(s) as object
   },
   vol
 );
@@ -22,10 +23,8 @@ let msp_riff = new Sup.Audio.MultiSoundPlayer(
 inst = "drums - dub remix kit";
 let msp_drums = new Sup.Audio.MultiSoundPlayer(
   path_instrumentalEntrance+"init " + inst + ".mp3", 
-  path_instrumentalEntrance+"loop " + inst + ".mp3", // note that init and loop are two diff phrases!
-  {
-    0: path_instrumentalEntrance+"tail " + inst + ".mp3"
-  },
+  path_instrumentalEntrance+"loop " + inst + ".mp3", // <- note that init and loop are two diff audio phrases!
+  path_instrumentalEntrance+"tail " + inst + ".mp3", // <- passing in single tail as string
   vol,
   {active: false}
 );
@@ -85,12 +84,12 @@ Sup.setTimeout(18000, function() {
   conductor.activatePlayer("rev");
   Sup.log("activating reversed guitar for next cycle");
 });
-
+*/
 
 
 // cannon
 let world = Sup.Cannon.getWorld();
-world.gravity.set(0, -100, 0);
+world.gravity.set(0, -50, 0);
 world.defaultContactMaterial.friction = 0.1;
 
 let playerMaterial = new CANNON.Material("playerMaterial");
@@ -102,7 +101,7 @@ world.addContactMaterial(new CANNON.ContactMaterial(playerMaterial, world.defaul
 }));
 
 // scene
-// Sup.loadScene("Room Scene");
+Sup.loadScene("Room Scene");
 let playerActor = Sup.getActor("Player");
 
 

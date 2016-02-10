@@ -4,7 +4,7 @@ class CharacterBehavior extends Sup.Behavior {
   
   // movement and location
   private velocity = 20;
-  private jumpVelocity = 40;
+  private jumpVelocity = 75;
   private position: Sup.Math.Vector3;
   private angles = new Sup.Math.Vector3(0, 0, 0)
   private direction = new Sup.Math.Vector3(0, 0, 1);

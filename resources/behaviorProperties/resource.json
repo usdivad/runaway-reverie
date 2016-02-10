@@ -17,8 +17,14 @@
       "parentBehavior": null,
       "properties": []
     },
-    "MusicConductorBehavior": {
+    "AmbientMarkovMusicBehavior": {
       "scriptId": "33",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "MusicConductorBehavior": {
+      "scriptId": "94",
       "line": 0,
       "parentBehavior": null,
       "properties": []

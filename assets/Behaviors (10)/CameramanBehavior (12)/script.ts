@@ -14,7 +14,7 @@ class CameramanBehavior extends Sup.Behavior {
     
     this.actor.cannonBody.body.position.set(
       playerPosition.x + this.xOffset,
-      this.yOffset,
+      playerPosition.y + this.yOffset,
       playerPosition.z + this.zOffset
     )
     
