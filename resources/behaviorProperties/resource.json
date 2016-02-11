@@ -43,6 +43,14 @@
         {
           "name": "playerHasMoved",
           "type": "boolean"
+        },
+        {
+          "name": "celloFadeVolMax",
+          "type": "number"
+        },
+        {
+          "name": "celloFadeVolMin",
+          "type": "number"
         }
       ]
     }
