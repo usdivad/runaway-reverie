@@ -3,8 +3,8 @@ class CharacterBehavior extends Sup.Behavior {
   private height:number = 15; // from PlayerModel
   
   // movement and location
-  private velocity = 40;
-  private jumpVelocity = 25;
+  private velocity = 50;
+  private jumpVelocity = 50;
   private position: Sup.Math.Vector3;
   private angles = new Sup.Math.Vector3(0, 0, 0)
   private direction = new Sup.Math.Vector3(0, 0, 1);
@@ -48,17 +48,35 @@ class CharacterBehavior extends Sup.Behavior {
     this.modelRenderer = this.actor.modelRenderer;
     this.modelRenderer.setAnimation("Walk"); // or idle?
     
-    Sup.log(this.actor.cannonBody.body.position);
+    // Sup.log(this.actor.cannonBody.body.position);
     
   }
 
   update() {
     let body = this.actor.cannonBody.body;
     // let cameraman = Sup.getActor("Cameraman");
+    let inDream = (this.position.x < -100);
+    
     
     // set position and angles
     this.position.set(body.position.x, body.position.y - this.height/2, body.position.z);
     this.actor.setLocalEulerAngles(this.angles);
+    
+    // don't let player go under
+    if (this.position.y < 0) {
+      this.position.y = 0;
+    }
+    
+    // set velocities, world based on positions
+    if (inDream) {
+      this.velocity = 25;
+      world.gravity.set(0, 1, 0);
+    }
+    else {
+      this.velocity = 50; 
+      world.gravity.set(0, -100, 0);
+    }
+    this.jumpVelocity = this.velocity;
     
     // direction
     this.direction = new Sup.Math.Vector3(0, 0, 0); // temporary
@@ -92,14 +110,25 @@ class CharacterBehavior extends Sup.Behavior {
     // animation & angles
     let animation = "Idle";
     if ( (body.velocity.x !== 0) || (body.velocity.z !== 0)) {
-      animation = "Run"; // adjust for walk later
+      if (inDream) {
+        animation = "Walk";
+      }
+      else {
+        animation = "Run";
+      }
+      
       let angle = Math.atan2(-body.velocity.z, body.velocity.x) + Math.PI/2;
       this.angles.set(0, angle, 0);
     }
     
     // jump!
     if (!this.canJump) {
-      animation = "Jump";
+      if (inDream) {
+        animation = "Idle";
+      }
+      else {
+        animation = "Jump";
+      }
       this.isMoving = true;
     }
     else if (this.canJump && Sup.Input.wasKeyJustPressed("SPACE")) {

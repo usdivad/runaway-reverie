@@ -4,6 +4,8 @@ class MusicConductorBehavior extends Sup.Behavior {
   phrase: string;
   params_instrumentalEntrance: any;
   params_tabTest: any;
+
+  playerHasMoved: boolean;
   
   awake() {
     // create MultiSoundPlayers for instrumental entrance
@@ -17,7 +19,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3",
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       {
-        0: tail_riff, // <- passing in tail(s) as object
+        0: tail_riff, // <- passing in tail(s) as object; here we're being lazy by using the same tail sample for each beat
         4: tail_riff,
         7: tail_riff,
         11: tail_riff
@@ -36,6 +38,17 @@ class MusicConductorBehavior extends Sup.Behavior {
       {active: false}
     );
     
+
+    // reversed
+    inst = "reversed";
+    let msp_rev = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false}
+    );
+    
     // bass
     inst = "bass - cypress";
     let msp_bass = new Sup.Audio.MultiSoundPlayer(
@@ -48,10 +61,13 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     // cello
     inst = "cello freeze";
+    let tail_cello = path_instrumentalEntrance+"tail " + inst + ".mp3";
     let msp_cello = new Sup.Audio.MultiSoundPlayer(
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
-      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      {
+        
+      },
       vol,
       {active: false}
     );
@@ -62,16 +78,20 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol * 2,
+      vol * 1.5,
       {active: false}
     );
 
     // msps for tab section
+    let tail_tabguitar = path_audio + "Tabs/" + "tail guitar.mp3";
     let msp_tabguitar = new Sup.Audio.MultiSoundPlayer(
       path_audio + "Tabs/" + "init guitar.mp3",
       path_audio + "Tabs/" + "loop guitar.mp3",
       {
-        0: path_audio + "Tabs/" + "tail guitar.mp3"
+        0: tail_tabguitar,
+        8: tail_tabguitar,
+        16: tail_tabguitar,
+        25: tail_tabguitar
       },
       vol
     );
@@ -102,6 +122,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       players: {
       "riff": msp_riff,
       "drums": msp_drums,
+      "rev": msp_rev,
       "bass": msp_bass,
       "keys": msp_keys
       }
@@ -109,21 +130,25 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     
     // create Conductor
-    this.conductor = new Sup.Audio.Conductor(180, 15, {
-      "riff": msp_riff,
-      "drums": msp_drums,
-      "bass": msp_bass,
-      "keys": msp_keys
-    });
+    this.conductor = new Sup.Audio.Conductor(
+      this.params_instrumentalEntrance.bpm,
+      this.params_instrumentalEntrance.timesig,
+      this.params_instrumentalEntrance.players);
     this.conductor.start(); // start playing!
     this.phrase = "instrumental entrance";
     Sup.log(this.conductor);
 
-    // activate drums for second cycle 4 seconds later
+    // activate keys for second cycle 4 seconds later
     let conductor = this.conductor;
     Sup.setTimeout(4000, function() {
-      conductor.activatePlayer("drums");
-      Sup.log("drums activated for next cycle");
+      conductor.activatePlayer("keys");
+      Sup.log("keys activated for next cycle");
+    });
+    
+    // testing getMillisecondsLeftUntilNextDownbeat()
+    let ms = this.conductor.getMillisecondsLeftUntilNextDownbeat();
+    Sup.setTimeout(ms, function() {
+      Sup.log("next downbeat should be HERE!");
     });
 
     /*
@@ -142,6 +167,9 @@ class MusicConductorBehavior extends Sup.Behavior {
       Sup.log("activating reversed guitar for next cycle");
     });
     */
+    
+    // player stuff
+    this.playerHasMoved = false;
   }
 
   update() {
@@ -149,7 +177,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     let playerPosition = playerActor.cannonBody.body.position;
     let playerIsMoving = playerActor["__behaviors"]["CharacterBehavior"][0].isMoving;
     
-    Sup.log(playerPosition.x);
+    // Sup.log(playerPosition.x);
     
     if (playerPosition.x < -100) {
       if (this.phrase != "tab test") {
@@ -161,12 +189,36 @@ class MusicConductorBehavior extends Sup.Behavior {
       }
     }
     else {
+      // switch to tab section
       if (this.phrase != "instrumental entrance") {
         this.conductor.setNextParams(this.params_instrumentalEntrance);
         this.conductor.setToNext(true);
         this.conductor.setTransition(true);
         this.phrase = "instrumental entrance";
         Sup.log("conductor will transition to instrumental entrance section for next cycle");
+        
+        // deactivate players
+        this.conductor.deactivatePlayer("keys");
+        // this.conductor.deactivatePlayer("drums"); // leave drums in
+        
+        // reactivate keys for cycle after next one
+        let conductor = this.conductor;
+        Sup.setTimeout(4000 + conductor.getMillisecondsLeftUntilNextDownbeat(), function() {
+          conductor.activatePlayer("keys");
+          // Sup.log("keys activated for next cycle");
+        });
+      }
+    }
+    
+    if (this.phrase == "instrumental entrance") {
+      if (playerIsMoving) {
+        
+        // activate drums if it's the first time the player has moved
+        if (!this.playerHasMoved) {
+          this.conductor.activatePlayer("drums");
+          this.playerHasMoved = true;
+          Sup.log("player has moved; activating drums for the next cycle");
+        }
       }
     }
     

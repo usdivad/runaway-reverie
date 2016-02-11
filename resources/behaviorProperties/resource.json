@@ -39,6 +39,10 @@
         {
           "name": "params_tabTest",
           "type": "any"
+        },
+        {
+          "name": "playerHasMoved",
+          "type": "boolean"
         }
       ]
     }
