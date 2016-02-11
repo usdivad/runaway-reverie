@@ -258,14 +258,14 @@ class MusicConductorBehavior extends Sup.Behavior {
         
         // cello fade in (manual)
         let cello = this.conductor.getPlayer("cello");
-        if (cello.getVolume() < this.celloFadeVolMax) {
+        if (cello && (cello.getVolume() < this.celloFadeVolMax)) {
           cello.setVolume(cello.getVolume() + 0.01);
         }
       }
       else {
         // cello fade out (manual)
         let cello = this.conductor.getPlayer("cello");
-        if (cello.getVolume() > this.celloFadeVolMin) {
+        if (cello && (cello.getVolume() > this.celloFadeVolMin)) {
           cello.setVolume(cello.getVolume() - 0.01);
         }
       }
