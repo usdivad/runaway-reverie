@@ -3,8 +3,8 @@ class CharacterBehavior extends Sup.Behavior {
   private height:number = 15; // from PlayerModel
   
   // movement and location
-  private velocity = 20;
-  private jumpVelocity = 75;
+  private velocity = 40;
+  private jumpVelocity = 25;
   private position: Sup.Math.Vector3;
   private angles = new Sup.Math.Vector3(0, 0, 0)
   private direction = new Sup.Math.Vector3(0, 0, 1);

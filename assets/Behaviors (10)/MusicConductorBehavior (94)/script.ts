@@ -12,11 +12,15 @@ class MusicConductorBehavior extends Sup.Behavior {
     let inst = "riff";
     let path_audio = "Audio/";
     let path_instrumentalEntrance = path_audio + "Instrumental Entrance/";
+    let tail_riff = path_instrumentalEntrance+"tail " + inst + ".mp3";
     let msp_riff = new Sup.Audio.MultiSoundPlayer(
       path_instrumentalEntrance+"init " + inst + ".mp3",
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       {
-        0: path_instrumentalEntrance+"tail " + inst + ".mp3" // <- passing in tail(s) as object
+        0: tail_riff, // <- passing in tail(s) as object
+        4: tail_riff,
+        7: tail_riff,
+        11: tail_riff
       },
       vol
     );
