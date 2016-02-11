@@ -9,9 +9,11 @@ class MusicConductorBehavior extends Sup.Behavior {
 
   celloFadeVolMax: number;
   celloFadeVolMin: number;
+
+  logOutput: boolean;
   
   awake() {
-    let logOutput = true;
+    this.logOutput = true;
     
     // create MultiSoundPlayers for instrumental entrance
     
@@ -31,7 +33,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         11: tail_riff
       },
       vol,
-      {logOutput: logOutput}
+      {logOutput: this.logOutput}
     );
     // Sup.log(msp_riff);
     
@@ -42,7 +44,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
       vol,
-      {active: false, logOutput: logOutput}
+      {active: false, logOutput: this.logOutput}
     );
 
     // drums
@@ -52,7 +54,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"loop " + inst + ".mp3", // <- note that init and loop are two diff audio phrases!
       path_instrumentalEntrance+"tail " + inst + ".mp3", // <- passing in single tail as string
       0,
-      {active: true, logOutput: logOutput} // note we initialize it to be active but with a volume of 0, so muted
+      {active: true, logOutput: this.logOutput} // note we initialize it to be active but with a volume of 0, so muted
     );
     
     // bass
@@ -62,7 +64,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + "bass_freeze" + ".mp3",
       vol,
-      {active: false, logOutput: logOutput}
+      {active: false, logOutput: this.logOutput}
     );
     
     // cello
@@ -75,7 +77,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         
       },
       0,
-      {active: true, logOutput: logOutput}
+      {active: true, logOutput: this.logOutput}
     );
     
     // keys
@@ -85,7 +87,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
       vol * 1.5,
-      {active: false, logOutput: logOutput}
+      {active: false, logOutput: this.logOutput}
     );
 
     // MultiSoundPlayers for tabs section
@@ -100,7 +102,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         25: tail_tabguitar
       },
       vol,
-      {logOutput: logOutput}
+      {logOutput: this.logOutput}
     );
 
     let msp_tabrev = new Sup.Audio.MultiSoundPlayer(
@@ -110,7 +112,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         0: path_audio + "Tabs/" + "tail guitar rev.mp3"
       },
       vol,
-      {active: false, logOutput: logOutput}
+      {active: false, logOutput: this.logOutput}
     );
 
     // params to set as conductor's nextParams
@@ -141,7 +143,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       this.params_instrumentalEntrance.bpm,
       this.params_instrumentalEntrance.timesig,
       this.params_instrumentalEntrance.players);
-    this.conductor.setLogOutput(logOutput);
+    this.conductor.setLogOutput(this.logOutput);
     this.conductor.start(); // start playing!
     this.phrase = "instrumental entrance";
     Sup.log(this.conductor);
@@ -181,6 +183,8 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.conductor.setNextParams(this.params_tabTest);
         this.conductor.setToNext(true);
         this.conductor.setTransition(true);
+        this.conductor.setLogOutput(this.logOutput);
+        
         this.phrase = "tab test";
         Sup.log("conductor will transition to tab test section for next cycle");
       }
@@ -191,6 +195,8 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.conductor.setNextParams(this.params_instrumentalEntrance);
         this.conductor.setToNext(true);
         this.conductor.setTransition(true);
+        this.conductor.setLogOutput(this.logOutput);
+        
         this.phrase = "instrumental entrance";
         Sup.log("conductor will transition to instrumental entrance section for next cycle");
         
@@ -201,7 +207,9 @@ class MusicConductorBehavior extends Sup.Behavior {
         
         // reactivate keys for cycle after next one
         let conductor = this.conductor;
-        Sup.setTimeout(conductor.getMillisecondsLeftUntilNextDownbeat()-100, function() {
+        let timeoutMs = conductor.getMillisecondsLeftUntilNextDownbeat(this.params_instrumentalEntrance.bpm)-100; // make sure you use the right bpm!!
+        Sup.log("timeoutMs: " + timeoutMs);
+        Sup.setTimeout(timeoutMs, function() { 
           conductor.activatePlayer("keys");
           Sup.log("keys activated for next cycle");
         });

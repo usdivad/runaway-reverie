@@ -51,6 +51,10 @@
         {
           "name": "celloFadeVolMin",
           "type": "number"
+        },
+        {
+          "name": "logOutput",
+          "type": "boolean"
         }
       ]
     }
