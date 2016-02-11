@@ -11,6 +11,7 @@ class MusicConductorBehavior extends Sup.Behavior {
   celloFadeVolMin: number;
 
   logOutput: boolean;
+  transitioning: boolean;
   
   awake() {
     this.logOutput = true;
@@ -133,6 +134,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       "drums": msp_drums,
       "rev": msp_rev,
       "bass": msp_bass,
+      "cello": msp_cello,
       "keys": msp_keys
       }
     };
@@ -164,11 +166,13 @@ class MusicConductorBehavior extends Sup.Behavior {
     });
 
     // cello fade constants
-    this.celloFadeVolMax = 0.5;
-    this.celloFadeVolMin = 0;
+    this.celloFadeVolMax = 1.0;
+    this.celloFadeVolMin = 0.0;
     
     // player stuff
     this.playerHasMoved = false;
+    
+    this.transitioning = false;
   }
 
   update() {
@@ -178,15 +182,26 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     // Sup.log(playerPosition.x);
     
-    if (playerPosition.x < -100) {
+    // location-based adjustments
+    if (playerPosition.x < -100 /* && !this.transitioning */) {
       if (this.phrase != "tab test") {
         this.conductor.setNextParams(this.params_tabTest);
         this.conductor.setToNext(true);
         this.conductor.setTransition(true);
         this.conductor.setLogOutput(this.logOutput);
         
+        // phrase naming
         this.phrase = "tab test";
-        Sup.log("conductor will transition to tab test section for next cycle");
+        Sup.log("transitioned to " + this.phrase);
+        
+        // let musicConductorBehavior = this;
+        // this.transitioning = true;
+        // Sup.setTimeout(this.conductor.getMillisecondsLeftUntilNextTransitionBeat(), function() {
+        //   musicConductorBehavior.phrase = "tab test";
+        //   musicConductorBehavior.transitioning = false;
+        //   Sup.log("transitioned to " + musicConductorBehavior.phrase);
+        // });
+        
       }
     }
     else {
@@ -197,8 +212,17 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.conductor.setTransition(true);
         this.conductor.setLogOutput(this.logOutput);
         
+        // phrase naming
         this.phrase = "instrumental entrance";
-        Sup.log("conductor will transition to instrumental entrance section for next cycle");
+        Sup.log("transitioned to " + this.phrase);
+        
+        // let musicConductorBehavior = this;
+        // this.transitioning = true;
+        // Sup.setTimeout(this.conductor.getMillisecondsLeftUntilNextTransitionBeat(), function() {
+        //   musicConductorBehavior.phrase = "instrumental entrance";
+        //   musicConductorBehavior.transitioning = false;
+        //   Sup.log("transitioned to " + musicConductorBehavior.phrase);
+        // });
         
         // deactivate players
         Sup.log(this.params_instrumentalEntrance);
@@ -216,6 +240,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       }
     }
     
+    // movement-based adjustments
     if (this.phrase == "instrumental entrance") {
       if (playerIsMoving) {
         
@@ -231,11 +256,18 @@ class MusicConductorBehavior extends Sup.Behavior {
           Sup.log("fading drums in");
         }
         
-        // cello fade
-        // let cello = this.conductor.getPlayer("cello");
-        // if (cello.getVolume() < this.celloFadeVolMax) {
-        //   cello.setVolume(cello.getVolume() + 0.01);
-        // }
+        // cello fade in (manual)
+        let cello = this.conductor.getPlayer("cello");
+        if (cello.getVolume() < this.celloFadeVolMax) {
+          cello.setVolume(cello.getVolume() + 0.01);
+        }
+      }
+      else {
+        // cello fade out (manual)
+        let cello = this.conductor.getPlayer("cello");
+        if (cello.getVolume() > this.celloFadeVolMin) {
+          cello.setVolume(cello.getVolume() - 0.01);
+        }
       }
     }
     

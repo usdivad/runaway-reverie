@@ -55,6 +55,10 @@
         {
           "name": "logOutput",
           "type": "boolean"
+        },
+        {
+          "name": "transitioning",
+          "type": "boolean"
         }
       ]
     }
