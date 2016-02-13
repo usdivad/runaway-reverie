@@ -26,7 +26,7 @@ class CharacterBehavior extends Sup.Behavior {
     // angle and position
     let angle = this.actor.getLocalEulerAngles().y;
     // this.position = this.actor.getLocalPosition();
-    this.position = new Sup.Math.Vector3(50, 0, 0);
+    this.position = new Sup.Math.Vector3(0, 0, 25);
     this.angles.y = angle;
     
     // orientation
@@ -84,17 +84,17 @@ class CharacterBehavior extends Sup.Behavior {
     
     // direction
     this.direction = new Sup.Math.Vector3(0, 0, 0); // temporary
-    if (Sup.Input.isKeyDown("A")) { // left
+    if (Sup.Input.isKeyDown("A") || Sup.Input.isKeyDown("LEFT")) { // left
       // this.actor.move(-1 * this.velocity, 0, 0); // old "move" code
       this.direction.x = -1;
     }
-    if (Sup.Input.isKeyDown("D")) { // right
+    if (Sup.Input.isKeyDown("D") || Sup.Input.isKeyDown("RIGHT")) { // right
       this.direction.x = 1;
     }
-    if (Sup.Input.isKeyDown("W")) { // up
+    if (Sup.Input.isKeyDown("W") || Sup.Input.isKeyDown("UP")) { // up
       this.direction.z = -1;
     }
-    if (Sup.Input.isKeyDown("S")) { // down
+    if (Sup.Input.isKeyDown("S") || Sup.Input.isKeyDown("DOWN")) { // down
       this.direction.z = 1;
     }
     

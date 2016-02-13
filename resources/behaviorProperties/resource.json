@@ -82,7 +82,20 @@
       "scriptId": "100",
       "line": 0,
       "parentBehavior": null,
-      "properties": []
+      "properties": [
+        {
+          "name": "position",
+          "type": "Sup.Math.Vector3"
+        },
+        {
+          "name": "distanceToPlayer",
+          "type": "number"
+        },
+        {
+          "name": "angle",
+          "type": "number"
+        }
+      ]
     }
   }
 }
