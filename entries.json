@@ -16,6 +16,11 @@
         "type": "script"
       },
       {
+        "id": "100",
+        "name": "NPCBehavior",
+        "type": "script"
+      },
+      {
         "id": "12",
         "name": "CameramanBehavior",
         "type": "script"
@@ -453,6 +458,18 @@
           {
             "id": "93",
             "name": "tail guitar.mp3",
+            "type": "sound"
+          }
+        ]
+      },
+      {
+        "id": "101",
+        "name": "Verse",
+        "type": null,
+        "children": [
+          {
+            "id": "102",
+            "name": "v2_vox.mp3",
             "type": "sound"
           }
         ]

@@ -512,6 +512,76 @@
       "visible": true,
       "layer": 0,
       "prefab": null
+    },
+    {
+      "id": "21",
+      "name": "NPC Vocalist",
+      "children": [],
+      "components": [
+        {
+          "type": "ModelRenderer",
+          "config": {
+            "modelAssetId": "1",
+            "animationId": "3",
+            "castShadow": true,
+            "receiveShadow": false,
+            "color": "ffffff",
+            "overrideOpacity": false,
+            "opacity": null,
+            "materialType": "basic",
+            "shaderAssetId": null
+          },
+          "id": "1"
+        },
+        {
+          "type": "CannonBody",
+          "config": {
+            "mass": 10,
+            "fixedRotation": true,
+            "offset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "shape": "box",
+            "halfSize": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.5
+            },
+            "radius": 1,
+            "height": 1
+          },
+          "id": "2"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "NPCBehavior",
+            "propertyValues": {}
+          },
+          "id": "3"
+        }
+      ],
+      "position": {
+        "x": 83.94538116455078,
+        "y": 2.0705745220184326,
+        "z": -45.02237319946289
+      },
+      "orientation": {
+        "x": 0,
+        "y": -0.3420201433256687,
+        "z": 0,
+        "w": 0.9396926207859084
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": null
     }
   ]
 }

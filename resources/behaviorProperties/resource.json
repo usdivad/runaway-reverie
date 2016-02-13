@@ -77,6 +77,12 @@
           "type": "boolean"
         }
       ]
+    },
+    "NPCBehavior": {
+      "scriptId": "100",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }
