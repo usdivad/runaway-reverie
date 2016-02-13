@@ -45,6 +45,10 @@
           "type": "any"
         },
         {
+          "name": "params_tabularasa_a",
+          "type": "any"
+        },
+        {
           "name": "chimeagain",
           "type": "any"
         },

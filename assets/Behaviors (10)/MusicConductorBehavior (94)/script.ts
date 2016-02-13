@@ -2,8 +2,11 @@ class MusicConductorBehavior extends Sup.Behavior {
   
   conductor: Sup.Audio.Conductor;
   phrase: string;
+  
   params_instrumentalEntrance: any;
   params_tabTest: any;
+  params_tabularasa_a: any;
+
   chimeagain: any;
   verseVocals: Sup.Audio.SoundPlayer;
 
@@ -438,6 +441,33 @@ class MusicConductorBehavior extends Sup.Behavior {
       }
     };
     Sup.log(this.params_tabTest);
+  }
+
+  setupTabularasaDreamsong(vol, path_audio, section) {
+    let path_tabularasa = path_audio + "Tabularasa Dreamsong " + section + "/";
+    let inst = "guitar";
+    let tail_guitar = path_tabularasa + "tail " + inst + ".mp3";
+    let msp_guitar = new Sup.Audio.MultiSoundPlayer(
+      path_tabularasa + "init " + inst + ".mp3",
+      path_tabularasa + "loop " + inst + ".mp3",
+      {
+        0: tail_guitar,
+        8: tail_guitar,
+        16: tail_guitar,
+        25: tail_guitar
+      },
+      vol,
+      {logOutput: this.logOutput}
+    );
+    
+    this.params_tabularasa_a = {
+      bpm: 23,
+      timesig: 24,
+      players: {
+        "guitar": msp_guitar
+      }
+    };
+    
   }
 }
 Sup.registerBehavior(MusicConductorBehavior);
