@@ -4,8 +4,11 @@ class MusicConductorBehavior extends Sup.Behavior {
   phrase: string;
   params_instrumentalEntrance: any;
   params_tabTest: any;
+  chimeagain: any;
 
   playerHasMoved: boolean;
+  playerPreviouslyCouldJump: boolean;
+  playerWasJumping: boolean;
 
   celloFadeVolMax: number;
   celloFadeVolMin: number;
@@ -31,7 +34,8 @@ class MusicConductorBehavior extends Sup.Behavior {
         0: tail_riff, // <- passing in tail(s) as object; here we're being lazy by using the same tail sample for each beat
         4: tail_riff,
         7: tail_riff,
-        11: tail_riff
+        11: tail_riff,
+        14: tail_riff
       },
       vol,
       {logOutput: this.logOutput}
@@ -53,7 +57,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     let msp_drums = new Sup.Audio.MultiSoundPlayer(
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3", // <- note that init and loop are two diff audio phrases!
-      path_instrumentalEntrance+"tail " + inst + ".mp3", // <- passing in single tail as string
+      path_instrumentalEntrance+"tail " + inst + ".mp3", // <- passing in single tail as string; available for all beats
       0,
       {active: true, logOutput: this.logOutput} // note we initialize it to be active but with a volume of 0, so muted
     );
@@ -74,9 +78,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     let msp_cello = new Sup.Audio.MultiSoundPlayer(
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
-      {
-        
-      },
+      {0: tail_cello}, // <- we only want this tail to happen on beat 0, not all beats
       0,
       {active: true, logOutput: this.logOutput}
     );
@@ -90,6 +92,17 @@ class MusicConductorBehavior extends Sup.Behavior {
       vol * 1.5,
       {active: false, logOutput: this.logOutput}
     );
+    
+    
+    // Single note samples (using SoundPlayers)
+    let chimeagainvol = vol * 0.5;
+    this.chimeagain = {
+      "f#": new Sup.Audio.SoundPlayer(path_audio+"Instrumental Entrance/"+"chimeagain_fsharp.mp3", chimeagainvol),
+      "g": new Sup.Audio.SoundPlayer(path_audio+"Instrumental Entrance/"+"chimeagain_g.mp3", chimeagainvol),
+      "d": new Sup.Audio.SoundPlayer(path_audio+"Instrumental Entrance/"+"chimeagain_d.mp3", chimeagainvol),
+      "e": new Sup.Audio.SoundPlayer(path_audio+"Instrumental Entrance/"+"chimeagain_e.mp3", chimeagainvol)
+    };
+
 
     // MultiSoundPlayers for tabs section
     let tail_tabguitar = path_audio + "Tabs/" + "tail guitar.mp3";
@@ -112,8 +125,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       {
         0: path_audio + "Tabs/" + "tail guitar rev.mp3"
       },
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
 
     // params to set as conductor's nextParams
@@ -125,6 +138,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         "rev": msp_tabrev
       }
     };
+    Sup.log(this.params_tabTest);
     
     this.params_instrumentalEntrance = {
       bpm: 180,
@@ -171,6 +185,8 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     // player stuff
     this.playerHasMoved = false;
+    this.playerPreviouslyCouldJump = true;
+    this.playerWasJumping = false;
     
     this.transitioning = false;
   }
@@ -179,6 +195,9 @@ class MusicConductorBehavior extends Sup.Behavior {
     // let playerActor = Sup.getActor("Player");
     let playerPosition = playerActor.cannonBody.body.position;
     let playerIsMoving = playerActor["__behaviors"]["CharacterBehavior"][0].isMoving;
+    this.playerPreviouslyCouldJump = playerActor["__behaviors"]["CharacterBehavior"][0].canJump;
+    let playerIsJumping = playerActor["__behaviors"]["CharacterBehavior"][0].isJumping;
+
     
     // Sup.log(playerPosition.x);
     
@@ -200,6 +219,16 @@ class MusicConductorBehavior extends Sup.Behavior {
         //   musicConductorBehavior.phrase = "tab test";
         //   musicConductorBehavior.transitioning = false;
         //   Sup.log("transitioned to " + musicConductorBehavior.phrase);
+        // });
+        
+        
+        // // activate rev for cycle after next one
+        // let conductor = this.conductor;
+        // let timeoutMs = conductor.getMillisecondsLeftUntilNextDownbeat(this.params_instrumentalEntrance.bpm)-100; // make sure you use the right bpm!!
+        // Sup.log("timeoutMs: " + timeoutMs);
+        // Sup.setTimeout(timeoutMs, function() { 
+        //   conductor.activatePlayer("rev");
+        //   Sup.log("rev activated for next cycle");
         // });
         
       }
@@ -269,6 +298,49 @@ class MusicConductorBehavior extends Sup.Behavior {
           cello.setVolume(cello.getVolume() - 0.01);
         }
       }
+      
+      
+      // jump -> chimeagain
+      // use wchoose to pick consonant notes according to harmony      
+      if (!this.playerWasJumping && playerIsJumping) {
+        let beatNum = this.conductor.getBeatNum();
+        let note = "d";
+        
+        beatNum = beatNum + 1; // offset for anticipations
+        
+        if (beatNum < 4) { // D chord
+          note = wchoose(["f#", "d"], [0.75, 0.25]);
+        }
+        else if (beatNum < 7) { // G chord
+          note = wchoose(["g", "d"], [1.0, 0.0]);
+        }
+        else if (beatNum < 11) { // D chord
+          note = wchoose(["d", "f#"], [0.75, 0.25]);
+        }
+        else if (beatNum < 14) { // A chord
+          note = "e";
+        }
+        
+        this.chimeagain[note].stop();
+        this.chimeagain[note].play();
+      }
+    }
+    else if (this.phrase == "tab test") {
+      if (playerIsMoving) {
+        // rev fade in (manual)
+        let rev = this.conductor.getPlayer("rev");
+        if (rev && (rev.getVolume() < this.celloFadeVolMax)) {
+          rev.setVolume(rev.getVolume() + 0.01);
+          // Sup.log(rev.getVolume());
+        }
+      }
+      else {
+        // rev fade out (manual)
+        let rev = this.conductor.getPlayer("rev");
+        if (rev && (rev.getVolume() > this.celloFadeVolMin)) {
+          rev.setVolume(rev.getVolume() - 0.01);
+        }
+      }
     }
     
     // if (this.phrase == "instrumental entrance") {
@@ -292,6 +364,8 @@ class MusicConductorBehavior extends Sup.Behavior {
     //     // Sup.log("player not moving; deactivating reversed guitar for next cycle");
     //   }
     // }
+    
+    this.playerWasJumping = playerIsJumping;
   }
 }
 Sup.registerBehavior(MusicConductorBehavior);

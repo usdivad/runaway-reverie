@@ -8,6 +8,10 @@
         {
           "name": "isMoving",
           "type": "boolean"
+        },
+        {
+          "name": "isJumping",
+          "type": "boolean"
         }
       ]
     },
@@ -41,7 +45,19 @@
           "type": "any"
         },
         {
+          "name": "chimeagain",
+          "type": "any"
+        },
+        {
           "name": "playerHasMoved",
+          "type": "boolean"
+        },
+        {
+          "name": "playerPreviouslyCouldJump",
+          "type": "boolean"
+        },
+        {
+          "name": "playerWasJumping",
           "type": "boolean"
         },
         {

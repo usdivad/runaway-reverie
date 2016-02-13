@@ -11,6 +11,7 @@ class CharacterBehavior extends Sup.Behavior {
   private canJump = true;
   private canMove = true;
   public isMoving = false;
+  public isJumping = false;
 
   // model
   private modelRenderer: Sup.ModelRenderer;
@@ -41,6 +42,7 @@ class CharacterBehavior extends Sup.Behavior {
     this.actor.cannonBody.body.addEventListener("collide", (event) => {
       // if (event.contact.ni.y > 0.9) {
         this.canJump = true;
+        this.isJumping = false;
       // }
     });
     
@@ -63,8 +65,10 @@ class CharacterBehavior extends Sup.Behavior {
     this.actor.setLocalEulerAngles(this.angles);
     
     // don't let player go under
-    if (this.position.y < 0) {
-      this.position.y = 0;
+    if (this.position.y < this.height/2) {
+      // Sup.log("correcting y pos " + this.position.y);
+      this.position.y = this.height/2;
+      // body.position.y = this.height/2;
     }
     
     // set velocities, world based on positions
@@ -136,6 +140,7 @@ class CharacterBehavior extends Sup.Behavior {
       this.canJump = false;
       body.velocity.y = this.jumpVelocity;
       animation = "Jump";
+      this.isJumping = true;
     }
     
     this.modelRenderer.setAnimation(animation);

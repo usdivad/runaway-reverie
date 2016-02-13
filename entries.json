@@ -397,6 +397,26 @@
             "id": "85",
             "name": "tail.mp3",
             "type": "sound"
+          },
+          {
+            "id": "96",
+            "name": "chimeagain_fsharp.mp3",
+            "type": "sound"
+          },
+          {
+            "id": "97",
+            "name": "chimeagain_d.mp3",
+            "type": "sound"
+          },
+          {
+            "id": "98",
+            "name": "chimeagain_e.mp3",
+            "type": "sound"
+          },
+          {
+            "id": "99",
+            "name": "chimeagain_g.mp3",
+            "type": "sound"
           }
         ]
       },
