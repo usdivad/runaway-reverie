@@ -75,6 +75,10 @@
         {
           "name": "transitioning",
           "type": "boolean"
+        },
+        {
+          "name": "npcHasSung",
+          "type": "boolean"
         }
       ]
     },
@@ -94,6 +98,10 @@
         {
           "name": "angle",
           "type": "number"
+        },
+        {
+          "name": "readyToSing",
+          "type": "boolean"
         }
       ]
     }

@@ -5,6 +5,7 @@ class MusicConductorBehavior extends Sup.Behavior {
   params_instrumentalEntrance: any;
   params_tabTest: any;
   chimeagain: any;
+  verseVocals: Sup.Audio.SoundPlayer;
 
   playerHasMoved: boolean;
   playerPreviouslyCouldJump: boolean;
@@ -15,6 +16,8 @@ class MusicConductorBehavior extends Sup.Behavior {
 
   logOutput: boolean;
   transitioning: boolean;
+
+  npcHasSung: boolean;
   
   awake() {
     this.logOutput = true;
@@ -60,6 +63,8 @@ class MusicConductorBehavior extends Sup.Behavior {
     this.playerWasJumping = false;
     
     this.transitioning = false;
+    
+    this.npcHasSung = false;
   }
 
   update() {
@@ -237,6 +242,49 @@ class MusicConductorBehavior extends Sup.Behavior {
     // }
     
     this.playerWasJumping = playerIsJumping;
+    
+    
+    
+    // NPC vocalist
+    if (this.phrase == "instrumental entrance") {
+      let npc = Sup.getActor("NPC Vocalist");
+      if (npc["__behaviors"]["NPCBehavior"][0].readyToSing) {
+        
+        if (!this.npcHasSung) {
+          this.npcHasSung = true;
+          
+          // this.conductor.activatePlayer("vox");
+          // let conductor = this.conductor;
+          // Sup.setTimeout(this.conductor.getMillisecondsLeftUntilNextDownbeat() * 1.5, function() {
+          //   conductor.deactivatePlayer("vox"); // we only let vox play once
+          //   Sup.log("deactivated vox");
+          // });
+
+          // trigger manually because the phrase is longer than the section's phrase length
+          let vox = this.verseVocals;
+          let ms = this.conductor.getMillisecondsLeftUntilNextDownbeat() + 100; // 100ms offset
+          let conductor = this.conductor;
+          
+          // timeout leads to unreliable performance timing
+          // Sup.setTimeout(ms, function() {
+          //   vox.play();
+          // });
+          
+          this.conductor.scheduleEvent(ms, function() {
+            vox.play();
+            Sup.log("playing vox!");
+          });
+          
+          this.conductor.scheduleEvent(ms * 3, function() {
+            conductor.activatePlayer("rev");
+            Sup.log("activating rev");
+          })
+          
+          Sup.log(ms);
+        }
+      }
+    }
+    
   }
 
 
@@ -313,6 +361,21 @@ class MusicConductorBehavior extends Sup.Behavior {
       {active: false, logOutput: this.logOutput}
     );
     
+    // vox
+    let path_vox = path_audio + "Verse/" + "v2_vox.mp3";
+    // let msp_vox = new Sup.Audio.MultiSoundPlayer(
+    //   path_vox,
+    //   path_vox,
+    //   path_vox,
+    //   vol,
+    //   {
+    //     loop: true, // to prevent retriggering each cycle, since the vocal phrase is longer than a cycle
+    //     active: false,
+    //     logOutput: this.logOutput
+    //   }
+    // );
+    this.verseVocals = new Sup.Audio.SoundPlayer(path_vox, vol);
+    
     
     // Single note samples (using SoundPlayers)
     let chimeagainvol = vol * 0.5;
@@ -333,7 +396,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       "rev": msp_rev,
       "bass": msp_bass,
       "cello": msp_cello,
-      "keys": msp_keys
+      "keys": msp_keys,
+      // "vox": msp_vox
       }
     };
   }

@@ -4,10 +4,13 @@ class NPCBehavior extends Sup.Behavior {
   distanceToPlayer: number;
   angle: number;
   
+  readyToSing: boolean;
+  
   awake() {
     this.position = new Sup.Math.Vector3(90, 0, -50); // coordinates
     this.angle = this.actor.getLocalEulerY();
     // this.distanceToPlayer = this.position.distanceTo(playerActor.getPosition());
+    this.readyToSing = false;
   }
 
   update() {
@@ -16,7 +19,7 @@ class NPCBehavior extends Sup.Behavior {
     this.distanceToPlayer = toPlayer.length();
     // this.distanceToPlayer = this.position.distanceTo(playerActor.getPosition());
     // Sup.log("distance to player: " + this.distanceToPlayer);
-    Sup.log(toPlayer);
+    // Sup.log(toPlayer);
     
     // angle
     // let targetAngle = Sup.Math.wrapAngle(Math.atan2(toPlayer.y, toPlayer.x) + Math.PI/2);
@@ -27,10 +30,11 @@ class NPCBehavior extends Sup.Behavior {
     this.actor.lookAt(playerActor.getPosition());
     this.actor.rotateEulerY(Math.PI); // offset
     
-    // animation
+    // animation, singing
     let animation = "Idle";
     if (this.distanceToPlayer < 30) {
       animation = "Fight";
+      this.readyToSing = true;
     }
     this.actor.modelRenderer.setAnimation(animation);
   }
