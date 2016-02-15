@@ -45,8 +45,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     this.phrase = "instrumental entrance";
     Sup.log(this.conductor);
     
-    
-
+  
     // activate keys for second cycle
     let conductor = this.conductor;
     this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextDownbeat()-100, function() {
@@ -81,9 +80,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     this.playerPreviouslyCouldJump = playerActor["__behaviors"]["CharacterBehavior"][0].canJump;
     let playerIsJumping = playerActor["__behaviors"]["CharacterBehavior"][0].isJumping;
 
-    
-    // Sup.log(playerPosition.x);
-    
+        
     // location-based adjustments
     if (playerPosition.x < -100 /* && !this.transitioning */) {
       
@@ -150,7 +147,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.params_instrumentalEntrance.players["keys"].deactivate();
         // this.params_instrumentalEntrance.players["rev"].deactivate();
         this.params_instrumentalEntrance.players["vox"].deactivate();
-        this.params_instrumentalEntrance.players["vox"].setVolume(this.vol * 0.75);
+        this.params_instrumentalEntrance.players["vox"].fade(this.vol * 0.75, 250);
         this.params_instrumentalEntrance.players["vox"].reset();
         
         // reactivate keys for cycle after next one
@@ -181,7 +178,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           Sup.log("player has moved; activating bass for the next cycle");
           
           // drums
-          this.conductor.getPlayer("drums").fade(0.5, 250);
+          this.conductor.getPlayer("drums").fade(this.vol, 250);
           Sup.log("fading drums in");
         }
         
@@ -243,28 +240,6 @@ class MusicConductorBehavior extends Sup.Behavior {
       }
     }
     
-    // if (this.phrase == "instrumental entrance") {
-    //   if (playerIsMoving) {
-    //     this.conductor.activatePlayer("keys");
-    //     this.conductor.activatePlayer("bass");
-    //     // Sup.log("player moving; activate keys and bass for next cycle");
-    //   }
-    //   else {
-    //     this.conductor.deactivatePlayer("keys"); // TODO: come up with a fadeout solution for deactivation
-    //     // Sup.log("player not moving; deactivate keys for next cycle");
-    //   }
-    // }
-    // else if (this.phrase == "tab test") {
-    //   if (playerIsMoving) {
-    //     this.conductor.activatePlayer("rev");
-    //     // Sup.log("player moving; activating reversed guitar for next cycle");
-    //   }
-    //   else {
-    //     // this.conductor.deactivatePlayer("rev");
-    //     // Sup.log("player not moving; deactivating reversed guitar for next cycle");
-    //   }
-    // }
-    
     this.playerWasJumping = playerIsJumping;
     
     
@@ -280,10 +255,13 @@ class MusicConductorBehavior extends Sup.Behavior {
           
           Sup.log("npc is singing");
           
+          // start singing
           this.conductor.getPlayer("vox").fade(this.vol * 0.75, 250);
           this.conductor.activatePlayer("vox");
+          
+          // // we only let vox play once
           // this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextDownbeat() * 1.5, function() {
-          //   conductor.deactivatePlayer("vox"); // we only let vox play once
+          //   conductor.deactivatePlayer("vox"); 
           //   Sup.log("deactivated vox");
           // });
 
@@ -302,9 +280,9 @@ class MusicConductorBehavior extends Sup.Behavior {
           //   Sup.log("playing vox!");
           // });
           
-          // activate rev afterwards
-          // let revMs = cycleMs*3 + ms;
-          let revMs = ms;
+          // activate rev after vox are done
+          let revMs = cycleMs*3 + ms;
+          // let revMs = ms;
           this.conductor.scheduleEvent(revMs, function() {
             conductor.activatePlayer("rev");
             Sup.log("activating rev");
@@ -313,17 +291,15 @@ class MusicConductorBehavior extends Sup.Behavior {
           Sup.log(ms);
         }
         else {
-          Sup.log("sorry, npc already sang)");
+          // Sup.log("sorry, npc already sang)");
         }
       }
     }
     
   }
 
-
-  setupInstrumentalEntrance(vol, path_audio) {
-// create MultiSoundPlayers for instrumental entrance
-    
+  // create MultiSoundPlayers for instrumental entrance
+  setupInstrumentalEntrance(vol, path_audio) {    
     // riff
     let inst = "riff";
     let path_instrumentalEntrance = path_audio + "Instrumental Entrance/";
@@ -435,8 +411,8 @@ class MusicConductorBehavior extends Sup.Behavior {
     };
   }
 
+  // create MultiSoundPlayers for tabs (dream) section
   setupTabTest(vol, path_audio) {
-    // MultiSoundPlayers for tabs section
     let tail_tabguitar = path_audio + "Tabs/" + "tail guitar.mp3";
     let msp_tabguitar = new Sup.Audio.MultiSoundPlayer(
       path_audio + "Tabs/" + "init guitar.mp3",
@@ -483,7 +459,9 @@ class MusicConductorBehavior extends Sup.Behavior {
     };
     Sup.log(this.params_tabTest);
   }
-
+  
+  /*
+  // setup MSPs for next part of dreamsong
   setupTabularasaDreamsong(vol, path_audio, section) {
     let path_tabularasa = path_audio + "Tabularasa Dreamsong " + section + "/";
     let inst = "guitar";
@@ -510,5 +488,6 @@ class MusicConductorBehavior extends Sup.Behavior {
     };
     
   }
+  */
 }
 Sup.registerBehavior(MusicConductorBehavior);
