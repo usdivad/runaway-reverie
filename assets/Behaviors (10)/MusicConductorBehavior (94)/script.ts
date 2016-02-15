@@ -21,12 +21,16 @@ class MusicConductorBehavior extends Sup.Behavior {
   transitioning: boolean;
 
   npcHasSung: boolean;
+
+  vol: number;
   
   awake() {
     this.logOutput = true;
 
     let vol = 0.5;
     let path_audio = "Audio/";
+    
+    this.vol = vol;
     
     this.setupInstrumentalEntrance(vol, path_audio);
     this.setupTabTest(vol, path_audio);
@@ -45,14 +49,14 @@ class MusicConductorBehavior extends Sup.Behavior {
 
     // activate keys for second cycle
     let conductor = this.conductor;
-    Sup.setTimeout(this.conductor.getMillisecondsLeftUntilNextDownbeat()-100, function() {
+    this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextDownbeat()-100, function() {
       conductor.activatePlayer("keys");
       Sup.log("keys activated for next cycle");
     });
     
     // testing getMillisecondsLeftUntilNextDownbeat()
     let ms = this.conductor.getMillisecondsLeftUntilNextDownbeat();
-    Sup.setTimeout(ms, function() {
+    this.conductor.scheduleEvent(ms, function() {
       Sup.log("next downbeat should be HERE!");
     });
 
@@ -130,7 +134,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         Sup.log("transitioned to " + this.phrase);
 
         // reset so npc can sing again
-        // this.npcHasSung = false;
+        this.npcHasSung = false;
         
         // let musicConductorBehavior = this;
         // this.transitioning = true;
@@ -143,21 +147,22 @@ class MusicConductorBehavior extends Sup.Behavior {
         // deactivate players
         Sup.log(this.params_instrumentalEntrance);
         this.params_instrumentalEntrance.players["keys"].deactivate();
-        this.params_instrumentalEntrance.players["rev"].deactivate();
+        // this.params_instrumentalEntrance.players["rev"].deactivate();
         this.params_instrumentalEntrance.players["vox"].deactivate();
+        this.params_instrumentalEntrance.players["vox"].setVolume(this.vol * 0.75);
         
         // reactivate keys for cycle after next one
         let timeoutMs = this.conductor.getMillisecondsLeftUntilNextDownbeat(this.params_instrumentalEntrance.bpm) + 250; // make sure you use the right bpm!!
         let conductor = this.conductor;
         Sup.log("timeoutMs: " + timeoutMs);
-        Sup.setTimeout(timeoutMs, function() { 
+        this.conductor.scheduleEvent(timeoutMs, function() { 
           conductor.activatePlayer("keys");
           Sup.log("keys activated for next cycle");
         });
         
         Sup.log("activating stretch");
         this.conductor.activatePlayer("stretch");
-        this.conductor.getPlayer("stretch").fade(1.0, this.conductor.getMillisecondsLeftUntilNextTransitionBeat());
+        this.conductor.getPlayer("stretch").fade(this.vol * 2, this.conductor.getMillisecondsLeftUntilNextTransitionBeat());
         Sup.log(this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + "ms");
       }
     }
@@ -269,10 +274,10 @@ class MusicConductorBehavior extends Sup.Behavior {
         
         if (!this.npcHasSung) {
           this.npcHasSung = true;
+          let conductor = this.conductor;
           
-          // this.conductor.activatePlayer("vox");
-          // let conductor = this.conductor;
-          // Sup.setTimeout(this.conductor.getMillisecondsLeftUntilNextDownbeat() * 1.5, function() {
+          this.conductor.activatePlayer("vox");
+          // this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextDownbeat() * 1.5, function() {
           //   conductor.deactivatePlayer("vox"); // we only let vox play once
           //   Sup.log("deactivated vox");
           // });
@@ -281,7 +286,6 @@ class MusicConductorBehavior extends Sup.Behavior {
           let vox = this.verseVocals;
           let ms = this.conductor.getMillisecondsLeftUntilNextDownbeat(); // 100ms offset?
           let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * this.conductor.getBpm();
-          let conductor = this.conductor;
           
           // timeout leads to unreliable performance timing
           // Sup.setTimeout(ms, function() {
@@ -293,9 +297,10 @@ class MusicConductorBehavior extends Sup.Behavior {
           //   Sup.log("playing vox!");
           // });
           
-          this.conductor.activatePlayer("vox");
-          
-          this.conductor.scheduleEvent(cycleMs*3 + ms, function() {
+          // activate rev afterwards
+          // let revMs = cycleMs*3 + ms;
+          let revMs = ms;
+          this.conductor.scheduleEvent(revMs, function() {
             conductor.activatePlayer("rev");
             Sup.log("activating rev");
           })
@@ -386,8 +391,8 @@ class MusicConductorBehavior extends Sup.Behavior {
     let msp_vox = new Sup.Audio.MultiSoundPlayer(
       path_vox,
       path_vox,
-      path_vox,
-      vol,
+      path_audio + "Tabs/" + "tail stretch.mp3",
+      vol * 0.75,
       {
         loop: true, // to prevent retriggering each cycle, since the vocal phrase is longer than a cycle
         active: false,

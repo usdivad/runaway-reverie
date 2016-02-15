@@ -83,6 +83,10 @@
         {
           "name": "npcHasSung",
           "type": "boolean"
+        },
+        {
+          "name": "vol",
+          "type": "number"
         }
       ]
     },
