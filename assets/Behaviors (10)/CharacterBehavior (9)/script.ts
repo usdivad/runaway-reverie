@@ -63,24 +63,29 @@ class CharacterBehavior extends Sup.Behavior {
     // set position and angles
     this.position.set(body.position.x, body.position.y - this.height/2, body.position.z);
     this.actor.setLocalEulerAngles(this.angles);
-    
-    // don't let player go under
-    if (this.position.y < this.height/2) {
-      // Sup.log("correcting y pos " + this.position.y);
-      this.position.y = this.height/2;
-      // body.position.y = this.height/2;
-    }
+  
     
     // set velocities, world based on positions
     if (inDream) {
       this.velocity = 25;
-      world.gravity.set(0, 1, 0);
+      this.jumpVelocity = 0;
+      world.gravity.set(0, 5, 0);
     }
     else {
       this.velocity = 50; 
+      this.jumpVelocity = 50;
       world.gravity.set(0, -100, 0);
     }
-    this.jumpVelocity = this.velocity;
+    // this.jumpVelocity = this.velocity;
+    
+    // don't let player go under
+    if (body.position.y < 0 && !inDream) {
+      // Sup.log("correcting y pos " + this.position.y);
+      // body.position.y += 0.1;
+      // body.position.y = this.height/2;
+      world.gravity.set(0, 200, 0);
+      this.canJump = true;
+    }
     
     // direction
     this.direction = new Sup.Math.Vector3(0, 0, 0); // temporary
