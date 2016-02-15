@@ -135,6 +135,7 @@ class MusicConductorBehavior extends Sup.Behavior {
 
         // reset so npc can sing again
         this.npcHasSung = false;
+        Sup.log("npcHasSung reset");
         
         // let musicConductorBehavior = this;
         // this.transitioning = true;
@@ -150,6 +151,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         // this.params_instrumentalEntrance.players["rev"].deactivate();
         this.params_instrumentalEntrance.players["vox"].deactivate();
         this.params_instrumentalEntrance.players["vox"].setVolume(this.vol * 0.75);
+        this.params_instrumentalEntrance.players["vox"].reset();
         
         // reactivate keys for cycle after next one
         let timeoutMs = this.conductor.getMillisecondsLeftUntilNextDownbeat(this.params_instrumentalEntrance.bpm) + 250; // make sure you use the right bpm!!
@@ -268,7 +270,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     
     // NPC vocalist
-    if (this.phrase == "instrumental entrance") {
+    if (this.phrase == "instrumental entrance" && !this.conductor.isTransitioning()) {
       let npc = Sup.getActor("NPC Vocalist");
       if (npc["__behaviors"]["NPCBehavior"][0].readyToSing) {
         
@@ -276,6 +278,9 @@ class MusicConductorBehavior extends Sup.Behavior {
           this.npcHasSung = true;
           let conductor = this.conductor;
           
+          Sup.log("npc is singing");
+          
+          this.conductor.getPlayer("vox").fade(this.vol * 0.75, 250);
           this.conductor.activatePlayer("vox");
           // this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextDownbeat() * 1.5, function() {
           //   conductor.deactivatePlayer("vox"); // we only let vox play once
@@ -306,6 +311,9 @@ class MusicConductorBehavior extends Sup.Behavior {
           })
           
           Sup.log(ms);
+        }
+        else {
+          Sup.log("sorry, npc already sang)");
         }
       }
     }

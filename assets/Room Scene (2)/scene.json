@@ -590,7 +590,7 @@
         {
           "type": "CannonBody",
           "config": {
-            "mass": 10,
+            "mass": 0,
             "fixedRotation": true,
             "offset": {
               "x": 0,

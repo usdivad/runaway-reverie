@@ -33,9 +33,16 @@ class NPCBehavior extends Sup.Behavior {
     // animation, singing
     let animation = "Idle";
     if (this.distanceToPlayer < 30) {
-      animation = "Fight";
       this.readyToSing = true;
     }
+    else if (playerActor.getPosition().x < -100) {
+      this.readyToSing = false;
+    }
+    
+    if (this.readyToSing) {
+      animation = "Fight";
+    }
+    
     this.actor.modelRenderer.setAnimation(animation);
   }
 }
