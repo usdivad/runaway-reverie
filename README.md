@@ -1,5 +1,7 @@
 #Narcissus' Reverie
 
+[Play on itch.io](https://usdivad.itch.io/narcissus-reverie) | [Play on usdivad.com](http://usdivad.com/narcissusreverie)
+
 An interactive song / music game for digital dreamers. This current demo includes two contrasting sections.
 
 Use WASD or arrow keys to move, space to jump.
