@@ -23,17 +23,20 @@ class CharacterBehavior extends Sup.Behavior {
   // }
 
   awake() {
-    // angle and position
+    // angle
     let angle = this.actor.getLocalEulerAngles().y;
-    // this.position = this.actor.getLocalPosition();
-    this.position = new Sup.Math.Vector3(0, 0, 25);
     this.angles.y = angle;
+
+    // position
+    // this.position = this.actor.getLocalPosition();
+    let posOffsetY = 50;
+    this.position = new Sup.Math.Vector3(0, posOffsetY, 25);
     
     // orientation
     this.actor.setOrientation(new Sup.Math.Quaternion(0, 180, 0));
     
     // cannon body
-    this.actor.cannonBody.body.position.set(this.position.x, this.height/2, this.position.z);
+    this.actor.cannonBody.body.position.set(this.position.x, posOffsetY + this.height/2, this.position.z); // should just about match actor position
     this.actor.cannonBody.body.velocity.x = Math.sin(angle) * this.velocity;
     this.actor.cannonBody.body.velocity.z = Math.cos(angle) * this.velocity;
     this.actor.cannonBody.body.material = playerMaterial;
