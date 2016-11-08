@@ -555,7 +555,7 @@
                 "receiveShadow": true,
                 "color": "e6fbe4",
                 "overrideOpacity": true,
-                "opacity": null,
+                "opacity": 0.85,
                 "materialType": "basic",
                 "shaderAssetId": null
               },
@@ -626,7 +626,7 @@
                 "receiveShadow": true,
                 "color": "e6fbe4",
                 "overrideOpacity": true,
-                "opacity": null,
+                "opacity": 0.85,
                 "materialType": "basic",
                 "shaderAssetId": null
               },
