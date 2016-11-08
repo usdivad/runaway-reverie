@@ -440,7 +440,7 @@
           "position": {
             "x": 100,
             "y": 0,
-            "z": 50
+            "z": 100
           },
           "orientation": {
             "x": 0,
@@ -505,6 +505,148 @@
           "scale": {
             "x": 200,
             "y": 200,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "25",
+          "name": "OpeningPlatformFloorSouth",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 200,
+                  "z": 1
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "CubicModelRenderer",
+              "config": {
+                "cubicModelAssetId": "95"
+              },
+              "id": "1"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": null,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 50,
+            "z": 0
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 200,
+            "y": 100,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "26",
+          "name": "OpeningPlatformFloorNorth",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 200,
+                  "z": 1
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "CubicModelRenderer",
+              "config": {
+                "cubicModelAssetId": "95"
+              },
+              "id": "1"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": null,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 50,
+            "z": -100
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 125,
+            "y": 100,
             "z": 1
           },
           "visible": true,
