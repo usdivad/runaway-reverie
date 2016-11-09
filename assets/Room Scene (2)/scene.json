@@ -192,7 +192,7 @@
                 "halfSize": {
                   "x": 200,
                   "y": 200,
-                  "z": 1
+                  "z": 10
                 },
                 "radius": 1,
                 "height": 1
@@ -238,7 +238,7 @@
           "scale": {
             "x": 200,
             "y": 200,
-            "z": 1
+            "z": 10
           },
           "visible": true,
           "layer": 0,
@@ -529,20 +529,13 @@
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
-                  "y": 200,
-                  "z": 1
+                  "y": 100,
+                  "z": 10
                 },
                 "radius": 1,
                 "height": 1
               },
               "id": "0"
-            },
-            {
-              "type": "CubicModelRenderer",
-              "config": {
-                "cubicModelAssetId": "95"
-              },
-              "id": "1"
             },
             {
               "type": "SpriteRenderer",
@@ -565,10 +558,10 @@
           "position": {
             "x": -100,
             "y": 50,
-            "z": 0
+            "z": 100
           },
           "orientation": {
-            "x": 0.7071067811865475,
+            "x": -0.7071067811865475,
             "y": 0,
             "z": 0,
             "w": 0.7071067811865476
@@ -576,7 +569,7 @@
           "scale": {
             "x": 200,
             "y": 100,
-            "z": 1
+            "z": 10
           },
           "visible": true,
           "layer": 0,
@@ -599,21 +592,14 @@
                 },
                 "shape": "box",
                 "halfSize": {
-                  "x": 200,
-                  "y": 200,
-                  "z": 1
+                  "x": 100,
+                  "y": 100,
+                  "z": 10
                 },
                 "radius": 1,
                 "height": 1
               },
               "id": "0"
-            },
-            {
-              "type": "CubicModelRenderer",
-              "config": {
-                "cubicModelAssetId": "95"
-              },
-              "id": "1"
             },
             {
               "type": "SpriteRenderer",
@@ -645,9 +631,9 @@
             "w": 0.7071067811865476
           },
           "scale": {
-            "x": 125,
+            "x": 100,
             "y": 100,
-            "z": 1
+            "z": 10
           },
           "visible": true,
           "layer": 0,
