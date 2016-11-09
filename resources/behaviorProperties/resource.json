@@ -12,6 +12,10 @@
         {
           "name": "isJumping",
           "type": "boolean"
+        },
+        {
+          "name": "isDreaming",
+          "type": "boolean"
         }
       ]
     },
@@ -112,6 +116,12 @@
           "type": "boolean"
         }
       ]
+    },
+    "PlatformBehavior": {
+      "scriptId": "137",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }

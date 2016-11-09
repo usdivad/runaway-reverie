@@ -809,6 +809,14 @@
                 "shaderAssetId": null
               },
               "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
             }
           ],
           "position": {
@@ -873,6 +881,14 @@
                 "shaderAssetId": null
               },
               "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
             }
           ],
           "position": {

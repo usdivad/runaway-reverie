@@ -12,6 +12,7 @@ class CharacterBehavior extends Sup.Behavior {
   private canMove = true;
   public isMoving = false;
   public isJumping = false;
+  public isDreaming = false;
 
   // model
   private modelRenderer: Sup.ModelRenderer;
@@ -73,11 +74,13 @@ class CharacterBehavior extends Sup.Behavior {
       this.velocity = 25;
       this.jumpVelocity = 0;
       world.gravity.set(0, 5, 0);
+      this.isDreaming = true;
     }
     else {
       this.velocity = 50; 
       this.jumpVelocity = 50;
       world.gravity.set(0, -100, 0);
+      this.isDreaming = false;
     }
     // this.jumpVelocity = this.velocity;
     
