@@ -218,34 +218,37 @@ class MusicConductorBehavior extends Sup.Behavior {
       }
       
       
-      // section-based adjustments
-      switch (this.currentSection) {
-        case 0:
+      // section-based instrumental adjustments
+      if (this.currentSection > 0 && this.currentSection < 5) {
+        // activate bass and fade-in drums if they haven't entered before
+        if (!this.drumsAndBassHaveEntered) { 
+          // bass
           if (this.conductor.getPlayer("bass")) {
-            this.conductor.deactivatePlayer("bass");
+            this.conductor.activatePlayer("bass");
+            Sup.log("player has moved; activating bass for the next cycle");
           }
-          if (this.conductor.getPlayer("drums")) {
-            this.conductor.getPlayer("drums").fade(0, 250);
-          }
-          this.drumsAndBassHaveEntered = false;
-          break;
-        case 1:
-          // activate bass and fade-in drums if they haven't entered before
-          if (!this.drumsAndBassHaveEntered) { 
-            // bass
-            if (this.conductor.getPlayer("bass")) {
-              this.conductor.activatePlayer("bass");
-              Sup.log("player has moved; activating bass for the next cycle");
-            }
-            this.drumsAndBassHaveEntered = true;
+          this.drumsAndBassHaveEntered = true;
 
-            // drums
-            if (this.conductor.getPlayer("drums")) {
-              this.conductor.getPlayer("drums").fade(this.vol, 250);
-              Sup.log("fading drums in");
-            }
+          // drums
+          if (this.conductor.getPlayer("drums")) {
+            this.conductor.getPlayer("drums").fade(this.vol, 250);
+            Sup.log("fading drums in");
           }
-          break;
+        }
+      }
+      else {
+        // deactivate n fade out
+        if (this.conductor.getPlayer("bass")) {
+          this.conductor.deactivatePlayer("bass");
+        }
+        if (this.conductor.getPlayer("drums")) {
+          this.conductor.getPlayer("drums").fade(0, 250);
+        }
+        this.drumsAndBassHaveEntered = false;
+      }
+      
+      if (this.currentSection == 5) {
+        // switcheroo segment
       }
       
     }
