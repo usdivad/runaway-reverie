@@ -27,7 +27,7 @@ class MusicConductorBehavior extends Sup.Behavior {
   currentSection: number;
   
   awake() {
-    this.logOutput = true;
+    this.logOutput = false;
     
     this.currentSection = 0;
 
@@ -84,7 +84,9 @@ class MusicConductorBehavior extends Sup.Behavior {
     this.playerPreviouslyCouldJump = playerActor["__behaviors"]["CharacterBehavior"][0].canJump;
     let playerIsJumping = playerActor["__behaviors"]["CharacterBehavior"][0].isJumping;
 
-        
+    // current section
+    this.updateCurrentSection();
+    
     // location-based adjustments
     if (playerActor.getBehavior(CharacterBehavior).isDreaming) {
       
@@ -494,8 +496,33 @@ class MusicConductorBehavior extends Sup.Behavior {
   }
   */
 
-  calculateCurrentSection() {
+  // this is slightly different from "phrase", since this determines section withIN the main phrase
+  updateCurrentSection() {
+    let playerActor = Sup.getActor("Player");
+    let playerPosition = playerActor.cannonBody.body.position;
+    let playerY = playerPosition.y;
     
+    if (playerY >= 600) {
+      this.currentSection = 0;
+    }
+    else if (playerY >= 500) {
+      this.currentSection = 1;
+    }
+    else if (playerY >= 400) {
+      this.currentSection = 2;
+    }
+    else if (playerY >= 300) {
+      this.currentSection = 3;
+    }
+    else if (playerY >= 200) {
+      this.currentSection = 4;
+    }
+    else if (playerY >= 100) {
+      this.currentSection = 5;
+    }
+    else {
+      this.currentSection = 6;
+    }
   }
 }
 Sup.registerBehavior(MusicConductorBehavior);
