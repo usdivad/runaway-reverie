@@ -13,6 +13,7 @@ class CharacterBehavior extends Sup.Behavior {
   public isMoving = false;
   public isJumping = false;
   public isDreaming = false;
+  public currentQuadrant = 1; // cartesian; 1-4
 
   // model
   private modelRenderer: Sup.ModelRenderer;
@@ -158,6 +159,9 @@ class CharacterBehavior extends Sup.Behavior {
     
     this.modelRenderer.setAnimation(animation);
     
+    // current quadrant
+    this.currentQuadrant = this.calculateCurrentQuadrant();
+    
     // Sup.log("vel: " + body.velocity);
     // Sup.log("pos: " + body.position);
   }
@@ -170,6 +174,27 @@ class CharacterBehavior extends Sup.Behavior {
             this.position.z < 0 - threshZ ||
             this.position.z > threshZ
            );
+  }
+
+  calculateCurrentQuadrant(): number {
+    let q = 1;
+    if (this.position.z < 0) {
+      if (this.position.x >= 0) {
+        q = 1;
+      }
+      else {
+        q = 2;
+      }
+    }
+    else {
+      if (this.position.x >= 0) {
+        q = 4;
+      }
+      else {
+        q = 3;
+      }
+    }
+    return q;
   }
 }
 

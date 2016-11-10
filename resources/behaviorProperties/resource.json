@@ -16,6 +16,10 @@
         {
           "name": "isDreaming",
           "type": "boolean"
+        },
+        {
+          "name": "currentQuadrant",
+          "type": "number"
         }
       ]
     },
@@ -58,6 +62,10 @@
         },
         {
           "name": "drumsAndBassHaveEntered",
+          "type": "boolean"
+        },
+        {
+          "name": "bridgeInstsHaveEntered",
           "type": "boolean"
         },
         {

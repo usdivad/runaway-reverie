@@ -11,6 +11,7 @@ class MusicConductorBehavior extends Sup.Behavior {
   verseVocals: Sup.Audio.SoundPlayer;
 
   drumsAndBassHaveEntered: boolean;
+  bridgeInstsHaveEntered: boolean;
 
   playerPreviouslyCouldJump: boolean;
   playerWasJumping: boolean;
@@ -72,7 +73,9 @@ class MusicConductorBehavior extends Sup.Behavior {
     this.playerPreviouslyCouldJump = true;
     this.playerWasJumping = false;
     
+    // sections
     this.drumsAndBassHaveEntered = false;
+    this.bridgeInstsHaveEntered = false;
     
     this.transitioning = false;
     
@@ -105,7 +108,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         
         // deactivate/mute players
         this.params_tabTest.players["stretch"].setVolume(0);
-        this.conductor.getPlayer("vox").fade(0, this.conductor.getMillisecondsLeftUntilNextTransitionBeat());
+        this.conductor.fadePlayer("vox", 0, this.conductor.getMillisecondsLeftUntilNextTransitionBeat());
         
         // let musicConductorBehavior = this;
         // this.transitioning = true;
@@ -219,36 +222,68 @@ class MusicConductorBehavior extends Sup.Behavior {
       
       
       // section-based instrumental adjustments
+      
+      // drums n bass
       if (this.currentSection > 0 && this.currentSection < 5) {
         // activate bass and fade-in drums if they haven't entered before
         if (!this.drumsAndBassHaveEntered) { 
           // bass
-          if (this.conductor.getPlayer("bass")) {
-            this.conductor.activatePlayer("bass");
-            Sup.log("player has moved; activating bass for the next cycle");
-          }
+          this.conductor.activatePlayer("bass");
+          Sup.log("player has moved; activating bass for the next cycle");
           this.drumsAndBassHaveEntered = true;
 
           // drums
-          if (this.conductor.getPlayer("drums")) {
-            this.conductor.getPlayer("drums").fade(this.vol, 250);
-            Sup.log("fading drums in");
-          }
+          this.conductor.fadePlayer("drums", this.vol, 250);
+          Sup.log("fading drums in");
         }
       }
       else {
         // deactivate n fade out
-        if (this.conductor.getPlayer("bass")) {
-          this.conductor.deactivatePlayer("bass");
-        }
-        if (this.conductor.getPlayer("drums")) {
-          this.conductor.getPlayer("drums").fade(0, 250);
-        }
+        this.conductor.deactivatePlayer("bass");
+        this.conductor.fadePlayer("drums", 0, 250);
         this.drumsAndBassHaveEntered = false;
       }
       
+      // verse 2
+      if (this.currentSection == 4) {
+        // TODO: switch verse vox
+        }
+      else {
+      }
+      
+      // bridge
       if (this.currentSection == 5) {
+        if (!this.bridgeInstsHaveEntered) {
+          this.conductor.fadePlayers(["riff", "drums", "rev", "vox", "verse2_blakiesoph", "verse2_orchestral"], 0, 250);
+          this.conductor.deactivatePlayers(["keys", "bass", "cello"]);
+          this.conductor.fadePlayer("bridge_keys", this.vol, 250);
+          this.bridgeInstsHaveEntered = true;
+        }
+        
         // switcheroo segment
+        let playerQuadrant = playerActor.getBehavior(CharacterBehavior).currentQuadrant;
+        switch (playerQuadrant) {
+          case 1:
+            //this.conductor.activatePlayer("bridge_chip");
+            this.conductor.fadePlayer("bridge_chip", this.vol, 100);
+            break;
+          case 2:
+            this.conductor.fadePlayer("bridge_synth", this.vol * 1.5, 250);
+            break;
+          case 3:
+            this.conductor.fadePlayer("bridge_cello", this.vol, 250);
+            break;
+          case 4:
+            this.conductor.fadePlayer("bridge_chopvox", this.vol, 250);
+            break;
+        }
+        
+      }
+      else {
+        this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
+        // this.conductor.fadePlayer("bridge_chip", 0, 250);
+        this.conductor.fadePlayer("riff", this.vol, 250);
+        this.conductor.activatePlayer("cello");
       }
       
     }
@@ -426,8 +461,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
     
     // bridge - chip
@@ -436,8 +471,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
     
     // bridge - cello
@@ -446,8 +481,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
     
     // bridge - keys
@@ -456,8 +491,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
     
     // bridge - chop vox
@@ -466,8 +501,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
     
     // vox
