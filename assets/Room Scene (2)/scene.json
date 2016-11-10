@@ -203,6 +203,78 @@
           "prefab": null
         },
         {
+          "id": "35",
+          "name": "FirstPlatformBarrierZ",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 15,
+                  "z": 10
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.85,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
+            }
+          ],
+          "position": {
+            "x": 0,
+            "y": 150,
+            "z": 100
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0.7071067811865475,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 200,
+            "y": 20,
+            "z": 10
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
           "id": "29",
           "name": "FirstPlatformFloorSouth",
           "children": [],
@@ -340,6 +412,78 @@
           "scale": {
             "x": 100,
             "y": 100,
+            "z": 10
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "34",
+          "name": "SecondPlatformBarrierX",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 15,
+                  "z": 10
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.85,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 100,
+            "z": 0
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 200,
+            "y": 20,
             "z": 10
           },
           "visible": true,
@@ -491,6 +635,150 @@
           "prefab": null
         },
         {
+          "id": "32",
+          "name": "ThirdPlatformBarrierX",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 15,
+                  "z": 10
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.85,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 50,
+            "z": 0
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 200,
+            "y": 20,
+            "z": 10
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "33",
+          "name": "ThirdPlatformBarrierZ",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 15,
+                  "z": 10
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.85,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
+            }
+          ],
+          "position": {
+            "x": 0,
+            "y": 50,
+            "z": 100
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0.7071067811865475,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 200,
+            "y": 20,
+            "z": 10
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
           "id": "27",
           "name": "ThirdPlatformFloorSouth",
           "children": [],
@@ -579,7 +867,7 @@
                 },
                 "shape": "box",
                 "halfSize": {
-                  "x": 100,
+                  "x": 200,
                   "y": 100,
                   "z": 10
                 },
@@ -626,7 +914,7 @@
             "w": 0.7071067811865476
           },
           "scale": {
-            "x": 100,
+            "x": 200,
             "y": 100,
             "z": 10
           },
