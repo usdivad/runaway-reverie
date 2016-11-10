@@ -30,8 +30,10 @@ class CharacterBehavior extends Sup.Behavior {
 
     // position
     // this.position = this.actor.getLocalPosition();
+    let posOffsetX = -50;
     let posOffsetY = 200;
-    this.position = new Sup.Math.Vector3(0, posOffsetY, 25);
+    let posOffsetZ = 75;
+    this.position = new Sup.Math.Vector3(posOffsetX, posOffsetY, posOffsetZ);
     
     // orientation
     this.actor.setOrientation(new Sup.Math.Quaternion(0, 180, 0));

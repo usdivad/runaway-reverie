@@ -16,10 +16,10 @@ class PlatformBehavior extends Sup.Behavior {
     // opacity
     if (playerY > pos.y) { // above platform
       // Sup.log(playerY + " > " + this.actor.getPosition().y);
-      this.actor.spriteRenderer.setOpacity(0.85);
+      this.actor.spriteRenderer.setOpacity(0.9);
     }
     else { // below platform
-      this.actor.spriteRenderer.setOpacity(0.45);
+      this.actor.spriteRenderer.setOpacity(0.5);
     }
     
     // cannonbody box for dreaming up

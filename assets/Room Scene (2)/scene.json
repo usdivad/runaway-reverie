@@ -149,33 +149,8 @@
       "name": "Room",
       "children": [
         {
-          "id": "4",
-          "name": "Walls",
-          "children": [],
-          "components": [],
-          "position": {
-            "x": 1.0966922303623505e-7,
-            "y": 5.221209917749547e-7,
-            "z": 9.41996631809161e-8
-          },
-          "orientation": {
-            "x": 0,
-            "y": 0,
-            "z": 0,
-            "w": 1
-          },
-          "scale": {
-            "x": 1,
-            "y": 1,
-            "z": 1
-          },
-          "visible": true,
-          "layer": 0,
-          "prefab": null
-        },
-        {
-          "id": "12",
-          "name": "Floor",
+          "id": "22",
+          "name": "Ceiling",
           "children": [],
           "components": [
             {
@@ -192,7 +167,7 @@
                 "halfSize": {
                   "x": 200,
                   "y": 200,
-                  "z": 10
+                  "z": 1
                 },
                 "radius": 1,
                 "height": 1
@@ -205,28 +180,11 @@
                 "cubicModelAssetId": "95"
               },
               "id": "1"
-            },
-            {
-              "type": "SpriteRenderer",
-              "config": {
-                "spriteAssetId": "7",
-                "animationId": null,
-                "horizontalFlip": false,
-                "verticalFlip": false,
-                "castShadow": false,
-                "receiveShadow": true,
-                "color": "e6fbe4",
-                "overrideOpacity": true,
-                "opacity": null,
-                "materialType": "basic",
-                "shaderAssetId": null
-              },
-              "id": "2"
             }
           ],
           "position": {
-            "x": -100,
-            "y": 0,
+            "x": -300,
+            "y": 1000,
             "z": -100
           },
           "orientation": {
@@ -238,7 +196,7 @@
           "scale": {
             "x": 200,
             "y": 200,
-            "z": 10
+            "z": 1
           },
           "visible": true,
           "layer": 0,
@@ -961,8 +919,33 @@
           "prefab": null
         },
         {
-          "id": "22",
-          "name": "Ceiling",
+          "id": "4",
+          "name": "Walls",
+          "children": [],
+          "components": [],
+          "position": {
+            "x": 1.0966922303623505e-7,
+            "y": 5.221210130912368e-7,
+            "z": 9.41996631809161e-8
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "12",
+          "name": "Floor",
           "children": [],
           "components": [
             {
@@ -979,7 +962,7 @@
                 "halfSize": {
                   "x": 200,
                   "y": 200,
-                  "z": 1
+                  "z": 10
                 },
                 "radius": 1,
                 "height": 1
@@ -992,11 +975,28 @@
                 "cubicModelAssetId": "95"
               },
               "id": "1"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": null,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
             }
           ],
           "position": {
-            "x": -300,
-            "y": 1000,
+            "x": -100,
+            "y": 0,
             "z": -100
           },
           "orientation": {
@@ -1008,7 +1008,7 @@
           "scale": {
             "x": 200,
             "y": 200,
-            "z": 1
+            "z": 10
           },
           "visible": true,
           "layer": 0,
