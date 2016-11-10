@@ -185,7 +185,7 @@
                 "receiveShadow": false,
                 "color": "ffffff",
                 "overrideOpacity": true,
-                "opacity": 0.44,
+                "opacity": 0,
                 "materialType": "basic",
                 "shaderAssetId": null
               },
@@ -194,7 +194,7 @@
           ],
           "position": {
             "x": -200,
-            "y": 700,
+            "y": 800,
             "z": -200
           },
           "orientation": {

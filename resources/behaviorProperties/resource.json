@@ -91,6 +91,10 @@
         {
           "name": "vol",
           "type": "number"
+        },
+        {
+          "name": "currentSection",
+          "type": "number"
         }
       ]
     },

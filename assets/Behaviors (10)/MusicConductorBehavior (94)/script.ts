@@ -23,9 +23,13 @@ class MusicConductorBehavior extends Sup.Behavior {
   npcHasSung: boolean;
 
   vol: number;
+
+  currentSection: number;
   
   awake() {
     this.logOutput = true;
+    
+    this.currentSection = 0;
 
     let vol = 0.5;
     let path_audio = "Audio/";
@@ -74,7 +78,7 @@ class MusicConductorBehavior extends Sup.Behavior {
   }
 
   update() {
-    // let playerActor = Sup.getActor("Player");
+    let playerActor = Sup.getActor("Player");
     let playerPosition = playerActor.cannonBody.body.position;
     let playerIsMoving = playerActor["__behaviors"]["CharacterBehavior"][0].isMoving;
     this.playerPreviouslyCouldJump = playerActor["__behaviors"]["CharacterBehavior"][0].canJump;
@@ -82,7 +86,7 @@ class MusicConductorBehavior extends Sup.Behavior {
 
         
     // location-based adjustments
-    if (playerPosition.x < -100 /* && !this.transitioning */) {
+    if (playerActor.getBehavior(CharacterBehavior).isDreaming) {
       
       // switch to tab section
       if (this.phrase != "tab test") {
@@ -489,5 +493,9 @@ class MusicConductorBehavior extends Sup.Behavior {
     
   }
   */
+
+  calculateCurrentSection() {
+    
+  }
 }
 Sup.registerBehavior(MusicConductorBehavior);
