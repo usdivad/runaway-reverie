@@ -172,7 +172,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         
         Sup.log("activating stretch");
         this.conductor.activatePlayer("stretch");
-        this.conductor.getPlayer("stretch").fade(this.vol * 2, this.conductor.getMillisecondsLeftUntilNextTransitionBeat());
+        this.conductor.fadePlayer("stretch", this.vol * 2, this.conductor.getMillisecondsLeftUntilNextTransitionBeat());
         Sup.log(this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + "ms");
       }
     }
@@ -321,7 +321,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           Sup.log("npc is singing");
           
           // start singing
-          this.conductor.getPlayer("vox").fade(this.vol * 0.75, 250);
+          this.conductor.fadePlayer("vox", this.vol * 0.75, 250);
           this.conductor.activatePlayer("vox");
           
           // // we only let vox play once
