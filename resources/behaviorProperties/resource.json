@@ -57,7 +57,7 @@
           "type": "any"
         },
         {
-          "name": "playerHasMoved",
+          "name": "drumsAndBassHaveEntered",
           "type": "boolean"
         },
         {

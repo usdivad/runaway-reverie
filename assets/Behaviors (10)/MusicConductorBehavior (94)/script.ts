@@ -10,7 +10,8 @@ class MusicConductorBehavior extends Sup.Behavior {
   chimeagain: any;
   verseVocals: Sup.Audio.SoundPlayer;
 
-  playerHasMoved: boolean;
+  drumsAndBassHaveEntered: boolean;
+
   playerPreviouslyCouldJump: boolean;
   playerWasJumping: boolean;
 
@@ -50,7 +51,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     Sup.log(this.conductor);
     
   
-    // activate keys for second cycle
+    // activate keys for second cycle regardless of action
     let conductor = this.conductor;
     this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextDownbeat()-100, function() {
       conductor.activatePlayer("keys");
@@ -68,9 +69,10 @@ class MusicConductorBehavior extends Sup.Behavior {
     this.celloFadeVolMin = 0.0;
     
     // player stuff
-    this.playerHasMoved = false;
     this.playerPreviouslyCouldJump = true;
     this.playerWasJumping = false;
+    
+    this.drumsAndBassHaveEntered = false;
     
     this.transitioning = false;
     
@@ -175,19 +177,6 @@ class MusicConductorBehavior extends Sup.Behavior {
     // movement-based adjustments
     if (this.phrase == "instrumental entrance") {
       if (playerIsMoving) {
-        
-        // activate bass and fade-in drums if it's the first time the player has moved
-        if (!this.playerHasMoved) {
-          // bass
-          this.conductor.activatePlayer("bass");
-          this.playerHasMoved = true;
-          Sup.log("player has moved; activating bass for the next cycle");
-          
-          // drums
-          this.conductor.getPlayer("drums").fade(this.vol, 250);
-          Sup.log("fading drums in");
-        }
-        
         // cello fade in (manual)
         let cello = this.conductor.getPlayer("cello");
         if (cello && (cello.getVolume() < this.celloFadeVolMax)) {
@@ -227,6 +216,38 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.chimeagain[note].stop();
         this.chimeagain[note].play();
       }
+      
+      
+      // section-based adjustments
+      switch (this.currentSection) {
+        case 0:
+          if (this.conductor.getPlayer("bass")) {
+            this.conductor.deactivatePlayer("bass");
+          }
+          if (this.conductor.getPlayer("drums")) {
+            this.conductor.getPlayer("drums").fade(0, 250);
+          }
+          this.drumsAndBassHaveEntered = false;
+          break;
+        case 1:
+          // activate bass and fade-in drums if they haven't entered before
+          if (!this.drumsAndBassHaveEntered) { 
+            // bass
+            if (this.conductor.getPlayer("bass")) {
+              this.conductor.activatePlayer("bass");
+              Sup.log("player has moved; activating bass for the next cycle");
+            }
+            this.drumsAndBassHaveEntered = true;
+
+            // drums
+            if (this.conductor.getPlayer("drums")) {
+              this.conductor.getPlayer("drums").fade(this.vol, 250);
+              Sup.log("fading drums in");
+            }
+          }
+          break;
+      }
+      
     }
     else if (this.phrase == "tab test") {
       if (playerIsMoving) {
