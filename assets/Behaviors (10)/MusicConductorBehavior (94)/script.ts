@@ -400,6 +400,76 @@ class MusicConductorBehavior extends Sup.Behavior {
       {active: false, logOutput: this.logOutput}
     );
     
+    // verse 2 - blakiesoph
+    inst = "verse2_inst_blakiesoph";
+    let msp_verse2_blakiesoph = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false, logOutput: this.logOutput}
+    );
+    
+    // verse 2 - orchestral
+    inst = "verse2_inst_orchestral";
+    let msp_verse2_orchestral = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false, logOutput: this.logOutput}
+    );
+    
+    // bridge - synth
+    inst = "1 bridge synth freeze";
+    let msp_bridge_synth = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false, logOutput: this.logOutput}
+    );
+    
+    // bridge - chip
+    inst = "2 bridge chip freeze";
+    let msp_bridge_chip = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false, logOutput: this.logOutput}
+    );
+    
+    // bridge - cello
+    inst = "3 bridge cello freeze";
+    let msp_bridge_cello = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false, logOutput: this.logOutput}
+    );
+    
+    // bridge - keys
+    inst = "4 bridge keys freeze";
+    let msp_bridge_keys = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false, logOutput: this.logOutput}
+    );
+    
+    // bridge - chop vox
+    inst = "5 bridge chop vox freeze";
+    let msp_bridge_chopvox = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      vol,
+      {active: false, logOutput: this.logOutput}
+    );
+    
     // vox
     let path_vox = path_audio + "Verse/" + "v2_vox.mp3";
     let msp_vox = new Sup.Audio.MultiSoundPlayer(
@@ -430,13 +500,20 @@ class MusicConductorBehavior extends Sup.Behavior {
       bpm: 180,
       timesig: 15,
       players: {
-      "riff": msp_riff,
-      "drums": msp_drums,
-      "rev": msp_rev,
-      "bass": msp_bass,
-      "cello": msp_cello,
-      "keys": msp_keys,
-      "vox": msp_vox
+        "riff": msp_riff,
+        "drums": msp_drums,
+        "rev": msp_rev,
+        "bass": msp_bass,
+        "cello": msp_cello,
+        "keys": msp_keys,
+        "vox": msp_vox,
+        "verse2_blakiesoph": msp_verse2_blakiesoph,
+        "verse2_orchestral": msp_verse2_orchestral,
+        "bridge_synth": msp_bridge_synth,
+        "bridge_chip": msp_bridge_chip,
+        "bridge_cello": msp_bridge_cello,
+        "bridge_keys": msp_bridge_keys,
+        "bridge_chopvox": msp_bridge_chopvox,
       }
     };
   }
