@@ -73,9 +73,9 @@ class CharacterBehavior extends Sup.Behavior {
     
     // set velocities, world based on positions
     if (inDream) {
+      world.gravity.set(0, Math.max(10, this.velocity*2), 0);
       this.velocity = 25;
       this.jumpVelocity = 0;
-      world.gravity.set(0, 10, 0);
       this.isDreaming = true;
     }
     else {
