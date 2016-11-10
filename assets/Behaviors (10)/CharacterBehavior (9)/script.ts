@@ -61,7 +61,7 @@ class CharacterBehavior extends Sup.Behavior {
   update() {
     let body = this.actor.cannonBody.body;
     // let cameraman = Sup.getActor("Cameraman");
-    let inDream = (this.position.x < -100);
+    let inDream = this.calculateWhetherInDream();
     
     
     // set position and angles
@@ -158,6 +158,16 @@ class CharacterBehavior extends Sup.Behavior {
     
     // Sup.log("vel: " + body.velocity);
     // Sup.log("pos: " + body.position);
+  }
+
+  calculateWhetherInDream(): boolean {
+    let threshX = 100;
+    let threshZ = 100;
+    return (this.position.x < 0 - threshX ||
+            this.position.x > threshX ||
+            this.position.z < 0 - threshZ ||
+            this.position.z > threshZ
+           );
   }
 }
 

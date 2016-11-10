@@ -245,6 +245,150 @@
           "prefab": null
         },
         {
+          "id": "29",
+          "name": "FirstPlatformFloorSouth",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 100,
+                  "z": 10
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.85,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 150,
+            "z": 100
+          },
+          "orientation": {
+            "x": -0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 200,
+            "y": 100,
+            "z": 10
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "30",
+          "name": "FirstPlatformFloorNorth",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 100,
+                  "y": 100,
+                  "z": 10
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0.85,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
+            }
+          ],
+          "position": {
+            "x": -100,
+            "y": 150,
+            "z": -100
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 100,
+            "y": 100,
+            "z": 10
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
           "id": "25",
           "name": "SecondPlatformFloorSouth",
           "children": [],
@@ -533,150 +677,6 @@
           "prefab": null
         },
         {
-          "id": "29",
-          "name": "FirstPlatformFloorSouth",
-          "children": [],
-          "components": [
-            {
-              "type": "CannonBody",
-              "config": {
-                "mass": 0,
-                "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "shape": "box",
-                "halfSize": {
-                  "x": 200,
-                  "y": 100,
-                  "z": 10
-                },
-                "radius": 1,
-                "height": 1
-              },
-              "id": "0"
-            },
-            {
-              "type": "SpriteRenderer",
-              "config": {
-                "spriteAssetId": "7",
-                "animationId": null,
-                "horizontalFlip": false,
-                "verticalFlip": false,
-                "castShadow": false,
-                "receiveShadow": true,
-                "color": "e6fbe4",
-                "overrideOpacity": true,
-                "opacity": 0.85,
-                "materialType": "basic",
-                "shaderAssetId": null
-              },
-              "id": "2"
-            },
-            {
-              "type": "Behavior",
-              "config": {
-                "behaviorName": "PlatformBehavior",
-                "propertyValues": {}
-              },
-              "id": "3"
-            }
-          ],
-          "position": {
-            "x": -100,
-            "y": 150,
-            "z": 100
-          },
-          "orientation": {
-            "x": -0.7071067811865475,
-            "y": 0,
-            "z": 0,
-            "w": 0.7071067811865476
-          },
-          "scale": {
-            "x": 200,
-            "y": 100,
-            "z": 10
-          },
-          "visible": true,
-          "layer": 0,
-          "prefab": null
-        },
-        {
-          "id": "30",
-          "name": "FirstPlatformFloorNorth",
-          "children": [],
-          "components": [
-            {
-              "type": "CannonBody",
-              "config": {
-                "mass": 0,
-                "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "shape": "box",
-                "halfSize": {
-                  "x": 100,
-                  "y": 100,
-                  "z": 10
-                },
-                "radius": 1,
-                "height": 1
-              },
-              "id": "0"
-            },
-            {
-              "type": "SpriteRenderer",
-              "config": {
-                "spriteAssetId": "7",
-                "animationId": null,
-                "horizontalFlip": false,
-                "verticalFlip": false,
-                "castShadow": false,
-                "receiveShadow": true,
-                "color": "e6fbe4",
-                "overrideOpacity": true,
-                "opacity": 0.85,
-                "materialType": "basic",
-                "shaderAssetId": null
-              },
-              "id": "2"
-            },
-            {
-              "type": "Behavior",
-              "config": {
-                "behaviorName": "PlatformBehavior",
-                "propertyValues": {}
-              },
-              "id": "3"
-            }
-          ],
-          "position": {
-            "x": -100,
-            "y": 150,
-            "z": -100
-          },
-          "orientation": {
-            "x": 0.7071067811865475,
-            "y": 0,
-            "z": 0,
-            "w": 0.7071067811865476
-          },
-          "scale": {
-            "x": 100,
-            "y": 100,
-            "z": 10
-          },
-          "visible": true,
-          "layer": 0,
-          "prefab": null
-        },
-        {
           "id": "17",
           "name": "WallSouth",
           "children": [],
@@ -720,7 +720,7 @@
                 "receiveShadow": true,
                 "color": "e6fbe4",
                 "overrideOpacity": true,
-                "opacity": 0.51,
+                "opacity": 0,
                 "materialType": "basic",
                 "shaderAssetId": null
               },
@@ -730,7 +730,7 @@
           "position": {
             "x": -100,
             "y": 0,
-            "z": 100
+            "z": 125
           },
           "orientation": {
             "x": 0,
@@ -791,7 +791,7 @@
                 "receiveShadow": true,
                 "color": "e6fbe4",
                 "overrideOpacity": true,
-                "opacity": 0.52,
+                "opacity": 0,
                 "materialType": "basic",
                 "shaderAssetId": null
               },
@@ -801,7 +801,7 @@
           "position": {
             "x": -100,
             "y": 0,
-            "z": -100
+            "z": -125
           },
           "orientation": {
             "x": 0,
@@ -862,7 +862,7 @@
                 "receiveShadow": true,
                 "color": "e6fbe4",
                 "overrideOpacity": true,
-                "opacity": 0.54,
+                "opacity": 0,
                 "materialType": "basic",
                 "shaderAssetId": null
               },
@@ -870,7 +870,78 @@
             }
           ],
           "position": {
-            "x": 100,
+            "x": 125,
+            "y": 0,
+            "z": 100
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0.7071067811865475,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 200,
+            "y": 200,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "31",
+          "name": "WallWest",
+          "children": [],
+          "components": [
+            {
+              "type": "CannonBody",
+              "config": {
+                "mass": 0,
+                "fixedRotation": false,
+                "offset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "shape": "box",
+                "halfSize": {
+                  "x": 200,
+                  "y": 200,
+                  "z": 1
+                },
+                "radius": 1,
+                "height": 1
+              },
+              "id": "0"
+            },
+            {
+              "type": "CubicModelRenderer",
+              "config": {
+                "cubicModelAssetId": "95"
+              },
+              "id": "1"
+            },
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "7",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": true,
+                "color": "e6fbe4",
+                "overrideOpacity": true,
+                "opacity": 0,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": -125,
             "y": 0,
             "z": 100
           },
