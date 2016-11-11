@@ -246,9 +246,11 @@ class MusicConductorBehavior extends Sup.Behavior {
       
       // verse 2
       if (this.currentSection == 4) {
+        
         // TODO: switch verse vox
         }
       else {
+        
       }
       
       // bridge
@@ -265,7 +267,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         switch (playerQuadrant) {
           case 1:
             //this.conductor.activatePlayer("bridge_chip");
-            this.conductor.fadePlayer("bridge_chip", this.vol, 100);
+            this.conductor.fadePlayer("bridge_chip", this.vol * 0.75, 100);
             break;
           case 2:
             this.conductor.fadePlayer("bridge_synth", this.vol * 1.5, 250);

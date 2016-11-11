@@ -1967,7 +1967,7 @@
         {
           "type": "CannonBody",
           "config": {
-            "mass": 0,
+            "mass": 10,
             "fixedRotation": true,
             "offset": {
               "x": 0,
@@ -1995,15 +1995,53 @@
         }
       ],
       "position": {
-        "x": 85,
-        "y": 2,
+        "x": -85,
+        "y": 410,
         "z": -60
       },
       "orientation": {
         "x": 0,
-        "y": -0.3420201433256687,
+        "y": 0,
         "z": 0,
-        "w": 0.9396926207859084
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": null
+    },
+    {
+      "id": "44",
+      "name": "Subtitles",
+      "children": [],
+      "components": [
+        {
+          "type": "TextRenderer",
+          "config": {
+            "fontAssetId": null,
+            "text": "Text",
+            "alignment": "center",
+            "size": null,
+            "color": null,
+            "verticalAlignment": "center"
+          },
+          "id": "0"
+        }
+      ],
+      "position": {
+        "x": -37.5,
+        "y": 400,
+        "z": 325.85400390625
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
       },
       "scale": {
         "x": 1,

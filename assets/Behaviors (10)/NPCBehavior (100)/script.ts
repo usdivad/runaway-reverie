@@ -7,7 +7,8 @@ class NPCBehavior extends Sup.Behavior {
   readyToSing: boolean;
   
   awake() {
-    this.position = new Sup.Math.Vector3(90, 0, -50); // coordinates
+    //this.position = new Sup.Math.Vector3(-85, 410, -60); // coordinates
+    this.position = this.actor.getPosition();
     this.angle = this.actor.getLocalEulerY();
     // this.distanceToPlayer = this.position.distanceTo(playerActor.getPosition());
     this.readyToSing = false;
@@ -34,8 +35,9 @@ class NPCBehavior extends Sup.Behavior {
     let animation = "Idle";
     if (this.distanceToPlayer < 30) {
       this.readyToSing = true;
+      Sup.log("npc ready to sing");
     }
-    else if (playerActor.getPosition().x < -100) {
+    else if (playerActor.getPosition().x >= -100) {
       this.readyToSing = false;
     }
     
