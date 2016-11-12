@@ -36,6 +36,12 @@ function normalizeSum(numbers) {
   return normalizedSum;
 }
 
+// Calculate the distance between two actors
 function calculateDistanceBetweenActorPositions(pos1: Sup.Math.Vector3, pos2: Sup.Math.Vector3) {
   return pos1.clone().subtract(pos2).length();
+}
+
+// Set text for the Subtitles actor
+function setSubtitles(text: string) {
+  Sup.getActor("Subtitles").textRenderer.setText(text);
 }

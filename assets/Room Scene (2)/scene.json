@@ -2020,44 +2020,6 @@
       "prefab": null
     },
     {
-      "id": "44",
-      "name": "Subtitles",
-      "children": [],
-      "components": [
-        {
-          "type": "TextRenderer",
-          "config": {
-            "fontAssetId": null,
-            "text": "Text",
-            "alignment": "center",
-            "size": null,
-            "color": null,
-            "verticalAlignment": "center"
-          },
-          "id": "0"
-        }
-      ],
-      "position": {
-        "x": -37.5,
-        "y": 400,
-        "z": 325.85400390625
-      },
-      "orientation": {
-        "x": 0,
-        "y": 0,
-        "z": 0,
-        "w": 1
-      },
-      "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
-      },
-      "visible": true,
-      "layer": 0,
-      "prefab": null
-    },
-    {
       "id": "45",
       "name": "Verse 2 NPC 1",
       "children": [],
@@ -2276,6 +2238,52 @@
         "y": 1,
         "z": 0,
         "w": 6.123233995736766e-17
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": null
+    },
+    {
+      "id": "44",
+      "name": "Subtitles",
+      "children": [],
+      "components": [
+        {
+          "type": "TextRenderer",
+          "config": {
+            "fontAssetId": "160",
+            "text": "The clouds have gone missing again...",
+            "alignment": "center",
+            "size": null,
+            "color": null,
+            "verticalAlignment": "center"
+          },
+          "id": "0"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "SubtitlesBehavior",
+            "propertyValues": {}
+          },
+          "id": "1"
+        }
+      ],
+      "position": {
+        "x": -35,
+        "y": 210,
+        "z": 75
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
       },
       "scale": {
         "x": 1,

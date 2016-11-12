@@ -170,6 +170,12 @@
       "line": 0,
       "parentBehavior": null,
       "properties": []
+    },
+    "SubtitlesBehavior": {
+      "scriptId": "161",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }
