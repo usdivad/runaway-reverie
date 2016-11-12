@@ -109,11 +109,13 @@ class NPCBehavior extends Sup.Behavior {
     let body = this.actor.cannonBody.body;
     body.velocity.x = 0;
     body.velocity.z = 0;
-    if (this.selected && body.position.y < 250 && this.distanceToPlayer < 30) {
+    if (this.selected && body.position.y < 275 && this.distanceToPlayer < 30) {
       body.velocity.y = this.ascensionVelocity;
     }
     else {
-      body.velocity.y = 0 - this.ascensionVelocity;
+      if (this.selected) {
+        body.velocity.y = 0 - this.ascensionVelocity;
+      }
       
       // angle (easy way)
       if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15 && !playerActor.getBehavior(CharacterBehavior).isJumping) {
