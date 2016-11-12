@@ -118,10 +118,16 @@ class NPCBehavior extends Sup.Behavior {
       }
       
       // angle (easy way)
-      if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15 && !playerActor.getBehavior(CharacterBehavior).isJumping) {
+      if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15
+          && !playerActor.getBehavior(CharacterBehavior).isJumping
+          && Math.abs(body.position.y - this.originalPosition.y) <= 2) {
         this.actor.lookAt(playerActor.getPosition());
         this.actor.rotateEulerY(Math.PI); // offset
       }
+    }
+    
+    if (playerActor.getBehavior(CharacterBehavior).isDreaming) {
+      body.velocity.y = 0;
     }
   }
 }
