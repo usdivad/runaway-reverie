@@ -175,7 +175,12 @@
       "scriptId": "161",
       "line": 0,
       "parentBehavior": null,
-      "properties": []
+      "properties": [
+        {
+          "name": "playerHasMoved",
+          "type": "boolean"
+        }
+      ]
     }
   }
 }
