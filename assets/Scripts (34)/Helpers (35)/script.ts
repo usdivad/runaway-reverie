@@ -35,3 +35,7 @@ function normalizeSum(numbers) {
   }
   return normalizedSum;
 }
+
+function calculateDistanceBetweenActorPositions(pos1: Sup.Math.Vector3, pos2: Sup.Math.Vector3) {
+  return pos1.clone().subtract(pos2).length();
+}

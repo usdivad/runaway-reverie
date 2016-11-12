@@ -33,7 +33,7 @@ class CharacterBehavior extends Sup.Behavior {
     // position
     // this.position = this.actor.getLocalPosition();
     let posOffsetX = -60;
-    let posOffsetY = 225;
+    let posOffsetY = 605; // 605
     let posOffsetZ = 90;
     this.position = new Sup.Math.Vector3(posOffsetX, posOffsetY, posOffsetZ);
     
@@ -66,6 +66,7 @@ class CharacterBehavior extends Sup.Behavior {
     let body = this.actor.cannonBody.body;
     // let cameraman = Sup.getActor("Cameraman");
     let inDream = this.calculateWhetherInDream();
+    let inVerse2 = this.position.y >= 200;
     
     
     // set position and angles
@@ -170,36 +171,60 @@ class CharacterBehavior extends Sup.Behavior {
     // current quadrant
     this.currentQuadrant = this.calculateCurrentQuadrant();
     
-    // ray-casting based on orientation
-    let ray = new Sup.Math.Ray();
-    let orientation = playerActor.getOrientation();
-    let orientationY = orientation.y;
-    ray.setOrigin(body.position.x, 202, body.position.z);
-    // ray.setDirection(Math.sin(orientationY), 0, Math.cos(orientationY)); // double-check this..
-    // ray.setDirection(this.direction.x, 0, this.direction.y);
-    // ray.setDirection(orientation.x, orientation.y * 180, orientation.z);
     
-    // ray-casting with fixed direction
-    let rayX = this.rayMagnitude;
-    let rayY = this.rayMagnitude;
-    let rayZ = this.rayMagnitude;
-    
-    if (this.position.x > -50) {
-      rayX *= -1;
-    }
-    if (this.position.z > -25) {
-      rayZ *= -1;
-    }
-    
-    //ray.setDirection(0, rayY, 0);
-    // Sup.log("ray direction: " + ray.getDirection());
-    
-    ray.setFromCamera(Sup.getActor("Cameraman").camera, {x: 0, y: 0});
-    
-    // cast the ray
-    let hits = ray.intersectActors([Sup.getActor("Verse 2 NPC 1"), Sup.getActor("Verse 2 NPC 2"), Sup.getActor("Verse 2 NPC 3")]);
-    for (let hit of hits) {
-        Sup.log("raycast: " + hit.actor.getName() + ": " + hit.distance);
+    // verse 2!
+    if (inVerse2) {
+      // trying to get the right NPC for selection
+      let verse2Npcs = [Sup.getActor("Verse 2 NPC 1"), Sup.getActor("Verse 2 NPC 2"), Sup.getActor("Verse 2 NPC 3")];
+      
+      // ray-casting...
+      /*
+      let ray = new Sup.Math.Ray();
+      ray.setOrigin(body.position.x, 202, body.position.z);
+
+      // ... based on orientation
+      let orientation = playerActor.getOrientation();
+      let orientationY = orientation.y;
+      // ray.setDirection(Math.sin(orientationY), 0, Math.cos(orientationY)); // double-check this..
+      // ray.setDirection(this.direction.x, 0, this.direction.y);
+      // ray.setDirection(orientation.x, orientation.y * 180, orientation.z);
+
+      // ... based on fixed direction
+      let rayX = this.rayMagnitude;
+      let rayY = this.rayMagnitude;
+      let rayZ = this.rayMagnitude;
+
+      if (this.position.x > -50) {
+        rayX *= -1;
+      }
+      if (this.position.z > -25) {
+        rayZ *= -1;
+      }
+
+      //ray.setDirection(0, rayY, 0);
+      // Sup.log("ray direction: " + ray.getDirection());
+
+      // ... based on camera
+      ray.setFromCamera(Sup.getActor("Cameraman").camera, {x: 0, y: 0});
+
+      // cast the ray!
+      let hits = ray.intersectActors(verse2Npcs);
+      for (let hit of hits) {
+          Sup.log("raycast: " + hit.actor.getName() + ": " + hit.distance);
+      }
+      */
+
+      // using distance
+      let closestNpc = this.calculateClosestActor(verse2Npcs);
+      //Sup.log("closest verse 2 NPC: " + closestNpc.getName());
+      
+      // handling key press
+      if (Sup.Input.isKeyDown("E")) {
+        for (let npc of verse2Npcs) {
+          npc.getBehavior(NPCBehavior).selected = false;
+        }
+        closestNpc.getBehavior(NPCBehavior).selected = true;
+      }
     }
 
     // Sup.log("orientation: " + orientation);
@@ -236,6 +261,17 @@ class CharacterBehavior extends Sup.Behavior {
       }
     }
     return q;
+  }
+
+  calculateClosestActor(npcs: Sup.Actor[]): Sup.Actor {
+    let myPos = playerActor.getPosition();
+    let distances = npcs.map(function(npc) {
+      let pos = npc.getPosition();
+      return calculateDistanceBetweenActorPositions(pos, myPos);
+    });
+    let lowestDistanceIndex = distances.indexOf(Math.min.apply(Math, distances));
+    let closestNpc = npcs[lowestDistanceIndex];
+    return closestNpc;
   }
 }
 

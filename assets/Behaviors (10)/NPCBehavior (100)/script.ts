@@ -109,7 +109,7 @@ class NPCBehavior extends Sup.Behavior {
     let body = this.actor.cannonBody.body;
     body.velocity.x = 0;
     body.velocity.z = 0;
-    if (this.selected && body.position.y < 275 && this.distanceToPlayer < 30) {
+    if (this.selected && body.position.y < 275 && this.distanceToPlayer < 100) {
       body.velocity.y = this.ascensionVelocity;
     }
     else {
