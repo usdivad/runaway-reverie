@@ -285,8 +285,18 @@ class MusicConductorBehavior extends Sup.Behavior {
         // apply transition if necessary
         if (selectedNpcIdx != this.verse2SelectedNpcIdx) {
           let fadeLength = 100;
-          this.conductor.fadePlayers(instGroupNames[this.verse2SelectedNpcIdx], 0, fadeLength);
-          this.conductor.fadePlayers(instGroupNames[selectedNpcIdx], this.vol, fadeLength);
+          for (let i in instGroupNames) {
+            if (i == selectedNpcIdx) {
+              this.conductor.fadePlayers(instGroupNames[i], this.vol, fadeLength);
+            }
+            else {
+              this.conductor.fadePlayers(instGroupNames[i], 0, fadeLength);
+            }
+          }
+          
+          // this.conductor.fadePlayers(instGroupNames[this.verse2SelectedNpcIdx], 0, fadeLength);
+          // this.conductor.fadePlayers(instGroupNames[selectedNpcIdx], this.vol, fadeLength);
+          
           this.verse2SelectedNpcIdx = selectedNpcIdx;
         }
         
@@ -295,7 +305,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       // bridge
       else if (this.currentSection == 5) {
         if (!this.bridgeInstsHaveEntered) {
-          this.conductor.fadePlayers(["riff", "drums", "rev", "vox", "verse2_blakiesoph", "verse2_orchestral"], 0, 250);
+          this.conductor.fadePlayers(["riff", "drums", "rev", "vox", "verse2_blakiesoph", "verse2_orchestral", "verse2_vox"], 0, 250);
           this.conductor.deactivatePlayers(["keys", "bass", "cello"]);
           this.conductor.fadePlayer("bridge_keys", this.vol, 250);
           this.bridgeInstsHaveEntered = true;
@@ -309,13 +319,13 @@ class MusicConductorBehavior extends Sup.Behavior {
             this.conductor.fadePlayer("bridge_chip", this.vol * 0.65, 100);
             break;
           case 2:
-            this.conductor.fadePlayer("bridge_synth", this.vol * 1.25, 250);
+            this.conductor.fadePlayer("bridge_synth", this.vol, 250);
             break;
           case 3:
-            this.conductor.fadePlayer("bridge_cello", this.vol * 0.9, 250);
+            this.conductor.fadePlayer("bridge_cello", this.vol, 250);
             break;
           case 4:
-            this.conductor.fadePlayer("bridge_chopvox", this.vol * 0.9, 250);
+            this.conductor.fadePlayer("bridge_chopvox", this.vol, 250);
             break;
         }
         

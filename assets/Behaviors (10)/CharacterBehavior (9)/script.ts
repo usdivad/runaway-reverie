@@ -215,11 +215,12 @@ class CharacterBehavior extends Sup.Behavior {
       */
 
       // using distance
-      let closestNpc = this.calculateClosestActor(verse2Npcs);
+      let closestNpc = this.calculateClosestActor(verse2Npcs, true);
       //Sup.log("closest verse 2 NPC: " + closestNpc.getName());
       
-      // handling key press
-      if (Sup.Input.isKeyDown("E") && this.position.z < 0) {
+      // handling npc selection
+      // if (Sup.Input.isKeyDown("E") && this.position.z < 0) { // via key press
+      if (this.position.z < 25) { // via position
         for (let npc of verse2Npcs) {
           npc.getBehavior(NPCBehavior).selected = false;
         }
@@ -263,10 +264,13 @@ class CharacterBehavior extends Sup.Behavior {
     return q;
   }
 
-  calculateClosestActor(npcs: Sup.Actor[]): Sup.Actor {
+  calculateClosestActor(npcs: Sup.Actor[], useOriginalPosition=false): Sup.Actor {
     let myPos = playerActor.getPosition();
     let distances = npcs.map(function(npc) {
       let pos = npc.getPosition();
+      if (useOriginalPosition) {
+        pos = npc.getBehavior(NPCBehavior).originalPosition;
+      } 
       return calculateDistanceBetweenActorPositions(pos, myPos);
     });
     let lowestDistanceIndex = distances.indexOf(Math.min.apply(Math, distances));
