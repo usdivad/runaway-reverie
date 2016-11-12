@@ -11,7 +11,9 @@ class NPCBehavior extends Sup.Behavior {
   
   readyToSing: boolean;
 
-  verse: number = 0; // this property should be set by scene
+  // these properties should be set by scene
+  verse: number = 0;
+  selected: boolean = false;
   
   awake() {
     //this.position = new Sup.Math.Vector3(-85, 410, -60); // coordinates
@@ -99,12 +101,12 @@ class NPCBehavior extends Sup.Behavior {
   }
 
   verse2Update() {
-    // position
+    // lock movement
     // TODO: customize based on selection
-    if (playerActor.getBehavior(CharacterBehavior).isDreaming) {
-      this.position = this.originalPosition;
-      this.actor.cannonBody.body.position.set(this.position.x, this.position.y + this.height/2, this.position.z);
-    }
+    let body = this.actor.cannonBody.body;
+    body.velocity.y = 0;
+    body.velocity.x = 0;
+    body.velocity.z = 0;
     
     // angle (easy way)
     if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15 && !playerActor.getBehavior(CharacterBehavior).isJumping) {

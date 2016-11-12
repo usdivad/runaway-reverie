@@ -150,6 +150,10 @@
         {
           "name": "verse",
           "type": "number"
+        },
+        {
+          "name": "selected",
+          "type": "boolean"
         }
       ]
     },
