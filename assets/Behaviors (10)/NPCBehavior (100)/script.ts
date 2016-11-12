@@ -7,6 +7,7 @@ class NPCBehavior extends Sup.Behavior {
   angle: number;
 
   ascensionVelocity : number = 10;
+  lateralVelocity : number = 0;
   
   readyToSing: boolean;
   
@@ -63,7 +64,14 @@ class NPCBehavior extends Sup.Behavior {
     
     if (hasSung) {
       body.velocity.y = this.ascensionVelocity;
-      // body.velocity.x = this.ascensionVelocity; // TODO: vary / randomize this
+      if (Math.floor(body.velocity.y / 100) % 200 == 0) {
+        body.velocity.x = this.lateralVelocity;
+        body.velocity.z = 0 - this.lateralVelocity;
+      }
+      else {
+        body.velocity.x = 0 - this.lateralVelocity;
+        body.velocity.z = this.lateralVelocity;
+      }
       // Sup.log("has sung");
     }
     else { // reset position
@@ -71,7 +79,8 @@ class NPCBehavior extends Sup.Behavior {
       this.position = this.originalPosition;
 
       body.velocity.y = 0;
-      // body.velocity.x = 0 - this.ascensionVelocity;
+      body.velocity.x = 0;
+      body.velocity.z = 0;
     }
     
     // Sup.log("npc: " + this.position);

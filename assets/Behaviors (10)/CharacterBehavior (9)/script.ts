@@ -97,7 +97,14 @@ class CharacterBehavior extends Sup.Behavior {
     }
     
     // direction
-    this.direction = new Sup.Math.Vector3(0, 0, 0); // temporary
+    this.direction = new Sup.Math.Vector3(0, 0, 0); // reset direction to re-calculate from input
+    if (Sup.getActor("Music Conductor").getBehavior(MusicConductorBehavior).playerMovementLock) {
+      this.canMove = false;
+    }
+    else {
+      this.canMove = true;
+    }
+    
     if (Sup.Input.isKeyDown("A") || Sup.Input.isKeyDown("LEFT")) { // left
       // this.actor.move(-1 * this.velocity, 0, 0); // old "move" code
       this.direction.x = -1;
@@ -113,7 +120,7 @@ class CharacterBehavior extends Sup.Behavior {
     }
     
     // cannon body movement
-    if (this.direction.length() !== 0) {
+    if (this.canMove && this.direction.length() !== 0) {
       this.direction.normalize();
       body.velocity.x = this.direction.x * this.velocity;
       body.velocity.z = this.direction.z * this.velocity;

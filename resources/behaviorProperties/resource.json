@@ -77,6 +77,10 @@
           "type": "boolean"
         },
         {
+          "name": "playerMovementLock",
+          "type": "boolean"
+        },
+        {
           "name": "celloFadeVolMax",
           "type": "number"
         },
@@ -95,6 +99,10 @@
         {
           "name": "npcHasSung",
           "type": "boolean"
+        },
+        {
+          "name": "cyclesSinceNpcHasSung",
+          "type": "number"
         },
         {
           "name": "vol",
@@ -129,6 +137,10 @@
         },
         {
           "name": "ascensionVelocity",
+          "type": "number"
+        },
+        {
+          "name": "lateralVelocity",
           "type": "number"
         },
         {

@@ -15,6 +15,7 @@ class MusicConductorBehavior extends Sup.Behavior {
 
   playerPreviouslyCouldJump: boolean;
   playerWasJumping: boolean;
+  playerMovementLock: boolean;
 
   celloFadeVolMax: number;
   celloFadeVolMin: number;
@@ -23,6 +24,7 @@ class MusicConductorBehavior extends Sup.Behavior {
   transitioning: boolean;
 
   npcHasSung: boolean;
+  cyclesSinceNpcHasSung: number;
 
   vol: number;
 
@@ -80,6 +82,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     this.transitioning = false;
     
     this.npcHasSung = false;
+    this.cyclesSinceNpcHasSung = 0;
   }
 
   update() {
@@ -143,6 +146,7 @@ class MusicConductorBehavior extends Sup.Behavior {
 
         // reset so npc can sing again
         this.npcHasSung = false;
+        this.cyclesSinceNpcHasSung = 0;
         Sup.log("npcHasSung reset");
         
         // let musicConductorBehavior = this;
@@ -335,7 +339,8 @@ class MusicConductorBehavior extends Sup.Behavior {
           // trigger manually because the phrase is longer than the section's phrase length
           let vox = this.verseVocals;
           let ms = this.conductor.getMillisecondsLeftUntilNextDownbeat(); // 100ms offset?
-          let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * this.conductor.getBpm();
+          let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
+          Sup.log("cycleMs: " + cycleMs);
           
           // timeout leads to unreliable performance timing
           // Sup.setTimeout(ms, function() {
@@ -353,7 +358,18 @@ class MusicConductorBehavior extends Sup.Behavior {
           this.conductor.scheduleEvent(revMs, function() {
             conductor.activatePlayer("rev");
             Sup.log("activating rev");
-          })
+          });
+          
+          // lock player movement for n cycles regardless of current place
+          this.playerMovementLock = true;
+          Sup.log("locking player movement");
+          let lockMs = cycleMs * 2;
+          let mcb = this;
+          this.conductor.scheduleEvent(lockMs, function() {
+            mcb.playerMovementLock = false; // closureee
+            mcb.cyclesSinceNpcHasSung = 2;
+            Sup.log("unlocking player movement");
+          });
           
           Sup.log(ms);
         }
