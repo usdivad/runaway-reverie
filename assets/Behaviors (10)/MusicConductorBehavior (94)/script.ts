@@ -261,6 +261,9 @@ class MusicConductorBehavior extends Sup.Behavior {
           this.verse2NpcHasSung = true;
         }
         
+        // deactivate tha cello (conflicts with orch)
+        this.conductor.deactivatePlayer("cello");
+        
         // background instrumental
         let instGroupNames = [
           ["verse2_blakiesoph"], // 1
@@ -289,18 +292,8 @@ class MusicConductorBehavior extends Sup.Behavior {
         
         
       }
-      else {
-        // fade out vocals
-        this.conductor.fadePlayer("verse2_vox", 0, 250);
-        Sup.log("fading verse2_vox out");
-        this.verse2NpcHasSung = false;
-        
-        // fade out insts
-        this.conductor.fadePlayers(["verse2_blakiesoph", "verse2_orchestral"], 0, 250);
-      }
-      
       // bridge
-      if (this.currentSection == 5) {
+      else if (this.currentSection == 5) {
         if (!this.bridgeInstsHaveEntered) {
           this.conductor.fadePlayers(["riff", "drums", "rev", "vox", "verse2_blakiesoph", "verse2_orchestral"], 0, 250);
           this.conductor.deactivatePlayers(["keys", "bass", "cello"]);
@@ -328,8 +321,24 @@ class MusicConductorBehavior extends Sup.Behavior {
         
       }
       else {
+        // fade out verse 2 vocals
+        this.conductor.fadePlayer("verse2_vox", 0, 250);
+        Sup.log("fading verse2_vox out");
+        
+        // fade out verse 2 insts
+        this.conductor.fadePlayers(["verse2_blakiesoph", "verse2_orchestral"], 0, 250);
+        
+        // reset verse 2 properties
+        this.verse2NpcHasSung = false;
+        
+        // fade out bridge players
         this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
         // this.conductor.fadePlayer("bridge_chip", 0, 250);
+        
+        // reset bridge props
+        this.bridgeInstsHaveEntered = false;
+
+        // fade in players for other sections
         this.conductor.fadePlayer("riff", this.vol, 250);
         this.conductor.activatePlayer("cello");
       }
@@ -516,7 +525,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
       0,
-      {active: true, logOutput: this.logOutput}
+      {active: true, loop: true, logOutput: this.logOutput}
     );
     
     // verse 2 - orchestral
@@ -526,7 +535,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
       0,
-      {active: true, logOutput: this.logOutput}
+      {active: true, loop: true, logOutput: this.logOutput}
     );
     
     // bridge - synth
@@ -602,10 +611,10 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_vox,
       path_vox,
       path_audio + "Tabs/" + "tail stretch.mp3",
-      vol * 0.75,
+      0,
       {
         loop: true, // to prevent retriggering each cycle, since the vocal phrase is longer than a cycle
-        active: false,
+        active: true,
         logOutput: this.logOutput
       }
     );
