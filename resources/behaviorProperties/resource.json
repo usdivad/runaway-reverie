@@ -116,11 +116,19 @@
           "type": "Sup.Math.Vector3"
         },
         {
+          "name": "originalPosition",
+          "type": "Sup.Math.Vector3"
+        },
+        {
           "name": "distanceToPlayer",
           "type": "number"
         },
         {
           "name": "angle",
+          "type": "number"
+        },
+        {
+          "name": "ascensionVelocity",
           "type": "number"
         },
         {
