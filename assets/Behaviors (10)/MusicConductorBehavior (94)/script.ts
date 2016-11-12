@@ -8,7 +8,8 @@ class MusicConductorBehavior extends Sup.Behavior {
   params_tabularasa_a: any;
 
   chimeagain: any;
-  verseVocals: Sup.Audio.SoundPlayer;
+  // verseVocals: Sup.Audio.SoundPlayer;
+  // verse2Vocals: Sup.Audio.SoundPlayer;
 
   drumsAndBassHaveEntered: boolean;
   bridgeInstsHaveEntered: boolean;
@@ -25,6 +26,9 @@ class MusicConductorBehavior extends Sup.Behavior {
 
   npcHasSung: boolean;
   cyclesSinceNpcHasSung: number;
+  verse2NpcHasSung: boolean;
+
+  verse2SelectedNpcIdx: number = 1;
 
   vol: number;
 
@@ -250,11 +254,49 @@ class MusicConductorBehavior extends Sup.Behavior {
       
       // verse 2
       if (this.currentSection == 4) {
-        
-        // TODO: switch verse vox
+        // start singing
+        if (!this.verse2NpcHasSung) {
+          this.conductor.fadePlayer("verse2_vox", this.vol * 0.75, 250);
+          this.conductor.activatePlayer("verse2_vox");
+          this.verse2NpcHasSung = true;
         }
-      else {
         
+        // background instrumental
+        let instGroupNames = [
+          ["verse2_blakiesoph"], // 1
+          ["riff", "drums", "rev", "bass", "keys"], // 2
+          ["verse2_orchestral"] // 3
+        ];
+        
+        // get the selected npc
+        let npcs = [Sup.getActor("Verse 2 NPC 1"), Sup.getActor("Verse 2 NPC 2"), Sup.getActor("Verse 2 NPC 3")];
+        let selectedNpcIdx = this.verse2SelectedNpcIdx;
+        for (let i in npcs) {
+          let npc = npcs[i];
+          if (npc.getBehavior(NPCBehavior).selected) {
+            selectedNpcIdx = i;
+            break;
+          }
+        }
+        
+        // apply transition if necessary
+        if (selectedNpcIdx != this.verse2SelectedNpcIdx) {
+          let fadeLength = 100;
+          this.conductor.fadePlayers(instGroupNames[this.verse2SelectedNpcIdx], 0, fadeLength);
+          this.conductor.fadePlayers(instGroupNames[selectedNpcIdx], this.vol, fadeLength);
+          this.verse2SelectedNpcIdx = selectedNpcIdx;
+        }
+        
+        
+      }
+      else {
+        // fade out vocals
+        this.conductor.fadePlayer("verse2_vox", 0, 250);
+        Sup.log("fading verse2_vox out");
+        this.verse2NpcHasSung = false;
+        
+        // fade out insts
+        this.conductor.fadePlayers(["verse2_blakiesoph", "verse2_orchestral"], 0, 250);
       }
       
       // bridge
@@ -315,7 +357,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     
     
-    // NPC vocalist
+    // verse 1 NPC vocalist
     if (this.phrase == "instrumental entrance" && !this.conductor.isTransitioning()) {
       let npc = Sup.getActor("NPC Vocalist");
       if (npc["__behaviors"]["NPCBehavior"][0].readyToSing) {
@@ -337,7 +379,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           // });
 
           // trigger manually because the phrase is longer than the section's phrase length
-          let vox = this.verseVocals;
+          //let vox = this.verseVocals;
           let ms = this.conductor.getMillisecondsLeftUntilNextDownbeat(); // 100ms offset?
           let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
           Sup.log("cycleMs: " + cycleMs);
@@ -473,8 +515,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
     
     // verse 2 - orchestral
@@ -483,8 +525,8 @@ class MusicConductorBehavior extends Sup.Behavior {
       path_instrumentalEntrance+"init " + inst + ".mp3", 
       path_instrumentalEntrance+"loop " + inst + ".mp3",
       path_instrumentalEntrance+"tail " + inst + ".mp3",
-      vol,
-      {active: false, logOutput: this.logOutput}
+      0,
+      {active: true, logOutput: this.logOutput}
     );
     
     // bridge - synth
@@ -537,7 +579,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       {active: true, logOutput: this.logOutput}
     );
     
-    // vox
+    // verse 1 vox
     let path_vox = path_audio + "Verse/" + "v2_vox.mp3";
     let msp_vox = new Sup.Audio.MultiSoundPlayer(
       path_vox,
@@ -550,7 +592,23 @@ class MusicConductorBehavior extends Sup.Behavior {
         logOutput: this.logOutput
       }
     );
-    this.verseVocals = new Sup.Audio.SoundPlayer(path_vox, vol);
+    // this.verseVocals = new Sup.Audio.SoundPlayer(path_vox, vol);
+    // this.verse2Vocals = new Sup.Audio.SoundPlayer(path_vox, vol);
+    
+    // verse 2 vox
+    // TODO: load new sample
+    let path_verse2_vox = path_audio + "Verse/" + "v2_vox.mp3";
+    let msp_verse2_vox = new Sup.Audio.MultiSoundPlayer(
+      path_vox,
+      path_vox,
+      path_audio + "Tabs/" + "tail stretch.mp3",
+      vol * 0.75,
+      {
+        loop: true, // to prevent retriggering each cycle, since the vocal phrase is longer than a cycle
+        active: false,
+        logOutput: this.logOutput
+      }
+    );
     
     
     // Single note samples (using SoundPlayers)
@@ -574,6 +632,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         "cello": msp_cello,
         "keys": msp_keys,
         "vox": msp_vox,
+        "verse2_vox": msp_verse2_vox,
         "verse2_blakiesoph": msp_verse2_blakiesoph,
         "verse2_orchestral": msp_verse2_orchestral,
         "bridge_synth": msp_bridge_synth,

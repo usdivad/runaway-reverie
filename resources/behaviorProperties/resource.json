@@ -105,6 +105,14 @@
           "type": "number"
         },
         {
+          "name": "verse2NpcHasSung",
+          "type": "boolean"
+        },
+        {
+          "name": "verse2SelectedNpcIdx",
+          "type": "number"
+        },
+        {
           "name": "vol",
           "type": "number"
         },
