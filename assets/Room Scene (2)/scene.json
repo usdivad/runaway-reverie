@@ -2181,6 +2181,10 @@
               "verse": {
                 "type": "number",
                 "value": 2
+              },
+              "selected": {
+                "type": "boolean",
+                "value": true
               }
             }
           },

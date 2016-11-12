@@ -101,17 +101,25 @@ class NPCBehavior extends Sup.Behavior {
   }
 
   verse2Update() {
-    // lock movement
-    // TODO: customize based on selection
+    // distance to player
+    let toPlayer = playerActor.getPosition().clone().subtract(this.position);
+    this.distanceToPlayer = toPlayer.length();
+    
+    // lock movement based on selection
     let body = this.actor.cannonBody.body;
-    body.velocity.y = 0;
     body.velocity.x = 0;
     body.velocity.z = 0;
-    
-    // angle (easy way)
-    if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15 && !playerActor.getBehavior(CharacterBehavior).isJumping) {
-      this.actor.lookAt(playerActor.getPosition());
-      this.actor.rotateEulerY(Math.PI); // offset
+    if (this.selected && body.position.y < 250 && this.distanceToPlayer < 30) {
+      body.velocity.y = this.ascensionVelocity;
+    }
+    else {
+      body.velocity.y = 0 - this.ascensionVelocity;
+      
+      // angle (easy way)
+      if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15 && !playerActor.getBehavior(CharacterBehavior).isJumping) {
+        this.actor.lookAt(playerActor.getPosition());
+        this.actor.rotateEulerY(Math.PI); // offset
+      }
     }
   }
 }
