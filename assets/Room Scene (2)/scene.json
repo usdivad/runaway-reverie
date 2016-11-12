@@ -2257,7 +2257,7 @@
           "type": "TextRenderer",
           "config": {
             "fontAssetId": "160",
-            "text": "The clouds have gone missing again...",
+            "text": "",
             "alignment": "center",
             "size": null,
             "color": null,
