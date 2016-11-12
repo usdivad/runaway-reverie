@@ -271,16 +271,16 @@ class MusicConductorBehavior extends Sup.Behavior {
         switch (playerQuadrant) {
           case 1:
             //this.conductor.activatePlayer("bridge_chip");
-            this.conductor.fadePlayer("bridge_chip", this.vol * 0.5, 100);
+            this.conductor.fadePlayer("bridge_chip", this.vol * 0.65, 100);
             break;
           case 2:
-            this.conductor.fadePlayer("bridge_synth", this.vol * 1.5, 250);
+            this.conductor.fadePlayer("bridge_synth", this.vol * 1.25, 250);
             break;
           case 3:
-            this.conductor.fadePlayer("bridge_cello", this.vol, 250);
+            this.conductor.fadePlayer("bridge_cello", this.vol * 0.9, 250);
             break;
           case 4:
-            this.conductor.fadePlayer("bridge_chopvox", this.vol, 250);
+            this.conductor.fadePlayer("bridge_chopvox", this.vol * 0.9, 250);
             break;
         }
         

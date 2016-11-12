@@ -146,6 +146,10 @@
         {
           "name": "readyToSing",
           "type": "boolean"
+        },
+        {
+          "name": "verse",
+          "type": "number"
         }
       ]
     },

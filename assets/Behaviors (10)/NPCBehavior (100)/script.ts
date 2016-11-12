@@ -1,6 +1,6 @@
 class NPCBehavior extends Sup.Behavior {
   
-  private height:number = 0; // from PlayerModel
+  private height:number = 0;
   position: Sup.Math.Vector3;
   originalPosition: Sup.Math.Vector3;
   distanceToPlayer: number;
@@ -10,6 +10,8 @@ class NPCBehavior extends Sup.Behavior {
   lateralVelocity : number = 0;
   
   readyToSing: boolean;
+
+  verse: number = 0; // this property should be set by scene
   
   awake() {
     //this.position = new Sup.Math.Vector3(-85, 410, -60); // coordinates
@@ -22,6 +24,15 @@ class NPCBehavior extends Sup.Behavior {
   }
 
   update() {
+    if (this.verse == 1) {
+      this.verse1Update();
+    }
+    else if (this.verse == 2) {
+      this.verse2Update();
+    }
+  }
+
+  verse1Update() {
     // distance to player
     let toPlayer = playerActor.getPosition().clone().subtract(this.position);
     this.distanceToPlayer = toPlayer.length();
@@ -35,7 +46,7 @@ class NPCBehavior extends Sup.Behavior {
     // this.actor.setLocalEulerY(this.angle);
     
     // angle (easy way)
-    if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15) {
+    if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15 && !playerActor.getBehavior(CharacterBehavior).isJumping) {
       this.actor.lookAt(playerActor.getPosition());
       this.actor.rotateEulerY(Math.PI); // offset
     }
@@ -85,6 +96,21 @@ class NPCBehavior extends Sup.Behavior {
     
     // Sup.log("npc: " + this.position);
     
+  }
+
+  verse2Update() {
+    // position
+    // TODO: customize based on selection
+    if (playerActor.getBehavior(CharacterBehavior).isDreaming) {
+      this.position = this.originalPosition;
+      this.actor.cannonBody.body.position.set(this.position.x, this.position.y + this.height/2, this.position.z);
+    }
+    
+    // angle (easy way)
+    if (Math.abs(playerActor.getPosition().y - this.position.y) <= 15 && !playerActor.getBehavior(CharacterBehavior).isJumping) {
+      this.actor.lookAt(playerActor.getPosition());
+      this.actor.rotateEulerY(Math.PI); // offset
+    }
   }
 }
 Sup.registerBehavior(NPCBehavior);
