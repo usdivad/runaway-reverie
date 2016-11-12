@@ -271,7 +271,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         switch (playerQuadrant) {
           case 1:
             //this.conductor.activatePlayer("bridge_chip");
-            this.conductor.fadePlayer("bridge_chip", this.vol * 0.75, 100);
+            this.conductor.fadePlayer("bridge_chip", this.vol * 0.5, 100);
             break;
           case 2:
             this.conductor.fadePlayer("bridge_synth", this.vol * 1.5, 250);
@@ -670,25 +670,25 @@ class MusicConductorBehavior extends Sup.Behavior {
     let playerPosition = playerActor.cannonBody.body.position;
     let playerY = playerPosition.y;
     
-    if (playerY >= 600) {
+    if (playerY >= 600) {      // intro
       this.currentSection = 0;
     }
-    else if (playerY >= 500) {
+    else if (playerY >= 500) { // bass + drums
       this.currentSection = 1;
     }
-    else if (playerY >= 400) {
+    else if (playerY >= 400) { // verse 1
       this.currentSection = 2;
     }
-    else if (playerY >= 300) {
+    else if (playerY >= 300) { // ...
       this.currentSection = 3;
     }
-    else if (playerY >= 200) {
+    else if (playerY >= 200) { // verse 2
       this.currentSection = 4;
     }
-    else if (playerY >= 100) {
+    else if (playerY >= 100) { // bridge
       this.currentSection = 5;
     }
-    else {
+    else {                     // chorus
       this.currentSection = 6;
     }
   }
