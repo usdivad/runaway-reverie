@@ -352,6 +352,17 @@ class MusicConductorBehavior extends Sup.Behavior {
           //   Sup.log("playing vox!");
           // });
           
+          // lock player movement for n cycles regardless of current place
+          this.playerMovementLock = true;
+          Sup.log("locking player movement");
+          let lockMs = cycleMs * 1.5;
+          let mcb = this;
+          this.conductor.scheduleEvent(lockMs, function() {
+            mcb.playerMovementLock = false; // closureee
+            // mcb.cyclesSinceNpcHasSung = 2;
+            Sup.log("unlocking player movement");
+          });
+          
           // activate rev after vox are done
           let revMs = cycleMs*3 + ms;
           // let revMs = ms;
@@ -360,18 +371,21 @@ class MusicConductorBehavior extends Sup.Behavior {
             Sup.log("activating rev");
           });
           
-          // lock player movement for n cycles regardless of current place
-          this.playerMovementLock = true;
-          Sup.log("locking player movement");
-          let lockMs = cycleMs * 2;
-          let mcb = this;
-          this.conductor.scheduleEvent(lockMs, function() {
-            mcb.playerMovementLock = false; // closureee
-            mcb.cyclesSinceNpcHasSung = 2;
-            Sup.log("unlocking player movement");
+          // deactivate/fade-out vox after 4 cycles
+          let deactivateMs = cycleMs*4 + ms;
+          this.conductor.scheduleEvent(deactivateMs, function() {
+            // conductor.deactivatePlayer("vox");
+            // if (conductor.getPlayer("vox")) {
+            //   conductor.getPlayer("vox").playTail(0);
+            //   conductor.getPlayer("vox").reset();
+            // }
+            // Sup.log("deactivatin vox");
+            
+            conductor.fadePlayer("vox", 0, 50);
+            Sup.log("fading vox out"); // TODO: figure out whether we want verse 1 to be reactivatable, and if so, how
           });
           
-          Sup.log(ms);
+          Sup.log("ms: " + ms);
         }
         else {
           // Sup.log("sorry, npc already sang)");
