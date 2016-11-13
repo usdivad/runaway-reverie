@@ -11,8 +11,8 @@ class SubtitlesBehavior extends Sup.Behavior {
     this.conductor = new Sup.Audio.Conductor(120, 4, []);
     
     // schedule text events
-    // let t = 0;
-    // t = this.scheduleText("Were I to wake from this \n runaway reverie...", t + 0);
+    let t = 0;
+    t = this.scheduleText("Momentum stems from keys of arrows, \n and sometimes from spaces.", t + 0);
     
     this.update();
   }
