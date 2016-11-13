@@ -251,6 +251,12 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.conductor.fadePlayer("drums", 0, 250);
         this.drumsAndBassHaveEntered = false;
       }
+      if (this.currentSection == 3 || this.currentSection == 4) {
+        this.conductor.fadePlayer("drums_overdub", this.vol, 250);
+      }
+      else {
+        this.conductor.fadePlayer("drums_overdub", 0, 250);
+      }
       
       // verse 2
       if (this.currentSection == 4) {
@@ -500,6 +506,16 @@ class MusicConductorBehavior extends Sup.Behavior {
       {active: true, logOutput: this.logOutput} // note we initialize it to be active but with a volume of 0, so muted
     );
     
+    // drums
+    inst = "drums - overdub";
+    let msp_drums_overdub = new Sup.Audio.MultiSoundPlayer(
+      path_instrumentalEntrance+"init " + inst + ".mp3", 
+      path_instrumentalEntrance+"loop " + inst + ".mp3",
+      path_instrumentalEntrance+"tail " + inst + ".mp3",
+      0,
+      {active: true, logOutput: this.logOutput}
+    );
+    
     // bass
     inst = "bass - cypress";
     let msp_bass = new Sup.Audio.MultiSoundPlayer(
@@ -649,6 +665,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       players: {
         "riff": msp_riff,
         "drums": msp_drums,
+        "drums_overdub": msp_drums_overdub,
         "rev": msp_rev,
         "bass": msp_bass,
         "cello": msp_cello,

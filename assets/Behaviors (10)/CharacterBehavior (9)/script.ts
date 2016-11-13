@@ -33,7 +33,7 @@ class CharacterBehavior extends Sup.Behavior {
     // position
     // this.position = this.actor.getLocalPosition();
     let posOffsetX = -60;
-    let posOffsetY = 605; // 605
+    let posOffsetY = 405; // 605
     let posOffsetZ = 90;
     this.position = new Sup.Math.Vector3(posOffsetX, posOffsetY, posOffsetZ);
     

@@ -27,7 +27,7 @@ class SubtitlesBehavior extends Sup.Behavior {
       if (Sup.getActor("Player").getBehavior(CharacterBehavior).isMoving) {
         this.playerHasMoved = true;
         let t = 0;
-        t = this.scheduleText("Were I to wake from this \n runaway reverie...", t + 1);
+        t = this.scheduleText("Were I to wake from this \n runaway reverie...", t + 0);
         t = this.scheduleText("... no unfractured radiance \n would shine from the stars.", t + 4);
         t = this.scheduleText("", t + 4);
       }
