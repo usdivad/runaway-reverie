@@ -165,8 +165,8 @@
                 },
                 "shape": "box",
                 "halfSize": {
-                  "x": 400,
-                  "y": 400,
+                  "x": 4000,
+                  "y": 4000,
                   "z": 20
                 },
                 "radius": 1,
@@ -190,6 +190,14 @@
                 "shaderAssetId": null
               },
               "id": "2"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "PlatformBehavior",
+                "propertyValues": {}
+              },
+              "id": "3"
             }
           ],
           "position": {
@@ -204,8 +212,8 @@
             "w": 0.7071067811865476
           },
           "scale": {
-            "x": 400,
-            "y": 400,
+            "x": 4000,
+            "y": 4000,
             "z": 1
           },
           "visible": true,

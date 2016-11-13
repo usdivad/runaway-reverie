@@ -111,14 +111,14 @@ class MusicConductorBehavior extends Sup.Behavior {
         let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3"); // bein lazy here
 
         // schedule chorus OFF
-        let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
-        let chorusMs = cycleMs * 38.4; // 48000?
-        chorusMs = 48000;
-        chorusMs = 5000; // testing
+        // let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
+        // let chorusMs = cycleMs * 38.4; // 48000?
+        let chorusMs = 48000;
+        // chorusMs = 5000; // testing
         Sup.log("chorusMs = " + chorusMs);
         this.conductor.scheduleEvent(chorusMs, function() {
           Sup.log("chorus OFF!");
-          chorusPlayer.stop();
+          // chorusPlayer.stop();
           
           b.conductor.start();
           

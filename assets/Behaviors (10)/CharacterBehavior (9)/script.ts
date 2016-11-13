@@ -11,9 +11,12 @@ class CharacterBehavior extends Sup.Behavior {
   private direction = new Sup.Math.Vector3(0, 0, 1);
   private canJump = true;
   private canMove = true;
+  private chorusHasBegun = false;
+
   public isMoving = false;
   public isJumping = false;
   public isDreaming = false;
+  public isInChorus = false;
   public currentQuadrant = 1; // cartesian; 1-4
 
   // model
@@ -33,7 +36,7 @@ class CharacterBehavior extends Sup.Behavior {
     // position
     // this.position = this.actor.getLocalPosition();
     let posOffsetX = -60;
-    let posOffsetY = 205; // 605
+    let posOffsetY = 605; // 605
     let posOffsetZ = 90;
     this.position = new Sup.Math.Vector3(posOffsetX, posOffsetY, posOffsetZ);
     
@@ -72,6 +75,26 @@ class CharacterBehavior extends Sup.Behavior {
     // set position and angles
     this.position.set(body.position.x, body.position.y - this.height/2, body.position.z);
     this.actor.setLocalEulerAngles(this.angles);
+    
+    
+    // chorus
+    this.isInChorus = Sup.getActor("Music Conductor").getBehavior(MusicConductorBehavior).chorusActive;
+    if (this.isInChorus) {
+      if (!this.chorusHasBegun) {
+        world.gravity.set(0, 30, 0);
+        this.modelRenderer.setAnimation("Jump");
+        this.chorusHasBegun = true;
+      }
+      return;
+    }
+    else {
+      if (this.chorusHasBegun) {
+        this.position = new Sup.Math.Vector3(-60, 605, 90);
+        body.position.set(this.position.x, this.position.y + this.height/2, this.position.z);
+        body.velocity.set(0, 0, 0);
+        this.chorusHasBegun = false;
+      }
+    }
   
     
     // set velocities, world based on positions
