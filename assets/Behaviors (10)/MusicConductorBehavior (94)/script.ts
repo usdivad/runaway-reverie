@@ -261,6 +261,9 @@ class MusicConductorBehavior extends Sup.Behavior {
           this.verse2NpcHasSung = true;
         }
         
+        // fade bridge players
+        this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
+        
         // deactivate tha cello (conflicts with orch)
         this.conductor.deactivatePlayer("cello");
         
