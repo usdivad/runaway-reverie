@@ -256,7 +256,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       if (this.currentSection == 4) {
         // start singing
         if (!this.verse2NpcHasSung) {
-          this.conductor.fadePlayer("verse2_vox", this.vol * 0.75, 250);
+          this.conductor.fadePlayer("verse2_vox", this.vol, 250);
           this.conductor.activatePlayer("verse2_vox");
           this.verse2NpcHasSung = true;
         }
@@ -388,7 +388,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           Sup.log("npc is singing");
           
           // start singing
-          this.conductor.fadePlayer("vox", this.vol * 0.75, 250);
+          this.conductor.fadePlayer("vox", this.vol, 250);
           this.conductor.activatePlayer("vox");
           
           // // we only let vox play once
@@ -599,7 +599,7 @@ class MusicConductorBehavior extends Sup.Behavior {
     );
     
     // verse 1 vox
-    let path_vox = path_audio + "Verse/" + "v2_vox.mp3";
+    let path_vox = path_audio + "Vox/" + "vox_verse1.mp3";
     let msp_vox = new Sup.Audio.MultiSoundPlayer(
       path_vox,
       path_vox,
@@ -616,10 +616,10 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     // verse 2 vox
     // TODO: load new sample
-    let path_verse2_vox = path_audio + "Verse/" + "v2_vox.mp3";
+    let path_verse2_vox = path_audio + "Vox/" + "vox_verse2.mp3";
     let msp_verse2_vox = new Sup.Audio.MultiSoundPlayer(
-      path_vox,
-      path_vox,
+      path_verse2_vox,
+      path_verse2_vox,
       path_audio + "Tabs/" + "tail stretch.mp3",
       0,
       {
