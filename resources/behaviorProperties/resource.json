@@ -113,6 +113,14 @@
           "type": "number"
         },
         {
+          "name": "chorusActive",
+          "type": "boolean"
+        },
+        {
+          "name": "chorusHasBegun",
+          "type": "boolean"
+        },
+        {
           "name": "vol",
           "type": "number"
         },

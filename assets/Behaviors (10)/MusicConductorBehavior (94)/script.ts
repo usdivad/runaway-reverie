@@ -30,6 +30,11 @@ class MusicConductorBehavior extends Sup.Behavior {
 
   verse2SelectedNpcIdx: number = 1;
 
+  bridgePlayersActiveStatuses : boolean[];
+
+  chorusActive: boolean;
+  chorusHasBegun: boolean;
+
   vol: number;
 
   currentSection: number;
@@ -87,9 +92,49 @@ class MusicConductorBehavior extends Sup.Behavior {
     
     this.npcHasSung = false;
     this.cyclesSinceNpcHasSung = 0;
+    
+    this.bridgePlayersActiveStatuses = [false, false, false, false];
+    
+    this.chorusActive = false;
+    this.chorusHasBegun = false;
   }
 
   update() {
+    if (this.chorusActive) {
+      // do chorus stuff      
+      if (!this.chorusHasBegun) {
+        let b = this;
+        this.conductor.fadeAllPlayers(0, 100);
+        this.conductor.scheduleEvent(200, function() {
+          b.conductor.stop();
+        });
+        let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3"); // bein lazy here
+
+        // schedule chorus OFF
+        let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
+        let chorusMs = cycleMs * 38.4; // 48000?
+        chorusMs = 48000;
+        chorusMs = 5000; // testing
+        Sup.log("chorusMs = " + chorusMs);
+        this.conductor.scheduleEvent(chorusMs, function() {
+          Sup.log("chorus OFF!");
+          chorusPlayer.stop();
+          
+          b.conductor.start();
+          
+          b.chorusActive = false;
+          b.chorusHasBegun = false;
+        });
+        
+        this.bridgePlayersActiveStatuses = [false, false, false, false];
+       
+        this.chorusHasBegun = true;
+      }
+      
+      // skip the below
+      return;
+    }
+    
     let playerActor = Sup.getActor("Player");
     let playerPosition = playerActor.cannonBody.body.position;
     let playerIsMoving = playerActor["__behaviors"]["CharacterBehavior"][0].isMoving;
@@ -337,6 +382,21 @@ class MusicConductorBehavior extends Sup.Behavior {
             this.conductor.fadePlayer("bridge_chopvox", this.vol, 250);
             break;
         }
+        this.bridgePlayersActiveStatuses[playerQuadrant-1] = true;
+        let allBridgePlayersActive = true;
+        for (let active of this.bridgePlayersActiveStatuses) {
+          if (!active) {
+            allBridgePlayersActive = false;
+            break;
+          }
+        }
+        if (allBridgePlayersActive) {
+          let b = this;
+          let beatMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 1000;
+          this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + 4*beatMs, function() {
+            b.chorusActive = true;
+          });
+        }
         
       }
       else {
@@ -356,10 +416,17 @@ class MusicConductorBehavior extends Sup.Behavior {
         
         // reset bridge props
         this.bridgeInstsHaveEntered = false;
+        this.bridgePlayersActiveStatuses = [false, false, false, false];
 
         // fade in players for other sections
         this.conductor.fadePlayer("riff", this.vol, 250);
         this.conductor.activatePlayer("cello");
+      }
+      
+      
+      // chorus!!
+      if (this.currentSection == 6) {
+        // this.chorusActive = true;
       }
       
     }
@@ -634,7 +701,6 @@ class MusicConductorBehavior extends Sup.Behavior {
     // this.verse2Vocals = new Sup.Audio.SoundPlayer(path_vox, vol);
     
     // verse 2 vox
-    // TODO: load new sample
     let path_verse2_vox = path_audio + "Vox/" + "vox_verse2.mp3";
     let msp_verse2_vox = new Sup.Audio.MultiSoundPlayer(
       path_verse2_vox,
