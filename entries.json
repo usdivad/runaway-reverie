@@ -537,6 +537,21 @@
             "id": "158",
             "name": "tail verse2_inst_orchestral.mp3",
             "type": "sound"
+          },
+          {
+            "id": "162",
+            "name": "init drums - overdub.mp3",
+            "type": "sound"
+          },
+          {
+            "id": "163",
+            "name": "loop drums - overdub.mp3",
+            "type": "sound"
+          },
+          {
+            "id": "164",
+            "name": "tail drums - overdub.mp3",
+            "type": "sound"
           }
         ]
       },
@@ -589,15 +604,9 @@
       },
       {
         "id": "101",
-        "name": "Verse",
+        "name": "Vox",
         "type": null,
-        "children": [
-          {
-            "id": "102",
-            "name": "v2_vox.mp3",
-            "type": "sound"
-          }
-        ]
+        "children": []
       },
       {
         "id": "103",
