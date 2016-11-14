@@ -1,10 +1,10 @@
 #Runaway Reverie
 
-[Play on itch.io](https://usdivad.itch.io/narcissus-reverie) | [Play on usdivad.com](http://usdivad.com/narcissusreverie)
+[Download] (http://usdivad.com/runaway-reverie/Runaway%20Reverie.zip) | [Play on usdivad.com](http://usdivad.com/runaway-reverie) | [Play on itch.io](https://usdivad.itch.io/runaway-reverie) 
 
-An interactive song / music game for digital dreamers. This current prototype includes two contrasting sections, one on the right side of the playable area and another on the left.
+An interactive song / music game for digital dreamers.
 
-Use arrow keys or WASD to move, space to jump. Explore how movement, location, and interaction with your mirrored counterpart affect musical parameters!
+Use arrow keys or WASD to move, space to jump. Explore how your movement, location, and interactions with the environment affect musical parameters!
 
 Made using the [Superpowers](http://superpowers-html5.com) HTML5 engine and extending the game engine's audio capabilities with Conductor and MultiSoundPlayer classes (available [here](https://github.com/usdivad/superpowers-game/tree/soundAdditions)).
 
