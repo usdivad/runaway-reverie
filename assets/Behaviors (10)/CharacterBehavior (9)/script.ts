@@ -36,7 +36,7 @@ class CharacterBehavior extends Sup.Behavior {
     // position
     // this.position = this.actor.getLocalPosition();
     let posOffsetX = -60;
-    let posOffsetY = 605; // 605
+    let posOffsetY = 105; // 605
     let posOffsetZ = 90;
     this.position = new Sup.Math.Vector3(posOffsetX, posOffsetY, posOffsetZ);
     
@@ -80,16 +80,36 @@ class CharacterBehavior extends Sup.Behavior {
     // chorus
     this.isInChorus = Sup.getActor("Music Conductor").getBehavior(MusicConductorBehavior).chorusActive;
     if (this.isInChorus) {
+      
+      // float up
       if (!this.chorusHasBegun) {
         world.gravity.set(0, 30, 0);
-        this.modelRenderer.setAnimation("Jump");
+        this.modelRenderer.setAnimation("Idle");
         this.chorusHasBegun = true;
       }
+      
+    
+      // position reset
+      let chorusAStartY = 3000;
+      Sup.log("chorus pos y: " + this.position.y + ", vel y: " + body.velocity.y);
+      
+      if (this.position.y > chorusAStartY) {
+        this.position = new Sup.Math.Vector3(-60, -100, 90);
+        body.position.set(this.position.x, this.position.y + this.height/2, this.position.z);
+        // body.velocity.set(0, 0, 0);
+      }
+      
+      
+      // angles
+      this.updateDirection(false);
+      let angle = Math.atan2(-this.direction.z, this.direction.x) + Math.PI/2;
+      this.angles.set(0, angle, 0);
+      
       return;
     }
     else {
       if (this.chorusHasBegun) {
-        this.position = new Sup.Math.Vector3(-60, 605, 90);
+        this.position = new Sup.Math.Vector3(-60, 700, 90);
         body.position.set(this.position.x, this.position.y + this.height/2, this.position.z);
         body.velocity.set(0, 0, 0);
         this.chorusHasBegun = false;
@@ -121,8 +141,7 @@ class CharacterBehavior extends Sup.Behavior {
       this.canJump = true;
     }
     
-    // direction
-    this.direction = new Sup.Math.Vector3(0, 0, 0); // reset direction to re-calculate from input
+    // locked or not
     if (Sup.getActor("Music Conductor").getBehavior(MusicConductorBehavior).playerMovementLock) {
       this.canMove = false;
     }
@@ -130,19 +149,8 @@ class CharacterBehavior extends Sup.Behavior {
       this.canMove = true;
     }
     
-    if (Sup.Input.isKeyDown("A") || Sup.Input.isKeyDown("LEFT")) { // left
-      // this.actor.move(-1 * this.velocity, 0, 0); // old "move" code
-      this.direction.x = -1;
-    }
-    if (Sup.Input.isKeyDown("D") || Sup.Input.isKeyDown("RIGHT")) { // right
-      this.direction.x = 1;
-    }
-    if (Sup.Input.isKeyDown("W") || Sup.Input.isKeyDown("UP")) { // up
-      this.direction.z = -1;
-    }
-    if (Sup.Input.isKeyDown("S") || Sup.Input.isKeyDown("DOWN")) { // down
-      this.direction.z = 1;
-    }
+    // direction
+    this.updateDirection();
     
     // cannon body movement
     if (this.canMove && this.direction.length() !== 0) {
@@ -254,6 +262,25 @@ class CharacterBehavior extends Sup.Behavior {
     // Sup.log("orientation: " + orientation);
     // Sup.log("vel: " + body.velocity);
     // Sup.log("pos: " + body.position);
+  }
+
+  updateDirection(reset:boolean = true) {
+    if (reset) {
+      this.direction = new Sup.Math.Vector3(0, 0, 0); // reset direction to re-calculate from input
+    }
+    if (Sup.Input.isKeyDown("A") || Sup.Input.isKeyDown("LEFT")) { // left
+      // this.actor.move(-1 * this.velocity, 0, 0); // old "move" code
+      this.direction.x = -1;
+    }
+    if (Sup.Input.isKeyDown("D") || Sup.Input.isKeyDown("RIGHT")) { // right
+      this.direction.x = 1;
+    }
+    if (Sup.Input.isKeyDown("W") || Sup.Input.isKeyDown("UP")) { // up
+      this.direction.z = -1;
+    }
+    if (Sup.Input.isKeyDown("S") || Sup.Input.isKeyDown("DOWN")) { // down
+      this.direction.z = 1;
+    }
   }
 
   calculateWhetherInDream(): boolean {

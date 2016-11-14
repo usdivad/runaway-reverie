@@ -1302,7 +1302,7 @@
           ],
           "position": {
             "x": -100,
-            "y": 0,
+            "y": -200,
             "z": -100
           },
           "orientation": {
@@ -1316,7 +1316,7 @@
             "y": 200,
             "z": 10
           },
-          "visible": true,
+          "visible": false,
           "layer": 0,
           "prefab": null
         },

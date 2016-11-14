@@ -107,6 +107,11 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.conductor.fadeAllPlayers(0, 100);
         this.conductor.scheduleEvent(200, function() {
           b.conductor.stop();
+          b.conductor = new Sup.Audio.Conductor(
+            b.params_instrumentalEntrance.bpm,
+            b.params_instrumentalEntrance.timesig,
+            b.params_instrumentalEntrance.players);
+          b.conductor.setLogOutput(this.logOutput);
         });
         let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3"); // bein lazy here
 
@@ -392,8 +397,9 @@ class MusicConductorBehavior extends Sup.Behavior {
         }
         if (allBridgePlayersActive) {
           let b = this;
+          let numBeatsToWait = 4;
           let beatMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 1000;
-          this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + 4*beatMs, function() {
+          this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + (beatMs * numBeatsToWait), function() {
             b.chorusActive = true;
           });
         }
@@ -492,7 +498,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           // lock player movement for n cycles regardless of current place
           this.playerMovementLock = true;
           Sup.log("locking player movement");
-          let lockMs = cycleMs * 1.5;
+          let lockMs = cycleMs * 1.25;
           let mcb = this;
           this.conductor.scheduleEvent(lockMs, function() {
             mcb.playerMovementLock = false; // closureee
