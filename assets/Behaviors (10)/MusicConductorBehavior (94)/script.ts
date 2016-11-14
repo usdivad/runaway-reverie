@@ -31,6 +31,12 @@ class MusicConductorBehavior extends Sup.Behavior {
   verse2SelectedNpcIdx: number = 1;
 
   bridgePlayersActiveStatuses : boolean[];
+  bridgeSubtitles: string[] = [
+    "The sounds of old illusions...",
+    "The voices of the forgotten...",
+    "The faded whispers...",
+    "What if the cycle of refraction \n and recognition never ends?"
+  ];
 
   chorusActive: boolean;
   chorusHasBegun: boolean;
@@ -470,15 +476,22 @@ class MusicConductorBehavior extends Sup.Behavior {
         }
         this.bridgePlayersActiveStatuses[playerQuadrant-1] = true;
         let allBridgePlayersActive = true;
+        let numBridgePlayersActive = 0;
         for (let active of this.bridgePlayersActiveStatuses) {
           if (!active) {
             allBridgePlayersActive = false;
-            break;
+            // break;
+          }
+          else {
+            numBridgePlayersActive++;
           }
         }
+        
+        setSubtitles(this.bridgeSubtitles[numBridgePlayersActive-1]);
+        
         if (allBridgePlayersActive) {
           let b = this;
-          let numBeatsToWait = 4;
+          let numBeatsToWait = 6;
           let beatMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 1000;
           this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + (beatMs * numBeatsToWait), function() {
             b.chorusActive = true;
