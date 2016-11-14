@@ -124,7 +124,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         // });
         
         // start chorus
-        let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3"); // bein lazy here
+        let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3", this.vol * 0.9); // bein lazy here
 
         // schedule subtitles
         // using absolute time so we don't need to do the whole t = ...
@@ -196,13 +196,17 @@ class MusicConductorBehavior extends Sup.Behavior {
           Sup.log("chorus OFF!");
           // chorusPlayer.stop();
           
+          // handle this conductor
           // b.conductor.start();
           b.conductor.fadePlayer("riff", b.vol, 250);
-          
           b.chorusActive = false;
           b.chorusHasBegun = false;
           
-          Sup.getActor("Subtitles").getBehavior(SubtitlesBehavior).beginChorusFade = false;
+          // handle subtitles
+          subs.beginChorusFade = false;
+          b.conductor.scheduleEvent(1000, function() {
+            subs.playerHasMoved = false;
+          });
           subs.scheduleText("", 0); // TODO: more stuff here
         });
         
@@ -395,13 +399,15 @@ class MusicConductorBehavior extends Sup.Behavior {
         // fade bridge players
         this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
         
-        // deactivate tha cello (conflicts with orch)
+        // fade/deactivate conflicting insts from other sections
         this.conductor.deactivatePlayer("cello");
+        // this.conductor.deactivatePlayer("drums_overdub");
+        this.conductor.fadePlayer("drums_overdub", 0, 100);
         
         // background instrumental
         let instGroupNames = [
           ["verse2_blakiesoph"], // 1
-          ["riff", "drums", "rev", "bass", "keys"], // 2
+          ["riff", "drums", "drums_overdub", "rev", "bass", "keys"], // 2
           ["verse2_orchestral"] // 3
         ];
         
@@ -439,7 +445,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       // bridge
       else if (this.currentSection == 5) {
         if (!this.bridgeInstsHaveEntered) {
-          this.conductor.fadePlayers(["riff", "drums", "rev", "vox", "verse2_blakiesoph", "verse2_orchestral", "verse2_vox"], 0, 250);
+          this.conductor.fadePlayers(["riff", "drums", "drums_overdub", "rev", "vox", "verse2_blakiesoph", "verse2_orchestral", "verse2_vox"], 0, 250);
           this.conductor.deactivatePlayers(["keys", "bass", "cello"]);
           this.conductor.fadePlayer("bridge_keys", this.vol, 250);
           this.bridgeInstsHaveEntered = true;
@@ -481,27 +487,33 @@ class MusicConductorBehavior extends Sup.Behavior {
         
       }
       else {
-        // fade out verse 2 vocals
-        this.conductor.fadePlayer("verse2_vox", 0, 250);
-        Sup.log("fading verse2_vox out");
-        
-        // fade out verse 2 insts
-        this.conductor.fadePlayers(["verse2_blakiesoph", "verse2_orchestral"], 0, 250);
-        
-        // reset verse 2 properties
-        this.verse2NpcHasSung = false;
+        if (!this.verse2NpcHasSung) {
+          // fade out verse 2 vocals
+          this.conductor.fadePlayer("verse2_vox", 0, 250);
+          Sup.log("fading verse2_vox out");
+
+          // fade out verse 2 insts
+          this.conductor.fadePlayers(["verse2_blakiesoph", "verse2_orchestral"], 0, 250);
+
+          // reset verse 2 properties
+          this.verse2NpcHasSung = false;
+        }
         
         // fade out bridge players
-        this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
-        // this.conductor.fadePlayer("bridge_chip", 0, 250);
-        
-        // reset bridge props
-        this.bridgeInstsHaveEntered = false;
-        this.bridgePlayersActiveStatuses = [false, false, false, false];
+        if (!this.bridgeInstsHaveEntered) {
+          this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
+          // this.conductor.fadePlayer("bridge_chip", 0, 250);
+
+          // reset bridge props
+          this.bridgeInstsHaveEntered = false;
+          this.bridgePlayersActiveStatuses = [false, false, false, false];
+        }
 
         // fade in players for other sections
-        this.conductor.fadePlayer("riff", this.vol, 250);
-        this.conductor.activatePlayer("cello");
+        if (this.conductor.getPlayer("riff").getVolume() < this.vol) {
+          this.conductor.fadePlayer("riff", this.vol, 250);
+          this.conductor.activatePlayer("cello");
+        }
       }
       
       

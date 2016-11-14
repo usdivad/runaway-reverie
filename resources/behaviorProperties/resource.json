@@ -193,6 +193,10 @@
           "type": "boolean"
         },
         {
+          "name": "playerHasEnteredSection3",
+          "type": "boolean"
+        },
+        {
           "name": "beginChorusFade",
           "type": "boolean"
         }

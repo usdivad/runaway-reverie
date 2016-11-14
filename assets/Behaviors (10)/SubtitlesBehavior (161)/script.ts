@@ -5,6 +5,7 @@ class SubtitlesBehavior extends Sup.Behavior {
   private conductor: Sup.Audio.Conductor;
 
   playerHasMoved: boolean = false;
+  playerHasEnteredSection3: boolean = false;
   beginChorusFade: boolean = false;
 
   awake() {
@@ -13,7 +14,7 @@ class SubtitlesBehavior extends Sup.Behavior {
     
     // schedule text events
     let t = 0;
-    t = this.scheduleText("Momentum stems from keys of arrows, \n and sometimes from spaces.", t + 0);
+    t = this.scheduleText("A body's motion stems from \n keys of arrows and spaces.", t + 0);
     
     this.update();
   }
@@ -37,6 +38,16 @@ class SubtitlesBehavior extends Sup.Behavior {
         let t = 0;
         t = this.scheduleText("Were I to wake from this \n runaway reverie...", t + 0);
         t = this.scheduleText("... no unfractured radiance \n would shine from the stars.", t + 4);
+        t = this.scheduleText("", t + 4);
+      }
+    }
+    
+    if (!this.playerHasEnteredSection3) {
+      if (Sup.getActor("Music Conductor").getBehavior(MusicConductorBehavior).currentSection == 3) {
+        this.playerHasEnteredSection3 = true;
+        let t = 0;
+        t = this.scheduleText("Silence rings from towers \n to unsailed seas...", t + 1.5);
+        t = this.scheduleText("... no solace to be taken \n from the crossroads afar.", t + 4);
         t = this.scheduleText("", t + 4);
       }
     }
