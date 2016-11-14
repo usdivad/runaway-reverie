@@ -130,7 +130,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         // });
         
         // start chorus
-        let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3", this.vol * 0.9); // bein lazy here
+        let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3", this.vol * 1.0); // bein lazy here
 
         // schedule subtitles
         // using absolute time so we don't need to do the whole t = ...
@@ -184,8 +184,8 @@ class MusicConductorBehavior extends Sup.Behavior {
         subs.scheduleText("call?", 39.4);
         subs.scheduleText("", 40.1);
         
-        subs.scheduleText("I'll keep waiting...", 43.0);
-        subs.scheduleText("", 45.0);
+        // subs.scheduleText("I'll keep waiting...", 43.0);
+        // subs.scheduleText("", 45.0);
 
         
         this.conductor.scheduleEvent(32000, function() {
@@ -524,7 +524,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         }
 
         // fade in players for other sections
-        if (this.conductor.getPlayer("riff").getVolume() < this.vol) {
+        if (this.conductor.getPlayer("riff") && this.conductor.getPlayer("riff").getVolume() < this.vol) {
           this.conductor.fadePlayer("riff", this.vol, 250);
           this.conductor.activatePlayer("cello");
         }
@@ -599,7 +599,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           // lock player movement for n cycles regardless of current place
           this.playerMovementLock = true;
           Sup.log("locking player movement");
-          let lockMs = cycleMs * 0.75;
+          let lockMs = cycleMs * 0.9;
           let mcb = this;
           this.conductor.scheduleEvent(lockMs, function() {
             mcb.playerMovementLock = false; // closureee
