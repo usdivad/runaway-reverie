@@ -85,6 +85,7 @@ class CharacterBehavior extends Sup.Behavior {
       // float up
       if (!this.chorusHasBegun) {
         world.gravity.set(0, 30, 0);
+        body.velocity.set(0, 0, 0);
         this.modelRenderer.setAnimation("Idle");
         this.chorusHasBegun = true;
       }

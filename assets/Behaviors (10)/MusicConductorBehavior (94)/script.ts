@@ -212,8 +212,9 @@ class MusicConductorBehavior extends Sup.Behavior {
           subs.beginChorusFade = false;
           b.conductor.scheduleEvent(1000, function() {
             subs.playerHasMoved = false;
+            subs.playerHasEnteredSection3 = false;
           });
-          subs.scheduleText("", 0); // TODO: more stuff here
+          subs.scheduleText("", 0);
         });
         
         // settings
