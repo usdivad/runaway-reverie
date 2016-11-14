@@ -18,9 +18,16 @@ class SubtitlesBehavior extends Sup.Behavior {
   }
 
   update() {
-    // let p = Sup.getActor("Cameraman").cannonBody.body.position;
+    // set position
     let p = Sup.getActor("Player").cannonBody.body.position;
-    this.actor.setPosition(p.x + this.offset.x, p.y + this.offset.y, p.z + this.offset.z);
+    let inChorus = Sup.getActor("Player").getBehavior(CharacterBehavior).isInChorus;
+    let posX = p.x + this.offset.x;
+    let posY = p.y + this.offset.y;
+    let posZ = p.z + this.offset.z;
+    if (inChorus) {
+      posY = p.y - this.offset.y/2;
+    }
+    this.actor.setPosition(posX, posY, posZ);
     
     // schedule text events
     if (!this.playerHasMoved) {
@@ -34,8 +41,10 @@ class SubtitlesBehavior extends Sup.Behavior {
     }
   }
 
-  // schedule a setText() for this actor's text renderer
+  // method to schedule a setText() for this actor's text renderer
+  // see update() for an example usage of chained scheduling (ie. with t = ...)
   scheduleText(text, time) {
+    // Sup.log("scheduling " + text + " for " + time);
     let subs = this;
     this.conductor.scheduleEvent(time * this.evtMul, function() {
       subs.actor.textRenderer.setText(text.replace(" \n ", "\n"));

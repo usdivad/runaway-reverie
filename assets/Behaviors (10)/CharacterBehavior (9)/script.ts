@@ -99,6 +99,11 @@ class CharacterBehavior extends Sup.Behavior {
         // body.velocity.set(0, 0, 0);
       }
       
+      // velocity reset for end (allows for smoother transition)
+      if (body.velocity.y > 1100) {
+        body.velocity.y = 0;
+        world.gravity.set(0, 0, 0);
+      }
       
       // angles
       this.updateDirection(false);
@@ -109,7 +114,8 @@ class CharacterBehavior extends Sup.Behavior {
     }
     else {
       if (this.chorusHasBegun) {
-        this.position = new Sup.Math.Vector3(-60, 700, 90);
+        // reset position and velocity to beginning state
+        this.position = new Sup.Math.Vector3(-60, 605, 90);
         body.position.set(this.position.x, this.position.y + this.height/2, this.position.z);
         body.velocity.set(0, 0, 0);
         this.chorusHasBegun = false;

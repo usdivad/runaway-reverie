@@ -103,36 +103,71 @@ class MusicConductorBehavior extends Sup.Behavior {
     if (this.chorusActive) {
       // do chorus stuff      
       if (!this.chorusHasBegun) {
+        // shut up everyone
         let b = this;
         this.conductor.fadeAllPlayers(0, 100);
-        this.conductor.scheduleEvent(200, function() {
-          b.conductor.stop();
-          b.conductor = new Sup.Audio.Conductor(
-            b.params_instrumentalEntrance.bpm,
-            b.params_instrumentalEntrance.timesig,
-            b.params_instrumentalEntrance.players);
-          b.conductor.setLogOutput(this.logOutput);
-        });
+        
+        // for some reason this.conductor.stop() makes the riff double-trigger on start(), so we
+        // just fade out and back in for now..
+        
+        // this.conductor.deactivateAllPlayers();
+        // this.conductor.resetAllPlayers();
+        // this.conductor.stop();
+        
+        // this.conductor.scheduleEvent(200, function() {
+        //     b.conductor.stop();
+        //     // b.conductor = new Sup.Audio.Conductor(
+        //     //   b.params_instrumentalEntrance.bpm,
+        //     //   b.params_instrumentalEntrance.timesig,
+        //     //   b.params_instrumentalEntrance.players);
+        //     // b.conductor.setLogOutput(b.logOutput);
+        // });
+        
+        // start chorus
         let chorusPlayer = Sup.Audio.playSound("Audio/Chorus/chorus_all.mp3"); // bein lazy here
 
+        // schedule subtitles
+        // using absolute time so we don't need to do the whole t = ...
+        let subs = Sup.getActor("Subtitles").getBehavior(SubtitlesBehavior);
+        subs.scheduleText("", 0);
+        // let t = 0;
+        // subs.scheduleText("What if the cycle of refraction \n and recognition never ends?", 1);
+        // subs.scheduleText("", 4);
+        // subs.scheduleText("What if I never wake from \n this runaway reverie?", 8);
+
+        subs.scheduleText("What if I find acres \n of an old illusion?", 16.75);
+        subs.scheduleText("What if I run into a wall?", 20.75);
+        subs.scheduleText("What if we could sing till \n the world is using us...", 24.75);
+        subs.scheduleText("... to break its \n whirlwind fall?", 28.5);
+        subs.scheduleText("", 32.0);
+        
+        subs.scheduleText("What if I drove into \n the Old Pacific?", 32.75);
+        subs.scheduleText("Would you ride up \n sixteenth and call?", 36.75);
+        subs.scheduleText("But if you were waiting \n for the new Madonna...", 40.75);
+        // subs.scheduleText("I would break your \n whirlwind fall...", 44.0);
+        subs.scheduleText("", 44.0);
+        
         // schedule chorus OFF
         // let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
         // let chorusMs = cycleMs * 38.4; // 48000?
         let chorusMs = 48000;
-        // chorusMs = 5000; // testing
+        // chorusMs = 2000; // testing
         Sup.log("chorusMs = " + chorusMs);
         this.conductor.scheduleEvent(chorusMs, function() {
           Sup.log("chorus OFF!");
           // chorusPlayer.stop();
           
-          b.conductor.start();
+          // b.conductor.start();
+          b.conductor.fadePlayer("riff", b.vol, 250);
           
           b.chorusActive = false;
           b.chorusHasBegun = false;
+          
+          subs.scheduleText("", 0); // TODO: more stuff here
         });
         
+        // settings
         this.bridgePlayersActiveStatuses = [false, false, false, false];
-       
         this.chorusHasBegun = true;
       }
       
@@ -498,7 +533,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           // lock player movement for n cycles regardless of current place
           this.playerMovementLock = true;
           Sup.log("locking player movement");
-          let lockMs = cycleMs * 1.25;
+          let lockMs = cycleMs * 0.75;
           let mcb = this;
           this.conductor.scheduleEvent(lockMs, function() {
             mcb.playerMovementLock = false; // closureee
