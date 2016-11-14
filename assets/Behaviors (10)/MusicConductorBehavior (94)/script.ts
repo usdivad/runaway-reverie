@@ -192,6 +192,11 @@ class MusicConductorBehavior extends Sup.Behavior {
           Sup.getActor("Subtitles").getBehavior(SubtitlesBehavior).beginChorusFade = true;
         });
         
+        // decrease player velocity in case the velocity check doesn't occur in time
+        this.conductor.scheduleEvent(46000, function() {
+          Sup.getActor("Player").getBehavior(CharacterBehavior).chorusDecreasingVel = true;
+        })
+        
         // schedule chorus OFF
         // let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
         // let chorusMs = cycleMs * 38.4; // 48000?

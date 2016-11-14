@@ -12,13 +12,13 @@ class CharacterBehavior extends Sup.Behavior {
   private canJump = true;
   private canMove = true;
   private chorusHasBegun = false;
-  private chorusDecreasingVel = false;
 
   public isMoving = false;
   public isJumping = false;
   public isDreaming = false;
   public isInChorus = false;
   public currentQuadrant = 1; // cartesian; 1-4
+  public chorusDecreasingVel = false;
 
   // model
   private modelRenderer: Sup.ModelRenderer;

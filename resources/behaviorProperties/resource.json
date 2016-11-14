@@ -24,6 +24,10 @@
         {
           "name": "currentQuadrant",
           "type": "number"
+        },
+        {
+          "name": "chorusDecreasingVel",
+          "type": "boolean"
         }
       ]
     },
