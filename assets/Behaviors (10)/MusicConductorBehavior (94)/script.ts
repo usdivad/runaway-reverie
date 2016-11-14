@@ -155,7 +155,31 @@ class MusicConductorBehavior extends Sup.Behavior {
         subs.scheduleText("the", 34.7);
         subs.scheduleText("Old", 35.0);
         subs.scheduleText("Pacific?", 35.37);
-        subs.scheduleText("", 36.25);
+        subs.scheduleText("", 36.2);
+        
+        subs.scheduleText("Would", 36.7);
+        subs.scheduleText("you", 36.86);
+        subs.scheduleText("ride", 37.0);
+        subs.scheduleText("up", 37.7);
+        subs.scheduleText("16th", 38.0);
+        subs.scheduleText("17th", 38.1);
+        subs.scheduleText("18th", 38.15);
+        subs.scheduleText("19th", 38.2);
+        subs.scheduleText("20th", 38.25);
+        subs.scheduleText("21st", 38.3);
+        subs.scheduleText("22nd", 38.35);
+        subs.scheduleText("23rd", 38.4);
+        subs.scheduleText("24th", 38.45);
+        subs.scheduleText("25th", 38.5);
+        subs.scheduleText("26th", 38.55);
+        subs.scheduleText("27th", 38.6);
+        subs.scheduleText("28th", 38.65);
+        subs.scheduleText("and", 38.7);
+        subs.scheduleText("call?", 39.4);
+        subs.scheduleText("", 40.1);
+        
+        subs.scheduleText("I'll keep waiting...", 43.0);
+        subs.scheduleText("", 45.0);
 
         
         this.conductor.scheduleEvent(32000, function() {
