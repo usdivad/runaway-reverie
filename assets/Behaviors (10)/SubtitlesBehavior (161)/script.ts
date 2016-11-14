@@ -5,6 +5,7 @@ class SubtitlesBehavior extends Sup.Behavior {
   private conductor: Sup.Audio.Conductor;
 
   playerHasMoved: boolean = false;
+  beginChorusFade: boolean = false;
 
   awake() {
     // init params
@@ -39,6 +40,17 @@ class SubtitlesBehavior extends Sup.Behavior {
         t = this.scheduleText("", t + 4);
       }
     }
+    
+    // opacity (OOPS, isn't implemented in text renderer)
+    // let m = this.actor.modelRenderer;
+    // if (this.beginChorusFade) {
+    //   if (m.getOpacity() > 0) {
+    //     m.setOpacity(m.getOpacity() - 0.005);
+    //   }
+    // }
+    // else {
+    //   m.setOpacity(1);
+    // }
   }
 
   // method to schedule a setText() for this actor's text renderer

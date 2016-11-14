@@ -14,8 +14,8 @@
             "castShadow": true,
             "receiveShadow": false,
             "color": "ffffff",
-            "overrideOpacity": false,
-            "opacity": null,
+            "overrideOpacity": true,
+            "opacity": 1,
             "materialType": "basic",
             "shaderAssetId": null
           },

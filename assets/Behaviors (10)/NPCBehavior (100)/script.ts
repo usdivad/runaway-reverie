@@ -126,7 +126,7 @@ class NPCBehavior extends Sup.Behavior {
       }
     }
     
-    if (playerActor.getBehavior(CharacterBehavior).isDreaming) {
+    if (playerActor.getBehavior(CharacterBehavior).isDreaming || playerActor.getBehavior(CharacterBehavior).isInChorus) {
       body.velocity.y = 0;
     }
   }

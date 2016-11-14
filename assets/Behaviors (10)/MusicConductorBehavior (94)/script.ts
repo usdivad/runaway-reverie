@@ -135,17 +135,32 @@ class MusicConductorBehavior extends Sup.Behavior {
         // subs.scheduleText("", 4);
         // subs.scheduleText("What if I never wake from \n this runaway reverie?", 8);
 
-        subs.scheduleText("What if I find acres \n of an old illusion?", 16.75);
+        subs.scheduleText("What if I find acres \n of an old illusion?", 16.65);
         subs.scheduleText("What if I run into a wall?", 20.75);
-        subs.scheduleText("What if we could sing till \n the world is using us...", 24.75);
+        subs.scheduleText("What if we could sing till \n the world is using us...", 24.65);
         subs.scheduleText("... to break its \n whirlwind fall?", 28.5);
         subs.scheduleText("", 32.0);
         
-        subs.scheduleText("What if I drove into \n the Old Pacific?", 32.75);
-        subs.scheduleText("Would you ride up \n sixteenth and call?", 36.75);
-        subs.scheduleText("But if you were waiting \n for the new Madonna...", 40.75);
+        // subs.scheduleText("What if I drove into \n the Old Pacific?", 32.75);
+        // subs.scheduleText("Would you ride up \n sixteenth and call?", 36.75);
+        // subs.scheduleText("But if you were waiting \n for the new Madonna...", 40.75);
         // subs.scheduleText("I would break your \n whirlwind fall...", 44.0);
-        subs.scheduleText("", 44.0);
+        // subs.scheduleText("", 44.0);
+        
+        subs.scheduleText("What", 32.64);
+        subs.scheduleText("if", 32.9);
+        subs.scheduleText("I", 33.0);
+        subs.scheduleText("drove", 33.65);
+        subs.scheduleText("into", 34.0);
+        subs.scheduleText("the", 34.7);
+        subs.scheduleText("Old", 35.0);
+        subs.scheduleText("Pacific?", 35.37);
+        subs.scheduleText("", 36.25);
+
+        
+        this.conductor.scheduleEvent(32000, function() {
+          Sup.getActor("Subtitles").getBehavior(SubtitlesBehavior).beginChorusFade = true;
+        });
         
         // schedule chorus OFF
         // let cycleMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 15 * 1000; // this.conductor.getTimesig();
@@ -163,6 +178,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           b.chorusActive = false;
           b.chorusHasBegun = false;
           
+          Sup.getActor("Subtitles").getBehavior(SubtitlesBehavior).beginChorusFade = false;
           subs.scheduleText("", 0); // TODO: more stuff here
         });
         

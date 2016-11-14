@@ -12,6 +12,7 @@ class CharacterBehavior extends Sup.Behavior {
   private canJump = true;
   private canMove = true;
   private chorusHasBegun = false;
+  private chorusDecreasingVel = false;
 
   public isMoving = false;
   public isJumping = false;
@@ -99,10 +100,23 @@ class CharacterBehavior extends Sup.Behavior {
         // body.velocity.set(0, 0, 0);
       }
       
+      
+      // // decrease opacity for transition
+      // if (body.velocity.y > 800) {
+      //   let model = this.actor.modelRenderer;
+      //   if (model.getOpacity() > 0) {
+      //     model.setOpacity(model.getOpacity() - 0.01);
+      //   }
+      // }
+      
       // velocity reset for end (allows for smoother transition)
       if (body.velocity.y > 1100) {
-        body.velocity.y = 0;
+        this.chorusDecreasingVel = true;
         world.gravity.set(0, 0, 0);
+      }
+      if (this.chorusDecreasingVel) {
+        // body.velocity.y = 500; // this actually does the "fly up to the top level" thing if we set it when body.velocity.y > 1100
+        body.velocity.y -= 7;
       }
       
       // angles
@@ -114,11 +128,15 @@ class CharacterBehavior extends Sup.Behavior {
     }
     else {
       if (this.chorusHasBegun) {
-        // reset position and velocity to beginning state
+        // reset position, velocity, and opacity to beginning state
         this.position = new Sup.Math.Vector3(-60, 605, 90);
         body.position.set(this.position.x, this.position.y + this.height/2, this.position.z);
         body.velocity.set(0, 0, 0);
+        this.actor.modelRenderer.setOpacity(1);
+        
+        // reset chorus params
         this.chorusHasBegun = false;
+        this.chorusDecreasingVel = false;
       }
     }
   
