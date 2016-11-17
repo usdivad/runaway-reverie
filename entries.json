@@ -97,100 +97,13 @@
     "type": null,
     "children": [
       {
-        "id": "15",
-        "name": "Guitar Intro",
-        "type": null,
-        "children": [
-          {
-            "id": "20",
-            "name": "A1.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "21",
-            "name": "A2.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "22",
-            "name": "A3.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "23",
-            "name": "AToB1.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "24",
-            "name": "AToB2.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "25",
-            "name": "BToA1.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "26",
-            "name": "BToA2.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "27",
-            "name": "DHigh1.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "28",
-            "name": "DHigh2.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "29",
-            "name": "DHigh3.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "30",
-            "name": "DLow1.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "31",
-            "name": "DLow2.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "32",
-            "name": "DLow3.mp3",
-            "type": "sound"
-          }
-        ]
-      },
-      {
         "id": "37",
         "name": "Instrumental Entrance",
         "type": null,
         "children": [
           {
-            "id": "38",
-            "name": "init 1-Group.mp3",
-            "type": "sound"
-          },
-          {
             "id": "39",
             "name": "init 5-EZkeys.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "40",
-            "name": "init A-Reverb.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "41",
-            "name": "init B-Delay.mp3",
             "type": "sound"
           },
           {
@@ -229,28 +142,8 @@
             "type": "sound"
           },
           {
-            "id": "49",
-            "name": "init.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "50",
-            "name": "loop 1-Group.mp3",
-            "type": "sound"
-          },
-          {
             "id": "51",
             "name": "loop 5-EZkeys.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "52",
-            "name": "loop A-Reverb.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "53",
-            "name": "loop B-Delay.mp3",
             "type": "sound"
           },
           {
@@ -289,31 +182,6 @@
             "type": "sound"
           },
           {
-            "id": "61",
-            "name": "loop.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "62",
-            "name": "loop_alt 1-Group.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "63",
-            "name": "loop_alt 5-EZkeys.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "64",
-            "name": "loop_alt A-Reverb.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "65",
-            "name": "loop_alt B-Delay.mp3",
-            "type": "sound"
-          },
-          {
             "id": "66",
             "name": "loop_alt bass - cypress.mp3",
             "type": "sound"
@@ -349,28 +217,8 @@
             "type": "sound"
           },
           {
-            "id": "73",
-            "name": "loop_alt.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "74",
-            "name": "tail 1-Group.mp3",
-            "type": "sound"
-          },
-          {
             "id": "75",
             "name": "tail 5-EZkeys.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "76",
-            "name": "tail A-Reverb.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "77",
-            "name": "tail B-Delay.mp3",
             "type": "sound"
           },
           {
@@ -406,11 +254,6 @@
           {
             "id": "84",
             "name": "tail riff.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "85",
-            "name": "tail.mp3",
             "type": "sound"
           },
           {
@@ -630,170 +473,6 @@
           {
             "id": "169",
             "name": "vox_verse2.mp3",
-            "type": "sound"
-          }
-        ]
-      },
-      {
-        "id": "103",
-        "name": "Tabularasa Dreamsong A",
-        "type": null,
-        "children": [
-          {
-            "id": "105",
-            "name": "init drums.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "106",
-            "name": "init echoclap.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "107",
-            "name": "init guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "108",
-            "name": "init guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "109",
-            "name": "init.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "110",
-            "name": "loop drums.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "111",
-            "name": "loop echoclap.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "112",
-            "name": "loop guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "113",
-            "name": "loop guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "114",
-            "name": "loop.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "115",
-            "name": "tail drums.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "116",
-            "name": "tail echoclap.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "117",
-            "name": "tail guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "118",
-            "name": "tail guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "119",
-            "name": "tail.mp3",
-            "type": "sound"
-          }
-        ]
-      },
-      {
-        "id": "104",
-        "name": "Tabularasa Dreamsong B",
-        "type": null,
-        "children": [
-          {
-            "id": "120",
-            "name": "init drums.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "121",
-            "name": "init echoclap.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "122",
-            "name": "init guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "123",
-            "name": "init guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "124",
-            "name": "init.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "125",
-            "name": "loop drums.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "126",
-            "name": "loop echoclap.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "127",
-            "name": "loop guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "128",
-            "name": "loop guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "129",
-            "name": "loop.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "130",
-            "name": "tail drums.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "131",
-            "name": "tail echoclap.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "132",
-            "name": "tail guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "133",
-            "name": "tail guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "134",
-            "name": "tail.mp3",
             "type": "sound"
           }
         ]
