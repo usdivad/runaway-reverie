@@ -16,6 +16,11 @@
         "type": "script"
       },
       {
+        "id": "173",
+        "name": "OverlayBehavior",
+        "type": "script"
+      },
+      {
         "id": "137",
         "name": "PlatformBehavior",
         "type": "script"
@@ -77,6 +82,11 @@
       {
         "id": "7",
         "name": "2DWallSprite",
+        "type": "sprite"
+      },
+      {
+        "id": "172",
+        "name": "White",
         "type": "sprite"
       }
     ]

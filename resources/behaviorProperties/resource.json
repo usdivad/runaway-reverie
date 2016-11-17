@@ -205,6 +205,17 @@
           "type": "boolean"
         }
       ]
+    },
+    "OverlayBehavior": {
+      "scriptId": "173",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "quadrant",
+          "type": "number"
+        }
+      ]
     }
   }
 }

@@ -1956,7 +1956,7 @@
         },
         {
           "id": "52",
-          "name": "Platform6_Quadrant1Overlay",
+          "name": "Platform6_Quadrant1Light",
           "children": [],
           "components": [
             {
@@ -2014,7 +2014,7 @@
         },
         {
           "id": "53",
-          "name": "Platform6_Quadrant2Overlay",
+          "name": "Platform6_Quadrant2Light",
           "children": [],
           "components": [
             {
@@ -2072,7 +2072,7 @@
         },
         {
           "id": "54",
-          "name": "Platform6_Quadrant3Overlay",
+          "name": "Platform6_Quadrant3Light",
           "children": [],
           "components": [
             {
@@ -2130,7 +2130,7 @@
         },
         {
           "id": "55",
-          "name": "Platform6_Quadrant4Overlay",
+          "name": "Platform6_Quadrant4Light",
           "children": [],
           "components": [
             {
@@ -2181,6 +2181,230 @@
             "x": 1,
             "y": 1,
             "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "59",
+          "name": "Platform6_Quadrant1Overlay",
+          "children": [],
+          "components": [
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "172",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": false,
+                "color": "ffffff",
+                "overrideOpacity": true,
+                "opacity": 0.36,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "1"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "OverlayBehavior",
+                "propertyValues": {
+                  "quadrant": {
+                    "type": "number",
+                    "value": 1
+                  }
+                }
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": 50,
+            "y": 102,
+            "z": -50
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 50,
+            "y": 50,
+            "z": 50
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "58",
+          "name": "Platform6_Quadrant2Overlay",
+          "children": [],
+          "components": [
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "172",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": false,
+                "color": "ffffff",
+                "overrideOpacity": true,
+                "opacity": 0.36,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "1"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "OverlayBehavior",
+                "propertyValues": {
+                  "quadrant": {
+                    "type": "number",
+                    "value": 2
+                  }
+                }
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": -50,
+            "y": 102,
+            "z": -50
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 50,
+            "y": 50,
+            "z": 50
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "57",
+          "name": "Platform6_Quadrant3Overlay",
+          "children": [],
+          "components": [
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "172",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": false,
+                "color": "ffffff",
+                "overrideOpacity": true,
+                "opacity": 0.36,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "1"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "OverlayBehavior",
+                "propertyValues": {
+                  "quadrant": {
+                    "type": "number",
+                    "value": 3
+                  }
+                }
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": -50,
+            "y": 105,
+            "z": 50
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 50,
+            "y": 50,
+            "z": 50
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "56",
+          "name": "Platform6_Quadrant4Overlay",
+          "children": [],
+          "components": [
+            {
+              "type": "SpriteRenderer",
+              "config": {
+                "spriteAssetId": "172",
+                "animationId": null,
+                "horizontalFlip": false,
+                "verticalFlip": false,
+                "castShadow": false,
+                "receiveShadow": false,
+                "color": "ffffff",
+                "overrideOpacity": true,
+                "opacity": 0.36,
+                "materialType": "basic",
+                "shaderAssetId": null
+              },
+              "id": "1"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "OverlayBehavior",
+                "propertyValues": {
+                  "quadrant": {
+                    "type": "number",
+                    "value": 4
+                  }
+                }
+              },
+              "id": "2"
+            }
+          ],
+          "position": {
+            "x": 50,
+            "y": 105,
+            "z": 50
+          },
+          "orientation": {
+            "x": 0.7071067811865475,
+            "y": 0,
+            "z": 0,
+            "w": 0.7071067811865476
+          },
+          "scale": {
+            "x": 50,
+            "y": 50,
+            "z": 50
           },
           "visible": true,
           "layer": 0,
