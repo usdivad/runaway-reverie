@@ -392,10 +392,10 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.conductor.fadePlayer("drums", 0, 250);
         this.drumsAndBassHaveEntered = false;
       }
-      if (this.currentSection == 3 || this.currentSection == 4) {
+      if (this.currentSection == 3) {
         this.conductor.fadePlayer("drums_overdub", this.vol, 250);
       }
-      else {
+      else if (this.currentSection != 4) {
         this.conductor.fadePlayer("drums_overdub", 0, 250);
       }
       
@@ -406,15 +406,16 @@ class MusicConductorBehavior extends Sup.Behavior {
           this.conductor.fadePlayer("verse2_vox", this.vol, 250);
           this.conductor.activatePlayer("verse2_vox");
           this.verse2NpcHasSung = true;
+        
+          // fade bridge players
+          this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
+
+          // fade/deactivate conflicting insts from other sections
+          this.conductor.deactivatePlayer("cello");
+          // this.conductor.deactivatePlayer("drums_overdub");
+          // this.conductor.fadePlayer("drums_overdub", 0, 100);
+          
         }
-        
-        // fade bridge players
-        this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
-        
-        // fade/deactivate conflicting insts from other sections
-        this.conductor.deactivatePlayer("cello");
-        // this.conductor.deactivatePlayer("drums_overdub");
-        this.conductor.fadePlayer("drums_overdub", 0, 100);
         
         // background instrumental
         let instGroupNames = [
@@ -460,7 +461,12 @@ class MusicConductorBehavior extends Sup.Behavior {
           this.conductor.fadePlayers(["riff", "drums", "drums_overdub", "rev", "vox", "verse2_blakiesoph", "verse2_orchestral", "verse2_vox"], 0, 250);
           this.conductor.deactivatePlayers(["keys", "bass", "cello"]);
           this.conductor.fadePlayer("bridge_keys", this.vol, 250);
-          this.bridgeInstsHaveEntered = true;
+          
+          let b = this;
+          this.conductor.scheduleEvent(250, function() { // a bit of a time buf
+            b.bridgeInstsHaveEntered = true;
+            Sup.log("bridge instruments entered!");
+          });
         }
         
         // switcheroo segment
@@ -499,7 +505,9 @@ class MusicConductorBehavior extends Sup.Behavior {
           let b = this;
           let numBeatsToWait = 6;
           let beatMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 1000;
-          this.conductor.scheduleEvent(this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + (beatMs * numBeatsToWait), function() {
+          let waitMs = this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + (beatMs * numBeatsToWait); // 6 beats
+          waitMs = this.conductor.getMillisecondsLeftUntilNextDownbeat() + beatMs; // beginning of next cycle
+          this.conductor.scheduleEvent(waitMs, function() {
             b.chorusActive = true;
           });
         }
