@@ -502,7 +502,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         
       }
       else {
-        if (!this.verse2NpcHasSung) {
+        if (this.verse2NpcHasSung) {
           // fade out verse 2 vocals
           this.conductor.fadePlayer("verse2_vox", 0, 250);
           Sup.log("fading verse2_vox out");
@@ -515,7 +515,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         }
         
         // fade out bridge players
-        if (!this.bridgeInstsHaveEntered) {
+        if (this.bridgeInstsHaveEntered) {
           this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
           // this.conductor.fadePlayer("bridge_chip", 0, 250);
 
