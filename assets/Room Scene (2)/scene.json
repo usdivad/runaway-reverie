@@ -685,7 +685,7 @@
                 "animationId": null,
                 "horizontalFlip": false,
                 "verticalFlip": false,
-                "castShadow": false,
+                "castShadow": true,
                 "receiveShadow": true,
                 "color": "ffffff",
                 "overrideOpacity": true,
@@ -757,7 +757,7 @@
                 "animationId": null,
                 "horizontalFlip": false,
                 "verticalFlip": false,
-                "castShadow": false,
+                "castShadow": true,
                 "receiveShadow": true,
                 "color": "ffffff",
                 "overrideOpacity": true,
@@ -1785,7 +1785,7 @@
                 "animationId": null,
                 "horizontalFlip": false,
                 "verticalFlip": false,
-                "castShadow": false,
+                "castShadow": true,
                 "receiveShadow": true,
                 "color": "ffffff",
                 "overrideOpacity": true,
@@ -1857,7 +1857,7 @@
                 "animationId": null,
                 "horizontalFlip": false,
                 "verticalFlip": false,
-                "castShadow": false,
+                "castShadow": true,
                 "receiveShadow": true,
                 "color": "ffffff",
                 "overrideOpacity": true,
@@ -1914,7 +1914,7 @@
                   "y": 0,
                   "z": 0
                 },
-                "castShadow": true,
+                "castShadow": false,
                 "shadowMapSize": {
                   "width": 512,
                   "height": 512
@@ -1950,48 +1950,237 @@
             "y": 1,
             "z": 1
           },
-          "visible": true,
+          "visible": false,
           "layer": 0,
           "prefab": null
         },
         {
-          "id": "50",
-          "name": "Platform5_Quadrant1Overlay",
+          "id": "52",
+          "name": "Platform6_Quadrant1Overlay",
           "children": [],
           "components": [
             {
-              "type": "SpriteRenderer",
+              "type": "Light",
               "config": {
-                "spriteAssetId": "7",
-                "animationId": null,
-                "horizontalFlip": false,
-                "verticalFlip": false,
-                "castShadow": false,
-                "receiveShadow": false,
+                "type": "spot",
                 "color": "ffffff",
-                "overrideOpacity": true,
-                "opacity": 0.41,
-                "materialType": "basic",
-                "shaderAssetId": null
+                "intensity": 1,
+                "distance": 0,
+                "angle": 0,
+                "target": {
+                  "x": 50,
+                  "y": 100,
+                  "z": -50
+                },
+                "castShadow": true,
+                "shadowMapSize": {
+                  "width": 512,
+                  "height": 512
+                },
+                "shadowBias": 0,
+                "shadowDarkness": 0.35,
+                "shadowCameraNearPlane": 0.1,
+                "shadowCameraFarPlane": 1000,
+                "shadowCameraFov": 1000,
+                "shadowCameraSize": {
+                  "top": 100,
+                  "bottom": -100,
+                  "left": -100,
+                  "right": 100
+                }
               },
               "id": "0"
             }
           ],
           "position": {
             "x": 50,
-            "y": 100,
-            "z": -75
+            "y": 150,
+            "z": -50
           },
           "orientation": {
-            "x": 0.7071067811865475,
+            "x": 0,
             "y": 0,
             "z": 0,
-            "w": 0.7071067811865476
+            "w": 1
           },
           "scale": {
-            "x": 100,
-            "y": 100,
-            "z": 100
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "53",
+          "name": "Platform6_Quadrant2Overlay",
+          "children": [],
+          "components": [
+            {
+              "type": "Light",
+              "config": {
+                "type": "spot",
+                "color": "ffffff",
+                "intensity": 1,
+                "distance": 0,
+                "angle": 0,
+                "target": {
+                  "x": -50,
+                  "y": 100,
+                  "z": -50
+                },
+                "castShadow": true,
+                "shadowMapSize": {
+                  "width": 512,
+                  "height": 512
+                },
+                "shadowBias": 0,
+                "shadowDarkness": 0.35,
+                "shadowCameraNearPlane": 0.1,
+                "shadowCameraFarPlane": 1000,
+                "shadowCameraFov": 1000,
+                "shadowCameraSize": {
+                  "top": 100,
+                  "bottom": -100,
+                  "left": -100,
+                  "right": 100
+                }
+              },
+              "id": "0"
+            }
+          ],
+          "position": {
+            "x": -50,
+            "y": 150,
+            "z": -50
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "54",
+          "name": "Platform6_Quadrant3Overlay",
+          "children": [],
+          "components": [
+            {
+              "type": "Light",
+              "config": {
+                "type": "spot",
+                "color": "ffffff",
+                "intensity": 1,
+                "distance": 0,
+                "angle": 0,
+                "target": {
+                  "x": -50,
+                  "y": 100,
+                  "z": 50
+                },
+                "castShadow": true,
+                "shadowMapSize": {
+                  "width": 512,
+                  "height": 512
+                },
+                "shadowBias": 0,
+                "shadowDarkness": 0.35,
+                "shadowCameraNearPlane": 0.1,
+                "shadowCameraFarPlane": 1000,
+                "shadowCameraFov": 1000,
+                "shadowCameraSize": {
+                  "top": 100,
+                  "bottom": -100,
+                  "left": -100,
+                  "right": 100
+                }
+              },
+              "id": "0"
+            }
+          ],
+          "position": {
+            "x": -50,
+            "y": 150,
+            "z": 50
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": null
+        },
+        {
+          "id": "55",
+          "name": "Platform6_Quadrant4Overlay",
+          "children": [],
+          "components": [
+            {
+              "type": "Light",
+              "config": {
+                "type": "spot",
+                "color": "ffffff",
+                "intensity": 1,
+                "distance": 0,
+                "angle": 0,
+                "target": {
+                  "x": 50,
+                  "y": 100,
+                  "z": 50
+                },
+                "castShadow": true,
+                "shadowMapSize": {
+                  "width": 512,
+                  "height": 512
+                },
+                "shadowBias": 0,
+                "shadowDarkness": 0.35,
+                "shadowCameraNearPlane": 0.1,
+                "shadowCameraFarPlane": 1000,
+                "shadowCameraFov": 1000,
+                "shadowCameraSize": {
+                  "top": 100,
+                  "bottom": -100,
+                  "left": -100,
+                  "right": 100
+                }
+              },
+              "id": "0"
+            }
+          ],
+          "position": {
+            "x": 50,
+            "y": 150,
+            "z": 50
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
           },
           "visible": true,
           "layer": 0,
