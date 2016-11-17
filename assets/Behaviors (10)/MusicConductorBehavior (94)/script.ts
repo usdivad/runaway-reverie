@@ -227,6 +227,12 @@ class MusicConductorBehavior extends Sup.Behavior {
         this.chorusHasBegun = true;
       }
       
+      // chimeagain
+      if (Sup.Input.wasKeyJustPressed("ANY")) {
+        let beatNum = this.conductor.getBeatNum() % 12; // fibonaccization
+        this.pickChimeagain(beatNum);
+      }
+      
       // skip the below
       return;
     }
@@ -348,25 +354,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       // use wchoose to pick consonant notes according to harmony      
       if ((!this.playerWasJumping && playerIsJumping) || Sup.Input.wasKeyJustPressed("SPACE")) {
         let beatNum = this.conductor.getBeatNum();
-        let note = "d";
-        
-        beatNum = beatNum + 1; // offset for anticipations
-        
-        if (beatNum < 4) { // D chord
-          note = wchoose(["f#", "d"], [0.75, 0.25]);
-        }
-        else if (beatNum < 7) { // G chord
-          note = wchoose(["g", "d"], [1.0, 0.0]);
-        }
-        else if (beatNum < 11) { // D chord
-          note = wchoose(["d", "f#"], [0.75, 0.25]);
-        }
-        else if (beatNum < 14) { // A chord
-          note = "e";
-        }
-        
-        this.chimeagain[note].stop();
-        this.chimeagain[note].play();
+        this.pickChimeagain(beatNum);
       }
       
       
@@ -650,6 +638,28 @@ class MusicConductorBehavior extends Sup.Behavior {
       }
     }
     
+  }
+
+  pickChimeagain(beatNum) {
+    let note = "d";
+
+    beatNum = beatNum + 1; // offset for anticipations
+
+    if (beatNum < 4) { // D chord
+      note = wchoose(["f#", "d"], [0.75, 0.25]);
+    }
+    else if (beatNum < 7) { // G chord
+      note = wchoose(["g", "d"], [1.0, 0.0]);
+    }
+    else if (beatNum < 11) { // D chord
+      note = wchoose(["d", "f#"], [0.75, 0.25]);
+    }
+    else if (beatNum < 14) { // A chord
+      note = "e";
+    }
+
+    this.chimeagain[note].stop();
+    this.chimeagain[note].play();
   }
 
   // create MultiSoundPlayers for instrumental entrance
