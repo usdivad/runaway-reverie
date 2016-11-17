@@ -195,6 +195,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         // decrease player velocity in case the velocity check doesn't occur in time
         this.conductor.scheduleEvent(47000, function() {
           Sup.getActor("Player").getBehavior(CharacterBehavior).chorusDecreasingVel = true;
+          b.conductor.fadePlayer("bridge_keys", b.vol, 100);
         });
         
         // schedule chorus OFF
@@ -519,7 +520,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         // fade out bridge players
         if (rescheduleResets || this.bridgeInstsHaveEntered) {
           Sup.log("fading out bridge players");
-          this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", "bridge_keys", "bridge_chopvox"], 0, 250);
+          this.conductor.fadePlayers(["bridge_synth", "bridge_chip", "bridge_cello", /*"bridge_keys",*/ "bridge_chopvox"], 0, 250);
           // this.conductor.fadePlayer("bridge_chip", 0, 250);
 
           // reset bridge props
