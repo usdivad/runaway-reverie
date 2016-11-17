@@ -229,7 +229,7 @@ class MusicConductorBehavior extends Sup.Behavior {
       
       // chimeagain
       if (Sup.Input.wasKeyJustPressed("ANY")) {
-        let beatNum = this.conductor.getBeatNum() % 12; // fibonaccization
+        let beatNum = this.conductor.getBeatNum(); // % 12 for fibonaccization
         this.pickChimeagain(beatNum);
       }
       
@@ -494,7 +494,7 @@ class MusicConductorBehavior extends Sup.Behavior {
           let numBeatsToWait = 6;
           let beatMs = Sup.Audio.Conductor.calculateNextBeatTime(0, this.conductor.getBpm()) * 1000;
           let waitMs = this.conductor.getMillisecondsLeftUntilNextTransitionBeat() + (beatMs * numBeatsToWait); // 6 beats
-          waitMs = this.conductor.getMillisecondsLeftUntilNextDownbeat() + beatMs; // beginning of next cycle
+          waitMs = this.conductor.getMillisecondsLeftUntilNextDownbeat(); // beginning of next cycle
           this.conductor.scheduleEvent(waitMs, function() {
             b.chorusActive = true;
           });
