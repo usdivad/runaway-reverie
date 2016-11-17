@@ -93,7 +93,7 @@ class CharacterBehavior extends Sup.Behavior {
     
       // position reset
       let chorusAStartY = 3000;
-      Sup.log("chorus pos y: " + this.position.y + ", vel y: " + body.velocity.y);
+      // Sup.log("chorus pos y: " + this.position.y + ", vel y: " + body.velocity.y);
       
       if (this.position.y > chorusAStartY) {
         this.position = new Sup.Math.Vector3(-60, -100, 90);
