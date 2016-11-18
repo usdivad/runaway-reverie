@@ -1,8 +1,9 @@
 # Runaway Reverie
+by [David Su](http://usdivad.com/)
 
-**Download:** [Mac OS X] (http://usdivad.com/runaway-reverie/Runaway%20Reverie.zip) | [Windows 32-bit] (http://usdivad.com/runaway-reverie/Runaway%20Reverie%2032-bit.zip) | [Windows 64-bit] (http://usdivad.com/runaway-reverie/Runaway%20Reverie%2064-bit.zip) | 
+**Download:** [Mac OS X](http://usdivad.com/runaway-reverie/Runaway%20Reverie.zip) | [Windows 32-bit](http://usdivad.com/runaway-reverie/Runaway%20Reverie%2032-bit.zip) | [Windows 64-bit](http://usdivad.com/runaway-reverie/Runaway%20Reverie%2064-bit.zip)
 
-**Play:** [usdivad.com](http://usdivad.com/runaway-reverie) | [itch.io](https://usdivad.itch.io/runaway-reverie)
+**Play online:** [usdivad.com](http://usdivad.com/runaway-reverie/play) | [itch.io](https://usdivad.itch.io/runaway-reverie)
 
 An interactive song / music game for digital dreamers.
 
