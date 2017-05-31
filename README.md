@@ -9,7 +9,7 @@ An interactive song / music game for digital dreamers.
 
 Use arrow keys or WASD to move, space to jump. Explore how your movement, location, and interactions with the environment affect musical parameters!
 
-Made using the [Superpowers](http://superpowers-html5.com/) HTML5 engine using visual assets by [Sparklin Labs](https://sparklinlabs.com/), and extending the game engine's audio capabilities with Conductor and MultiSoundPlayer classes (available [here](https://github.com/usdivad/superpowers-game/tree/soundAdditions)).
+Made using the [Superpowers](http://superpowers-html5.com/) HTML5 engine using visual assets by [Sparklin Labs](https://sparklinlabs.com/), and extending the game engine's audio capabilities with Conductor and MultiSoundPlayer classes (available [here](https://github.com/usdivad/superpowers-game/tree/soundAdditions), with example usage [here](https://gist.github.com/usdivad/e2872c702a7a31e3562c15f3e047bb0e)).
 
 Original music by David Su.
 
