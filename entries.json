@@ -1,534 +1,537 @@
-[
-  {
-    "id": "0",
-    "name": "Music",
-    "type": null,
-    "children": []
-  },
-  {
-    "id": "10",
-    "name": "Behaviors",
-    "type": null,
-    "children": [
-      {
-        "id": "9",
-        "name": "CharacterBehavior",
-        "type": "script"
-      },
-      {
-        "id": "173",
-        "name": "OverlayBehavior",
-        "type": "script"
-      },
-      {
-        "id": "137",
-        "name": "PlatformBehavior",
-        "type": "script"
-      },
-      {
-        "id": "161",
-        "name": "SubtitlesBehavior",
-        "type": "script"
-      },
-      {
-        "id": "100",
-        "name": "NPCBehavior",
-        "type": "script"
-      },
-      {
-        "id": "12",
-        "name": "CameramanBehavior",
-        "type": "script"
-      },
-      {
-        "id": "33",
-        "name": "AmbientMarkovMusicBehavior",
-        "type": "script"
-      },
-      {
-        "id": "94",
-        "name": "MusicConductorBehavior",
-        "type": "script"
-      }
-    ]
-  },
-  {
-    "id": "3",
-    "name": "Models",
-    "type": null,
-    "children": [
-      {
-        "id": "1",
-        "name": "PlayerModel",
-        "type": "model"
-      },
-      {
-        "id": "5",
-        "name": "WallModel",
-        "type": "cubicModel"
-      },
-      {
-        "id": "95",
-        "name": "WallModel2",
-        "type": "cubicModel"
-      }
-    ]
-  },
-  {
-    "id": "6",
-    "name": "Sprites",
-    "type": null,
-    "children": [
-      {
-        "id": "7",
-        "name": "2DWallSprite",
-        "type": "sprite"
-      },
-      {
-        "id": "172",
-        "name": "White",
-        "type": "sprite"
-      }
-    ]
-  },
-  {
-    "id": "8",
-    "name": "Game",
-    "type": "script"
-  },
-  {
-    "id": "2",
-    "name": "Room Scene",
-    "type": "scene"
-  },
-  {
-    "id": "14",
-    "name": "Audio",
-    "type": null,
-    "children": [
-      {
-        "id": "37",
-        "name": "Instrumental Entrance",
-        "type": null,
-        "children": [
-          {
-            "id": "39",
-            "name": "init 5-EZkeys.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "42",
-            "name": "init bass - cypress.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "43",
-            "name": "init bass_freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "44",
-            "name": "init cello freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "45",
-            "name": "init cello vcs lyr.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "46",
-            "name": "init drums - dub remix kit.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "47",
-            "name": "init reversed.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "48",
-            "name": "init riff.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "51",
-            "name": "loop 5-EZkeys.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "54",
-            "name": "loop bass - cypress.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "55",
-            "name": "loop bass_freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "56",
-            "name": "loop cello freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "57",
-            "name": "loop cello vcs lyr.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "58",
-            "name": "loop drums - dub remix kit.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "59",
-            "name": "loop reversed.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "60",
-            "name": "loop riff.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "66",
-            "name": "loop_alt bass - cypress.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "67",
-            "name": "loop_alt bass_freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "68",
-            "name": "loop_alt cello freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "69",
-            "name": "loop_alt cello vcs lyr.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "70",
-            "name": "loop_alt drums - dub remix kit.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "71",
-            "name": "loop_alt reversed.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "72",
-            "name": "loop_alt riff.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "75",
-            "name": "tail 5-EZkeys.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "78",
-            "name": "tail bass - cypress.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "79",
-            "name": "tail bass_freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "80",
-            "name": "tail cello freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "81",
-            "name": "tail cello vcs lyr.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "82",
-            "name": "tail drums - dub remix kit.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "83",
-            "name": "tail reversed.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "84",
-            "name": "tail riff.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "96",
-            "name": "chimeagain_fsharp.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "97",
-            "name": "chimeagain_d.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "98",
-            "name": "chimeagain_e.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "99",
-            "name": "chimeagain_g.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "138",
-            "name": "init 1 bridge synth freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "139",
-            "name": "init 2 bridge chip freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "140",
-            "name": "init 3 bridge cello freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "141",
-            "name": "init 4 bridge keys freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "142",
-            "name": "init 5 bridge chop vox freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "143",
-            "name": "loop 1 bridge synth freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "144",
-            "name": "loop 2 bridge chip freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "145",
-            "name": "loop 3 bridge cello freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "146",
-            "name": "loop 4 bridge keys freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "147",
-            "name": "loop 5 bridge chop vox freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "148",
-            "name": "tail 1 bridge synth freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "149",
-            "name": "tail 2 bridge chip freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "150",
-            "name": "tail 3 bridge cello freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "151",
-            "name": "tail 4 bridge keys freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "152",
-            "name": "tail 5 bridge chop vox freeze.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "153",
-            "name": "init verse2_inst_blakiesoph.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "154",
-            "name": "init verse2_inst_orchestral.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "155",
-            "name": "loop verse2_inst_blakiesoph.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "156",
-            "name": "loop verse2_inst_orchestral.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "157",
-            "name": "tail verse2_inst_blakiesoph.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "158",
-            "name": "tail verse2_inst_orchestral.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "162",
-            "name": "init drums - overdub.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "163",
-            "name": "loop drums - overdub.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "164",
-            "name": "tail drums - overdub.mp3",
-            "type": "sound"
-          }
-        ]
-      },
-      {
-        "id": "87",
-        "name": "Tabs",
-        "type": null,
-        "children": [
-          {
-            "id": "88",
-            "name": "init guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "89",
-            "name": "init guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "90",
-            "name": "loop guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "91",
-            "name": "loop guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "92",
-            "name": "tail guitar rev.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "93",
-            "name": "tail guitar.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "135",
-            "name": "initAndLoop stretch.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "136",
-            "name": "tail stretch.mp3",
-            "type": "sound"
-          }
-        ]
-      },
-      {
-        "id": "101",
-        "name": "Vox",
-        "type": null,
-        "children": [
-          {
-            "id": "165",
-            "name": "vox_chorus_ahhs.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "166",
-            "name": "vox_chorus_words_loop.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "167",
-            "name": "vox_chorus_words_noloop.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "168",
-            "name": "vox_verse1.mp3",
-            "type": "sound"
-          },
-          {
-            "id": "169",
-            "name": "vox_verse2.mp3",
-            "type": "sound"
-          }
-        ]
-      },
-      {
-        "id": "170",
-        "name": "Chorus",
-        "type": null,
-        "children": [
-          {
-            "id": "171",
-            "name": "chorus_all.mp3",
-            "type": "sound"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "34",
-    "name": "Scripts",
-    "type": null,
-    "children": [
-      {
-        "id": "35",
-        "name": "Helpers",
-        "type": "script"
-      }
-    ]
-  },
-  {
-    "id": "36",
-    "name": "External Libraries",
-    "type": null,
-    "children": []
-  },
-  {
-    "id": "159",
-    "name": "Fonts",
-    "type": null,
-    "children": [
-      {
-        "id": "160",
-        "name": "SubtitlesFont",
-        "type": "font"
-      }
-    ]
-  }
-]
+{
+  "nextEntryId": 174,
+  "nodes": [
+    {
+      "id": "0",
+      "name": "Music",
+      "type": null,
+      "children": []
+    },
+    {
+      "id": "10",
+      "name": "Behaviors",
+      "type": null,
+      "children": [
+        {
+          "id": "9",
+          "name": "CharacterBehavior",
+          "type": "script"
+        },
+        {
+          "id": "173",
+          "name": "OverlayBehavior",
+          "type": "script"
+        },
+        {
+          "id": "137",
+          "name": "PlatformBehavior",
+          "type": "script"
+        },
+        {
+          "id": "161",
+          "name": "SubtitlesBehavior",
+          "type": "script"
+        },
+        {
+          "id": "100",
+          "name": "NPCBehavior",
+          "type": "script"
+        },
+        {
+          "id": "12",
+          "name": "CameramanBehavior",
+          "type": "script"
+        },
+        {
+          "id": "33",
+          "name": "AmbientMarkovMusicBehavior",
+          "type": "script"
+        },
+        {
+          "id": "94",
+          "name": "MusicConductorBehavior",
+          "type": "script"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Models",
+      "type": null,
+      "children": [
+        {
+          "id": "1",
+          "name": "PlayerModel",
+          "type": "model"
+        },
+        {
+          "id": "5",
+          "name": "WallModel",
+          "type": "cubicModel"
+        },
+        {
+          "id": "95",
+          "name": "WallModel2",
+          "type": "cubicModel"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Sprites",
+      "type": null,
+      "children": [
+        {
+          "id": "7",
+          "name": "2DWallSprite",
+          "type": "sprite"
+        },
+        {
+          "id": "172",
+          "name": "White",
+          "type": "sprite"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Game",
+      "type": "script"
+    },
+    {
+      "id": "2",
+      "name": "Room Scene",
+      "type": "scene"
+    },
+    {
+      "id": "14",
+      "name": "Audio",
+      "type": null,
+      "children": [
+        {
+          "id": "37",
+          "name": "Instrumental Entrance",
+          "type": null,
+          "children": [
+            {
+              "id": "39",
+              "name": "init 5-EZkeys.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "42",
+              "name": "init bass - cypress.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "43",
+              "name": "init bass_freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "44",
+              "name": "init cello freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "45",
+              "name": "init cello vcs lyr.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "46",
+              "name": "init drums - dub remix kit.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "47",
+              "name": "init reversed.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "48",
+              "name": "init riff.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "51",
+              "name": "loop 5-EZkeys.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "54",
+              "name": "loop bass - cypress.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "55",
+              "name": "loop bass_freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "56",
+              "name": "loop cello freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "57",
+              "name": "loop cello vcs lyr.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "58",
+              "name": "loop drums - dub remix kit.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "59",
+              "name": "loop reversed.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "60",
+              "name": "loop riff.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "66",
+              "name": "loop_alt bass - cypress.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "67",
+              "name": "loop_alt bass_freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "68",
+              "name": "loop_alt cello freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "69",
+              "name": "loop_alt cello vcs lyr.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "70",
+              "name": "loop_alt drums - dub remix kit.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "71",
+              "name": "loop_alt reversed.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "72",
+              "name": "loop_alt riff.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "75",
+              "name": "tail 5-EZkeys.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "78",
+              "name": "tail bass - cypress.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "79",
+              "name": "tail bass_freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "80",
+              "name": "tail cello freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "81",
+              "name": "tail cello vcs lyr.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "82",
+              "name": "tail drums - dub remix kit.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "83",
+              "name": "tail reversed.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "84",
+              "name": "tail riff.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "96",
+              "name": "chimeagain_fsharp.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "97",
+              "name": "chimeagain_d.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "98",
+              "name": "chimeagain_e.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "99",
+              "name": "chimeagain_g.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "138",
+              "name": "init 1 bridge synth freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "139",
+              "name": "init 2 bridge chip freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "140",
+              "name": "init 3 bridge cello freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "141",
+              "name": "init 4 bridge keys freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "142",
+              "name": "init 5 bridge chop vox freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "143",
+              "name": "loop 1 bridge synth freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "144",
+              "name": "loop 2 bridge chip freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "145",
+              "name": "loop 3 bridge cello freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "146",
+              "name": "loop 4 bridge keys freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "147",
+              "name": "loop 5 bridge chop vox freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "148",
+              "name": "tail 1 bridge synth freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "149",
+              "name": "tail 2 bridge chip freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "150",
+              "name": "tail 3 bridge cello freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "151",
+              "name": "tail 4 bridge keys freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "152",
+              "name": "tail 5 bridge chop vox freeze.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "153",
+              "name": "init verse2_inst_blakiesoph.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "154",
+              "name": "init verse2_inst_orchestral.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "155",
+              "name": "loop verse2_inst_blakiesoph.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "156",
+              "name": "loop verse2_inst_orchestral.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "157",
+              "name": "tail verse2_inst_blakiesoph.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "158",
+              "name": "tail verse2_inst_orchestral.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "162",
+              "name": "init drums - overdub.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "163",
+              "name": "loop drums - overdub.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "164",
+              "name": "tail drums - overdub.mp3",
+              "type": "sound"
+            }
+          ]
+        },
+        {
+          "id": "87",
+          "name": "Tabs",
+          "type": null,
+          "children": [
+            {
+              "id": "88",
+              "name": "init guitar rev.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "89",
+              "name": "init guitar.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "90",
+              "name": "loop guitar rev.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "91",
+              "name": "loop guitar.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "92",
+              "name": "tail guitar rev.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "93",
+              "name": "tail guitar.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "135",
+              "name": "initAndLoop stretch.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "136",
+              "name": "tail stretch.mp3",
+              "type": "sound"
+            }
+          ]
+        },
+        {
+          "id": "101",
+          "name": "Vox",
+          "type": null,
+          "children": [
+            {
+              "id": "165",
+              "name": "vox_chorus_ahhs.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "166",
+              "name": "vox_chorus_words_loop.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "167",
+              "name": "vox_chorus_words_noloop.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "168",
+              "name": "vox_verse1.mp3",
+              "type": "sound"
+            },
+            {
+              "id": "169",
+              "name": "vox_verse2.mp3",
+              "type": "sound"
+            }
+          ]
+        },
+        {
+          "id": "170",
+          "name": "Chorus",
+          "type": null,
+          "children": [
+            {
+              "id": "171",
+              "name": "chorus_all.mp3",
+              "type": "sound"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "name": "Scripts",
+      "type": null,
+      "children": [
+        {
+          "id": "35",
+          "name": "Helpers",
+          "type": "script"
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "name": "External Libraries",
+      "type": null,
+      "children": []
+    },
+    {
+      "id": "159",
+      "name": "Fonts",
+      "type": null,
+      "children": [
+        {
+          "id": "160",
+          "name": "SubtitlesFont",
+          "type": "font"
+        }
+      ]
+    }
+  ]
+}

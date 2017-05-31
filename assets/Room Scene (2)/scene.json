@@ -17,7 +17,8 @@
             "overrideOpacity": true,
             "opacity": 1,
             "materialType": "basic",
-            "shaderAssetId": null
+            "shaderAssetId": null,
+            "formatVersion": 1
           },
           "id": "1"
         },
@@ -26,11 +27,6 @@
           "config": {
             "mass": 10,
             "fixedRotation": true,
-            "offset": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
             "shape": "box",
             "halfSize": {
               "x": 0.5,
@@ -38,7 +34,21 @@
               "z": 0.5
             },
             "radius": 1,
-            "height": 1
+            "height": 1,
+            "formatVersion": 2,
+            "positionOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "orientationOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "segments": 16,
+            "group": 1,
+            "mask": 1
           },
           "id": "2"
         },
@@ -90,7 +100,8 @@
             },
             "depth": 0,
             "nearClippingPlane": 0.1,
-            "farClippingPlane": 1000
+            "farClippingPlane": 1000,
+            "formatVersion": 1
           },
           "id": "0"
         },
@@ -99,11 +110,6 @@
           "config": {
             "mass": 0,
             "fixedRotation": false,
-            "offset": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
             "shape": "box",
             "halfSize": {
               "x": 0.5,
@@ -111,7 +117,21 @@
               "z": 0.5
             },
             "radius": 1,
-            "height": 1
+            "height": 1,
+            "formatVersion": 2,
+            "positionOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "orientationOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "segments": 16,
+            "group": 1,
+            "mask": 1
           },
           "id": "1"
         },
@@ -158,11 +178,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 4000,
@@ -170,7 +185,21 @@
                   "z": 20
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -187,7 +216,8 @@
                 "overrideOpacity": true,
                 "opacity": 0,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -230,11 +260,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -242,7 +267,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -259,7 +298,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -302,11 +342,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -314,7 +349,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -331,7 +380,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -374,11 +424,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 100,
@@ -386,7 +431,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -403,7 +462,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -446,11 +506,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -458,7 +513,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -475,7 +544,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -518,11 +588,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 100,
@@ -530,7 +595,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -547,7 +626,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -590,11 +670,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -602,7 +677,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -619,7 +708,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -662,11 +752,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -674,7 +759,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -691,7 +790,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -734,11 +834,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -746,7 +841,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -763,7 +872,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -806,11 +916,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -818,7 +923,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -835,7 +954,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -878,11 +998,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -890,7 +1005,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -907,7 +1036,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -950,11 +1080,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -962,7 +1087,21 @@
                   "z": 1
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -986,7 +1125,8 @@
                 "overrideOpacity": true,
                 "opacity": 0,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             }
@@ -1021,11 +1161,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1033,7 +1168,21 @@
                   "z": 1
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1057,7 +1206,8 @@
                 "overrideOpacity": true,
                 "opacity": 0,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             }
@@ -1092,11 +1242,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1104,7 +1249,21 @@
                   "z": 1
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1128,7 +1287,8 @@
                 "overrideOpacity": true,
                 "opacity": 0,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             }
@@ -1163,11 +1323,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1175,7 +1330,21 @@
                   "z": 1
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1199,7 +1368,8 @@
                 "overrideOpacity": true,
                 "opacity": 0,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             }
@@ -1259,11 +1429,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1271,7 +1436,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1295,7 +1474,8 @@
                 "overrideOpacity": true,
                 "opacity": null,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             }
@@ -1330,11 +1510,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1342,7 +1517,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1359,7 +1548,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1402,11 +1592,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1414,7 +1599,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1431,7 +1630,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1474,11 +1674,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 100,
@@ -1486,7 +1681,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1503,7 +1712,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1546,11 +1756,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1558,7 +1763,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1575,7 +1794,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1618,11 +1838,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 100,
@@ -1630,7 +1845,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1647,7 +1876,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1690,11 +1920,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1702,7 +1927,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1719,7 +1958,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1762,11 +2002,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 200,
@@ -1774,7 +2009,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1791,7 +2040,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1834,11 +2084,6 @@
               "config": {
                 "mass": 0,
                 "fixedRotation": false,
-                "offset": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
                 "shape": "box",
                 "halfSize": {
                   "x": 100,
@@ -1846,7 +2091,21 @@
                   "z": 10
                 },
                 "radius": 1,
-                "height": 1
+                "height": 1,
+                "formatVersion": 2,
+                "positionOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "orientationOffset": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "segments": 16,
+                "group": 1,
+                "mask": 1
               },
               "id": "0"
             },
@@ -1863,7 +2122,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.85,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "2"
             },
@@ -1914,7 +2174,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.36,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "1"
             },
@@ -1970,7 +2231,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.36,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "1"
             },
@@ -2026,7 +2288,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.36,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "1"
             },
@@ -2082,7 +2345,8 @@
                 "overrideOpacity": true,
                 "opacity": 0.36,
                 "materialType": "basic",
-                "shaderAssetId": null
+                "shaderAssetId": null,
+                "formatVersion": 1
               },
               "id": "1"
             },
@@ -2192,7 +2456,8 @@
             "overrideOpacity": false,
             "opacity": null,
             "materialType": "basic",
-            "shaderAssetId": null
+            "shaderAssetId": null,
+            "formatVersion": 1
           },
           "id": "1"
         },
@@ -2201,11 +2466,6 @@
           "config": {
             "mass": 10,
             "fixedRotation": true,
-            "offset": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
             "shape": "box",
             "halfSize": {
               "x": 0.5,
@@ -2213,7 +2473,21 @@
               "z": 0.5
             },
             "radius": 1,
-            "height": 1
+            "height": 1,
+            "formatVersion": 2,
+            "positionOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "orientationOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "segments": 16,
+            "group": 1,
+            "mask": 1
           },
           "id": "2"
         },
@@ -2267,7 +2541,8 @@
             "overrideOpacity": false,
             "opacity": null,
             "materialType": "basic",
-            "shaderAssetId": null
+            "shaderAssetId": null,
+            "formatVersion": 1
           },
           "id": "1"
         },
@@ -2276,11 +2551,6 @@
           "config": {
             "mass": 100,
             "fixedRotation": true,
-            "offset": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
             "shape": "box",
             "halfSize": {
               "x": 0.5,
@@ -2288,7 +2558,21 @@
               "z": 0.5
             },
             "radius": 1,
-            "height": 1
+            "height": 1,
+            "formatVersion": 2,
+            "positionOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "orientationOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "segments": 16,
+            "group": 1,
+            "mask": 1
           },
           "id": "2"
         },
@@ -2342,7 +2626,8 @@
             "overrideOpacity": false,
             "opacity": null,
             "materialType": "basic",
-            "shaderAssetId": null
+            "shaderAssetId": null,
+            "formatVersion": 1
           },
           "id": "1"
         },
@@ -2351,11 +2636,6 @@
           "config": {
             "mass": 100,
             "fixedRotation": true,
-            "offset": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
             "shape": "box",
             "halfSize": {
               "x": 0.5,
@@ -2363,7 +2643,21 @@
               "z": 0.5
             },
             "radius": 1,
-            "height": 1
+            "height": 1,
+            "formatVersion": 2,
+            "positionOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "orientationOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "segments": 16,
+            "group": 1,
+            "mask": 1
           },
           "id": "2"
         },
@@ -2421,7 +2715,8 @@
             "overrideOpacity": false,
             "opacity": null,
             "materialType": "basic",
-            "shaderAssetId": null
+            "shaderAssetId": null,
+            "formatVersion": 1
           },
           "id": "1"
         },
@@ -2430,11 +2725,6 @@
           "config": {
             "mass": 100,
             "fixedRotation": true,
-            "offset": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
             "shape": "box",
             "halfSize": {
               "x": 0.5,
@@ -2442,7 +2732,21 @@
               "z": 0.5
             },
             "radius": 1,
-            "height": 1
+            "height": 1,
+            "formatVersion": 2,
+            "positionOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "orientationOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "segments": 16,
+            "group": 1,
+            "mask": 1
           },
           "id": "2"
         },
@@ -2493,7 +2797,10 @@
             "alignment": "center",
             "size": null,
             "color": null,
-            "verticalAlignment": "center"
+            "verticalAlignment": "center",
+            "formatVersion": 2,
+            "overrideOpacity": false,
+            "opacity": null
           },
           "id": "0"
         },

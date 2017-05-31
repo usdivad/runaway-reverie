@@ -419,7 +419,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         for (let i in npcs) {
           let npc = npcs[i];
           if (npc.getBehavior(NPCBehavior).selected) {
-            selectedNpcIdx = i;
+            selectedNpcIdx = Number(i);
             break;
           }
         }
@@ -428,7 +428,7 @@ class MusicConductorBehavior extends Sup.Behavior {
         if (selectedNpcIdx != this.verse2SelectedNpcIdx) {
           let fadeLength = 100;
           for (let i in instGroupNames) {
-            if (i == selectedNpcIdx) {
+            if (Number(i) == selectedNpcIdx) {
               this.conductor.fadePlayers(instGroupNames[i], this.vol, fadeLength);
             }
             else {
